@@ -9,11 +9,17 @@
     "name": "Celo Game Arcade",
     "iconUrl": "https://celogamearcade.vercel.app/icon-1024.png",
     "homeUrl": "https://celogamearcade.vercel.app",
+    "imageUrl": "https://celogamearcade.vercel.app/image-3-2.png",
+    "buttonTitle": "Play Now",
     "splashImageUrl": "https://celogamearcade.vercel.app/splash-200.png",
     "splashBackgroundColor": "#0f0c29",
+    "subtitle": "Play & Win CELO!",
+    "description": "Play classic arcade games and compete for CELO prizes! 0.5 CELO entry, daily prizes for top scorers.",
     "screenshotUrls": [
       "https://celogamearcade.vercel.app/screenshot1.png",
       "https://celogamearcade.vercel.app/screenshot2.png"
-    ]
+    ],
+    "primaryCategory": "games",
+    "tags": ["gaming", "celo", "blockchain", "arcade", "prizes"]
   }
 }
