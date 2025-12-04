@@ -1,6 +1,6 @@
 'use client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider, createConfig, http, useAccount, useSwitchChain } from 'wagmi';
+import { WagmiProvider, createConfig, http, useAccount, useChainId, useSwitchChain } from 'wagmi';
 import { celo, celoAlfajores } from 'wagmi/chains';
 import { injected } from 'wagmi/connectors';
 import { useState, useEffect, type ReactNode } from 'react';
@@ -14,25 +14,81 @@ const config = createConfig({
   connectors: [injected()],
 });
 
+// Celo chain IDs
+const CELO_MAINNET_ID = 42220;
+const CELO_TESTNET_ID = 44787;
+
 function NetworkGuard({ children }: { children: ReactNode }) {
-  const { isConnected, chain, isConnecting } = useAccount();
+  const { isConnected, address } = useAccount();
+  const chainId = useChainId();
   const { switchChain } = useSwitchChain();
-  const [showNetworkPrompt, setShowNetworkPrompt] = useState(false);
+  const [wrongNetwork, setWrongNetwork] = useState(false);
+  const [currentChainName, setCurrentChainName] = useState('Unknown');
 
   useEffect(() => {
-    // Only check network AFTER wallet is connected and chain is detected
-    if (!isConnected || isConnecting || !chain) {
-      setShowNetworkPrompt(false);
+    // Only check if wallet is connected
+    if (!isConnected || !address) {
+      setWrongNetwork(false);
       return;
     }
 
-    // Check if on Celo mainnet (42220) or Alfajores (44787)
-    const isOnCelo = chain.id === celo.id || chain.id === celoAlfajores.id;
-    setShowNetworkPrompt(!isOnCelo);
-  }, [isConnected, isConnecting, chain]);
+    // Check if on Celo
+    const isOnCelo = chainId === CELO_MAINNET_ID || chainId === CELO_TESTNET_ID;
+    
+    console.log('Chain ID:', chainId, 'Is on Celo:', isOnCelo);
+    
+    if (!isOnCelo) {
+      setWrongNetwork(true);
+      // Get chain name from common chain IDs
+      const chainNames: { [key: number]: string } = {
+        1: 'Ethereum',
+        137: 'Polygon',
+        56: 'BNB Chain',
+        43114: 'Avalanche',
+        250: 'Fantom',
+        42161: 'Arbitrum',
+        10: 'Optimism',
+        8453: 'Base',
+      };
+      setCurrentChainName(chainNames[chainId] || `Chain ${chainId}`);
+    } else {
+      setWrongNetwork(false);
+    }
+  }, [isConnected, address, chainId]);
 
-  // Show switch network prompt ONLY if connected AND on wrong network
-  if (isConnected && showNetworkPrompt && chain) {
+  const handleSwitchNetwork = async () => {
+    try {
+      switchChain({ chainId: CELO_MAINNET_ID });
+    } catch (error) {
+      console.error('Switch failed:', error);
+      // Try adding the network
+      handleAddCelo();
+    }
+  };
+
+  const handleAddCelo = async () => {
+    try {
+      await window.ethereum?.request({
+        method: 'wallet_addEthereumChain',
+        params: [{
+          chainId: '0xA4EC', // 42220 in hex
+          chainName: 'Celo',
+          nativeCurrency: {
+            name: 'CELO',
+            symbol: 'CELO',
+            decimals: 18,
+          },
+          rpcUrls: ['https://forno.celo.org'],
+          blockExplorerUrls: ['https://celoscan.io'],
+        }],
+      });
+    } catch (error) {
+      console.error('Failed to add Celo:', error);
+    }
+  };
+
+  // Show prompt only if connected AND on wrong network
+  if (isConnected && wrongNetwork) {
     return (
       <div style={{
         minHeight: '100vh',
@@ -56,13 +112,13 @@ function NetworkGuard({ children }: { children: ReactNode }) {
             Wrong Network
           </h2>
           <p style={{ color: '#888', fontSize: '14px', margin: '0 0 8px' }}>
-            You're on <strong style={{ color: '#f44' }}>{chain.name}</strong>
+            You're connected to <strong style={{ color: '#f44' }}>{currentChainName}</strong>
           </p>
           <p style={{ color: '#888', fontSize: '14px', margin: '0 0 20px' }}>
             Please switch to <strong style={{ color: '#00ff88' }}>Celo</strong> to play!
           </p>
           <button
-            onClick={() => switchChain({ chainId: celo.id })}
+            onClick={handleSwitchNetwork}
             style={{
               width: '100%',
               padding: '14px',
@@ -79,22 +135,7 @@ function NetworkGuard({ children }: { children: ReactNode }) {
             🔄 Switch to Celo
           </button>
           <button
-            onClick={async () => {
-              try {
-                await window.ethereum?.request({
-                  method: 'wallet_addEthereumChain',
-                  params: [{
-                    chainId: '0xA4EC',
-                    chainName: 'Celo',
-                    nativeCurrency: { name: 'CELO', symbol: 'CELO', decimals: 18 },
-                    rpcUrls: ['https://forno.celo.org'],
-                    blockExplorerUrls: ['https://celoscan.io'],
-                  }],
-                });
-              } catch (e) {
-                console.error(e);
-              }
-            }}
+            onClick={handleAddCelo}
             style={{
               width: '100%',
               padding: '12px',
@@ -108,6 +149,9 @@ function NetworkGuard({ children }: { children: ReactNode }) {
           >
             ➕ Add Celo Network
           </button>
+          <p style={{ color: '#666', fontSize: '11px', marginTop: '16px' }}>
+            Chain ID detected: {chainId}
+          </p>
         </div>
       </div>
     );
