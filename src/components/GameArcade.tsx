@@ -14,6 +14,8 @@ export default function GameArcade() {
   const [diff, setDiff] = useState<string>('medium');
   const [showSelect, setShowSelect] = useState(false);
   const [lastScore, setLastScore] = useState<{ raw: number; final: number; diff: string } | null>(null);
+  const [showWalletModal, setShowWalletModal] = useState(false);
+  const [isInFarcaster, setIsInFarcaster] = useState(false);
 
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
@@ -22,9 +24,7 @@ export default function GameArcade() {
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash });
 
   // Get CELO balance
-  const { data: balanceData } = useBalance({
-    address: address,
-  });
+  const { data: balanceData } = useBalance({ address: address });
   const celoBalance = balanceData ? Number(formatEther(balanceData.value)).toFixed(3) : '0.000';
 
   const { data: prizePoolData } = useReadContract({ address: CONTRACT_ADDRESS, abi: CONTRACT_ABI, functionName: 'getPrizePool' });
@@ -56,31 +56,38 @@ export default function GameArcade() {
     { id: 'space', name: 'Space Blaster', icon: '🚀', color: '#9933ff', desc: 'Destroy aliens!', gameType: GameType.SPACE_SHOOTER },
   ];
 
-  // Force fresh wallet connection
-  const handleConnectWallet = async () => {
+  // Check if running inside Farcaster
+  useEffect(() => {
+    const checkFarcaster = async () => {
+      try {
+        const { sdk } = await import('@farcaster/miniapp-sdk');
+        const inMiniApp = await sdk.isInMiniApp();
+        setIsInFarcaster(inMiniApp);
+        console.log('Is in Farcaster Mini App:', inMiniApp);
+      } catch {
+        setIsInFarcaster(false);
+      }
+    };
+    checkFarcaster();
+  }, []);
+
+  // Connect wallet
+  const handleConnectWallet = async (connectorIndex: number = 0) => {
     try {
-      await disconnectAsync();
-    } catch (e) {}
-    setTimeout(() => {
-      connect({ connector: connectors[0] });
-    }, 200);
+      const connector = connectors[connectorIndex];
+      if (connector) {
+        connect({ connector });
+        setShowWalletModal(false);
+      }
+    } catch (e) {
+      console.error('Connect error:', e);
+    }
   };
 
-  // Proper disconnect
+  // Disconnect wallet
   const handleDisconnect = async () => {
     try {
       await disconnectAsync();
-      // Clear any cached connection
-      if (window.ethereum) {
-        try {
-          await window.ethereum.request({
-            method: 'wallet_revokePermissions',
-            params: [{ eth_accounts: {} }],
-          });
-        } catch (e) {
-          // Not all wallets support this
-        }
-      }
     } catch (e) {
       console.error('Disconnect error:', e);
     }
@@ -107,7 +114,6 @@ export default function GameArcade() {
   const isTopPlayer = leaderboard[0]?.fullAddr?.toLowerCase() === address?.toLowerCase();
   const canClaim = isTopPlayer && prizePool > 0 && timeUntilClaim === 0;
 
-  // Format time until claim
   const formatTimeUntilClaim = (seconds: number) => {
     if (seconds === 0) return 'Now';
     const days = Math.floor(seconds / 86400);
@@ -319,7 +325,7 @@ export default function GameArcade() {
     );
   };
 
-  // SPACE BLASTER (FIXED!)
+  // SPACE BLASTER
   const SpaceGame = ({ onEnd }: { onEnd: (score: number) => void }) => {
     const [sx, setSx] = useState(50);
     const [bullets, setBullets] = useState<any[]>([]);
@@ -415,7 +421,7 @@ export default function GameArcade() {
             </div>
           </div>
         ) : (
-          <button onClick={handleConnectWallet} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>
+          <button onClick={() => isInFarcaster ? handleConnectWallet(0) : setShowWalletModal(true)} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>
         )}
       </div>
       <div style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,136,0,0.2))', borderRadius: '16px', padding: '16px', marginBottom: '16px', border: '2px solid rgba(255,215,0,0.3)', position: 'relative', overflow: 'hidden' }}>
@@ -446,6 +452,36 @@ export default function GameArcade() {
         <div style={{ marginBottom: '16px' }}><p style={{ color: '#fff', fontSize: '13px', fontWeight: '600', marginBottom: '10px', textAlign: 'center' }}>⚡ Select Difficulty</p><div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>{diffs.map((d) => (<button key={d.id} onClick={() => setDiff(d.id)} style={{ background: diff === d.id ? `linear-gradient(135deg,${d.color}33,${d.color}11)` : 'rgba(255,255,255,0.05)', border: diff === d.id ? `2px solid ${d.color}` : '2px solid transparent', borderRadius: '12px', padding: '12px 14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}><div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><div style={{ width: '10px', height: '10px', borderRadius: '50%', background: d.color, boxShadow: diff === d.id ? `0 0 12px ${d.color}` : 'none' }} /><div style={{ textAlign: 'left' }}><p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>{d.name}</p><p style={{ color: '#888', fontSize: '10px', margin: '1px 0 0' }}>{d.desc}</p></div></div><div style={{ background: d.color, color: '#000', padding: '3px 8px', borderRadius: '16px', fontSize: '12px', fontWeight: '800' }}>{d.mult}</div></button>))}</div></div>
         <div style={{ background: 'rgba(255,215,0,0.1)', borderRadius: '10px', padding: '10px', marginBottom: '16px', border: '1px solid rgba(255,215,0,0.2)' }}><p style={{ color: '#fd0', fontSize: '11px', margin: 0, textAlign: 'center' }}>💡 1000 pts × {diff === 'easy' ? '1x' : diff === 'medium' ? '1.5x' : '2x'} = <strong>{diff === 'easy' ? '1,000' : diff === 'medium' ? '1,500' : '2,000'}</strong> final</p></div>
         <div style={{ display: 'flex', gap: '10px' }}><button onClick={() => setShowSelect(false)} style={{ flex: 1, padding: '12px', background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '12px', color: '#fff', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>Cancel</button><button onClick={() => { setShowSelect(false); setView('game'); }} style={{ flex: 2, padding: '12px', background: `linear-gradient(135deg,${game?.color},${game?.color}cc)`, border: 'none', borderRadius: '12px', color: '#000', fontSize: '14px', fontWeight: '800', cursor: 'pointer', boxShadow: `0 6px 20px ${game?.color}44` }}>🎮 START</button></div>
+      </div>
+    </div>
+  );
+
+  // WALLET MODAL
+  const WalletModal = () => (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(10px)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '14px' }}>
+      <div style={{ background: 'linear-gradient(135deg,#1a1a3e,#0f0c29)', borderRadius: '20px', padding: '24px', maxWidth: '320px', width: '100%', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <h2 style={{ color: '#fff', fontSize: '20px', fontWeight: '800', margin: '0 0 8px', textAlign: 'center' }}>🔗 Connect Wallet</h2>
+        <p style={{ color: '#888', fontSize: '12px', margin: '0 0 20px', textAlign: 'center' }}>Choose how to connect</p>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <button onClick={() => handleConnectWallet(0)} style={{ background: 'linear-gradient(135deg, #8B5CF6, #7C3AED)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🟣</div>
+            <div style={{ textAlign: 'left' }}>
+              <p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>Farcaster Wallet</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', margin: '2px 0 0' }}>Connect via Warpcast</p>
+            </div>
+          </button>
+          
+          <button onClick={() => handleConnectWallet(1)} style={{ background: 'linear-gradient(135deg, #F6851B, #E2761B)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🦊</div>
+            <div style={{ textAlign: 'left' }}>
+              <p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>External Wallet</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', margin: '2px 0 0' }}>MetaMask, Coinbase, etc.</p>
+            </div>
+          </button>
+        </div>
+        
+        <button onClick={() => setShowWalletModal(false)} style={{ width: '100%', marginTop: '16px', padding: '12px', background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '12px', color: '#888', fontSize: '14px', cursor: 'pointer' }}>Cancel</button>
       </div>
     </div>
   );
@@ -482,5 +518,13 @@ export default function GameArcade() {
     );
   };
 
-  return (<>{view === 'home' && <Home />}{view === 'game' && <GameView />}{view === 'result' && <Result />}{showSelect && <Modal />}</>);
+  return (
+    <>
+      {view === 'home' && <Home />}
+      {view === 'game' && <GameView />}
+      {view === 'result' && <Result />}
+      {showSelect && <Modal />}
+      {showWalletModal && <WalletModal />}
+    </>
+  );
 }
