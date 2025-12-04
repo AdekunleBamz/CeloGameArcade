@@ -1,6 +1,6 @@
 'use client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider, createConfig, http, useAccount, useSwitchChain, useConnect } from 'wagmi';
+import { WagmiProvider, createConfig, http, useAccount, useSwitchChain } from 'wagmi';
 import { celo, celoAlfajores } from 'wagmi/chains';
 import { injected } from 'wagmi/connectors';
 import { useState, useEffect, type ReactNode } from 'react';
@@ -14,56 +14,25 @@ const config = createConfig({
   connectors: [injected()],
 });
 
-// Component to handle network switching
 function NetworkGuard({ children }: { children: ReactNode }) {
-  const { isConnected, chain } = useAccount();
+  const { isConnected, chain, isConnecting } = useAccount();
   const { switchChain } = useSwitchChain();
-  const [isCorrectNetwork, setIsCorrectNetwork] = useState(true);
+  const [showNetworkPrompt, setShowNetworkPrompt] = useState(false);
 
   useEffect(() => {
-    const checkAndSwitchNetwork = async () => {
-      if (!isConnected) return;
-      
-      // Check if on Celo mainnet (42220) or Alfajores (44787)
-      if (chain?.id !== celo.id && chain?.id !== celoAlfajores.id) {
-        setIsCorrectNetwork(false);
-        
-        try {
-          // Try to switch to Celo mainnet
-          switchChain({ chainId: celo.id });
-        } catch (error) {
-          console.log('Switch failed, trying to add network...');
-          
-          // If switch fails, try to add the network
-          try {
-            await window.ethereum?.request({
-              method: 'wallet_addEthereumChain',
-              params: [{
-                chainId: '0xA4EC', // 42220 in hex
-                chainName: 'Celo',
-                nativeCurrency: {
-                  name: 'CELO',
-                  symbol: 'CELO',
-                  decimals: 18,
-                },
-                rpcUrls: ['https://forno.celo.org'],
-                blockExplorerUrls: ['https://celoscan.io'],
-              }],
-            });
-          } catch (addError) {
-            console.error('Failed to add Celo network:', addError);
-          }
-        }
-      } else {
-        setIsCorrectNetwork(true);
-      }
-    };
+    // Only check network AFTER wallet is connected and chain is detected
+    if (!isConnected || isConnecting || !chain) {
+      setShowNetworkPrompt(false);
+      return;
+    }
 
-    checkAndSwitchNetwork();
-  }, [isConnected, chain, switchChain]);
+    // Check if on Celo mainnet (42220) or Alfajores (44787)
+    const isOnCelo = chain.id === celo.id || chain.id === celoAlfajores.id;
+    setShowNetworkPrompt(!isOnCelo);
+  }, [isConnected, isConnecting, chain]);
 
-  // Show switch network prompt if on wrong network
-  if (isConnected && !isCorrectNetwork) {
+  // Show switch network prompt ONLY if connected AND on wrong network
+  if (isConnected && showNetworkPrompt && chain) {
     return (
       <div style={{
         minHeight: '100vh',
@@ -86,8 +55,11 @@ function NetworkGuard({ children }: { children: ReactNode }) {
           <h2 style={{ color: '#fff', fontSize: '20px', fontWeight: '700', margin: '0 0 10px' }}>
             Wrong Network
           </h2>
+          <p style={{ color: '#888', fontSize: '14px', margin: '0 0 8px' }}>
+            You're on <strong style={{ color: '#f44' }}>{chain.name}</strong>
+          </p>
           <p style={{ color: '#888', fontSize: '14px', margin: '0 0 20px' }}>
-            Please switch to <strong style={{ color: '#00ff88' }}>Celo</strong> network to play!
+            Please switch to <strong style={{ color: '#00ff88' }}>Celo</strong> to play!
           </p>
           <button
             onClick={() => switchChain({ chainId: celo.id })}
@@ -151,7 +123,6 @@ export function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
     const init = async () => {
       try {
-        // Try to initialize Farcaster SDK
         const sdk = await import('@farcaster/miniapp-sdk').catch(() => null);
         if (sdk?.sdk) {
           await sdk.sdk.actions.ready();
@@ -174,7 +145,7 @@ export function Providers({ children }: { children: ReactNode }) {
         justifyContent: 'center',
       }}>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '48px', marginBottom: '16px', animation: 'pulse 1.5s infinite' }}>🎮</div>
+          <div style={{ fontSize: '48px', marginBottom: '16px' }}>🎮</div>
           <p style={{ color: '#00ff88', fontSize: '18px' }}>Loading Celo Arcade...</p>
         </div>
       </div>
