@@ -7,9 +7,9 @@
   "frame": {
     "version": "next",
     "name": "Celo Game Arcade",
-    "iconUrl": "https://celogamearcade.vercel.app/icon-200.svg",
+    "iconUrl": "https://celogamearcade.vercel.app/icon.png",
     "homeUrl": "https://celogamearcade.vercel.app",
-    "splashImageUrl": "https://celogamearcade.vercel.app/splash-1200.svg",
+    "splashImageUrl": "https://celogamearcade.vercel.app/splash.png",
     "splashBackgroundColor": "#0f0c29"
   }
 }
