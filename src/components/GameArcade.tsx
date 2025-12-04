@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useAccount, useConnect, useDisconnect, useReadContract, useWriteContract, useWaitForTransactionReceipt, useBalance } from 'wagmi';
+import { farcasterMiniApp } from '@farcaster/miniapp-wagmi-connector';
+import { injected } from 'wagmi/connectors';
 import { formatEther } from 'viem';
 import { CONTRACT_ADDRESS, CONTRACT_ABI, GameType, Difficulty, ENTRY_FEE } from '@/lib/contract';
 
@@ -18,12 +20,11 @@ export default function GameArcade() {
   const [isInFarcaster, setIsInFarcaster] = useState(false);
 
   const { address, isConnected } = useAccount();
-  const { connect, connectors } = useConnect();
+  const { connect } = useConnect();
   const { disconnectAsync } = useDisconnect();
   const { writeContract, data: hash, isPending } = useWriteContract();
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash });
 
-  // Get CELO balance
   const { data: balanceData } = useBalance({ address: address });
   const celoBalance = balanceData ? Number(formatEther(balanceData.value)).toFixed(3) : '0.000';
 
@@ -56,35 +57,52 @@ export default function GameArcade() {
     { id: 'space', name: 'Space Blaster', icon: '🚀', color: '#9933ff', desc: 'Destroy aliens!', gameType: GameType.SPACE_SHOOTER },
   ];
 
-  // Check if running inside Farcaster
+  // Check if inside Farcaster
   useEffect(() => {
     const checkFarcaster = async () => {
       try {
         const { sdk } = await import('@farcaster/miniapp-sdk');
         const inMiniApp = await sdk.isInMiniApp();
         setIsInFarcaster(inMiniApp);
-        console.log('Is in Farcaster Mini App:', inMiniApp);
-      } catch {
+        console.log('Is in Farcaster:', inMiniApp);
+      } catch (e) {
+        console.log('Farcaster check failed:', e);
         setIsInFarcaster(false);
       }
     };
     checkFarcaster();
   }, []);
 
-  // Connect wallet
-  const handleConnectWallet = async (connectorIndex: number = 0) => {
+  // Connect with Farcaster wallet
+  const connectFarcaster = () => {
+    console.log('Connecting with Farcaster...');
     try {
-      const connector = connectors[connectorIndex];
-      if (connector) {
-        connect({ connector });
-        setShowWalletModal(false);
-      }
+      connect({ connector: farcasterMiniApp() });
     } catch (e) {
-      console.error('Connect error:', e);
+      console.error('Farcaster connect error:', e);
     }
   };
 
-  // Disconnect wallet
+  // Connect with external wallet
+  const connectExternal = () => {
+    console.log('Connecting with external wallet...');
+    try {
+      connect({ connector: injected() });
+    } catch (e) {
+      console.error('External connect error:', e);
+    }
+    setShowWalletModal(false);
+  };
+
+  // Handle connect button click
+  const handleConnectClick = () => {
+    if (isInFarcaster) {
+      connectFarcaster();
+    } else {
+      setShowWalletModal(true);
+    }
+  };
+
   const handleDisconnect = async () => {
     try {
       await disconnectAsync();
@@ -334,8 +352,8 @@ export default function GameArcade() {
     const [score, setScore] = useState(0);
     const [lives, setLives] = useState(diff === 'easy' ? 5 : diff === 'medium' ? 3 : 2);
     const ref = useRef<number | null>(null);
-    const sxRef = useRef(sx), scoreRef = useRef(score), livesRef = useRef(lives), stateRef = useRef(state);
-    sxRef.current = sx; scoreRef.current = score; livesRef.current = lives; stateRef.current = state;
+    const sxRef = useRef(sx), scoreRef = useRef(score), stateRef = useRef(state);
+    sxRef.current = sx; scoreRef.current = score; stateRef.current = state;
 
     const eSpd = diff === 'easy' ? 0.5 : diff === 'medium' ? 0.8 : 1.2;
     const spawnR = diff === 'easy' ? 0.02 : diff === 'medium' ? 0.03 : 0.04;
@@ -421,7 +439,7 @@ export default function GameArcade() {
             </div>
           </div>
         ) : (
-          <button onClick={() => isInFarcaster ? handleConnectWallet(0) : setShowWalletModal(true)} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>
+          <button onClick={handleConnectClick} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>
         )}
       </div>
       <div style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,136,0,0.2))', borderRadius: '16px', padding: '16px', marginBottom: '16px', border: '2px solid rgba(255,215,0,0.3)', position: 'relative', overflow: 'hidden' }}>
@@ -444,7 +462,7 @@ export default function GameArcade() {
     </div>
   );
 
-  // MODAL
+  // DIFFICULTY MODAL
   const Modal = () => (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(10px)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '14px' }}>
       <div style={{ background: 'linear-gradient(135deg,#1a1a3e,#0f0c29)', borderRadius: '20px', padding: '20px', maxWidth: '320px', width: '100%', border: '1px solid rgba(255,255,255,0.1)' }}>
@@ -462,17 +480,15 @@ export default function GameArcade() {
       <div style={{ background: 'linear-gradient(135deg,#1a1a3e,#0f0c29)', borderRadius: '20px', padding: '24px', maxWidth: '320px', width: '100%', border: '1px solid rgba(255,255,255,0.1)' }}>
         <h2 style={{ color: '#fff', fontSize: '20px', fontWeight: '800', margin: '0 0 8px', textAlign: 'center' }}>🔗 Connect Wallet</h2>
         <p style={{ color: '#888', fontSize: '12px', margin: '0 0 20px', textAlign: 'center' }}>Choose how to connect</p>
-        
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <button onClick={() => handleConnectWallet(0)} style={{ background: 'linear-gradient(135deg, #8B5CF6, #7C3AED)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button onClick={connectFarcaster} style={{ background: 'linear-gradient(135deg, #8B5CF6, #7C3AED)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🟣</div>
             <div style={{ textAlign: 'left' }}>
               <p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>Farcaster Wallet</p>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', margin: '2px 0 0' }}>Connect via Warpcast</p>
             </div>
           </button>
-          
-          <button onClick={() => handleConnectWallet(1)} style={{ background: 'linear-gradient(135deg, #F6851B, #E2761B)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button onClick={connectExternal} style={{ background: 'linear-gradient(135deg, #F6851B, #E2761B)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🦊</div>
             <div style={{ textAlign: 'left' }}>
               <p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>External Wallet</p>
@@ -480,7 +496,6 @@ export default function GameArcade() {
             </div>
           </button>
         </div>
-        
         <button onClick={() => setShowWalletModal(false)} style={{ width: '100%', marginTop: '16px', padding: '12px', background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '12px', color: '#888', fontSize: '14px', cursor: 'pointer' }}>Cancel</button>
       </div>
     </div>
