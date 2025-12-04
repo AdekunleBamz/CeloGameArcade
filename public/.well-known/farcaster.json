@@ -10,6 +10,10 @@
     "iconUrl": "https://celogamearcade.vercel.app/icon-1024.png",
     "homeUrl": "https://celogamearcade.vercel.app",
     "splashImageUrl": "https://celogamearcade.vercel.app/splash-200.png",
-    "splashBackgroundColor": "#0f0c29"
+    "splashBackgroundColor": "#0f0c29",
+    "screenshotUrls": [
+      "https://celogamearcade.vercel.app/screenshot1.png",
+      "https://celogamearcade.vercel.app/screenshot2.png"
+    ]
   }
 }
