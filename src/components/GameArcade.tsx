@@ -2,9 +2,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useAccount, useConnect, useDisconnect, useReadContract, useWriteContract, useWaitForTransactionReceipt, useBalance } from 'wagmi';
 import { farcasterMiniApp } from '@farcaster/miniapp-wagmi-connector';
-import { injected } from 'wagmi/connectors';
+import { injected, walletConnect } from 'wagmi/connectors';
 import { formatEther } from 'viem';
 import { CONTRACT_ADDRESS, CONTRACT_ABI, GameType, Difficulty, ENTRY_FEE } from '@/lib/contract';
+
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
 
 interface LeaderboardEntry { player: string; totalScore: bigint; }
 interface GameInfo { id: string; name: string; icon: string; color: string; desc: string; gameType: number; }
@@ -57,7 +59,7 @@ export default function GameArcade() {
     { id: 'space', name: 'Space Blaster', icon: '🚀', color: '#9933ff', desc: 'Destroy aliens!', gameType: GameType.SPACE_SHOOTER },
   ];
 
-  // Check if inside Farcaster
+  // Check if inside Farcaster on mount
   useEffect(() => {
     const checkFarcaster = async () => {
       try {
@@ -65,6 +67,12 @@ export default function GameArcade() {
         const inMiniApp = await sdk.isInMiniApp();
         setIsInFarcaster(inMiniApp);
         console.log('Is in Farcaster:', inMiniApp);
+        
+        // Auto-connect if in Farcaster
+        if (inMiniApp && !isConnected) {
+          console.log('Auto-connecting Farcaster wallet...');
+          connect({ connector: farcasterMiniApp() });
+        }
       } catch (e) {
         console.log('Farcaster check failed:', e);
         setIsInFarcaster(false);
@@ -76,21 +84,31 @@ export default function GameArcade() {
   // Connect with Farcaster wallet
   const connectFarcaster = () => {
     console.log('Connecting with Farcaster...');
-    try {
-      connect({ connector: farcasterMiniApp() });
-    } catch (e) {
-      console.error('Farcaster connect error:', e);
-    }
+    connect({ connector: farcasterMiniApp() });
+    setShowWalletModal(false);
   };
 
-  // Connect with external wallet
-  const connectExternal = () => {
-    console.log('Connecting with external wallet...');
-    try {
-      connect({ connector: injected() });
-    } catch (e) {
-      console.error('External connect error:', e);
-    }
+  // Connect with browser wallet (MetaMask, etc.)
+  const connectInjected = () => {
+    console.log('Connecting with browser wallet...');
+    connect({ connector: injected() });
+    setShowWalletModal(false);
+  };
+
+  // Connect with WalletConnect
+  const connectWalletConnect = () => {
+    console.log('Connecting with WalletConnect...');
+    connect({ 
+      connector: walletConnect({ 
+        projectId,
+        metadata: {
+          name: 'Celo Game Arcade',
+          description: 'Play games and win CELO!',
+          url: typeof window !== 'undefined' ? window.location.origin : '',
+          icons: ['https://celo.org/favicon.ico'],
+        },
+      }) 
+    });
     setShowWalletModal(false);
   };
 
@@ -488,11 +506,18 @@ export default function GameArcade() {
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', margin: '2px 0 0' }}>Connect via Warpcast</p>
             </div>
           </button>
-          <button onClick={connectExternal} style={{ background: 'linear-gradient(135deg, #F6851B, #E2761B)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button onClick={connectInjected} style={{ background: 'linear-gradient(135deg, #F6851B, #E2761B)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🦊</div>
             <div style={{ textAlign: 'left' }}>
-              <p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>External Wallet</p>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', margin: '2px 0 0' }}>MetaMask, Coinbase, etc.</p>
+              <p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>Browser Wallet</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', margin: '2px 0 0' }}>MetaMask, Rabby, etc.</p>
+            </div>
+          </button>
+          <button onClick={connectWalletConnect} style={{ background: 'linear-gradient(135deg, #3B99FC, #2D7DD2)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🔵</div>
+            <div style={{ textAlign: 'left' }}>
+              <p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>WalletConnect</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', margin: '2px 0 0' }}>Mobile & desktop wallets</p>
             </div>
           </button>
         </div>

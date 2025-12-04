@@ -3,8 +3,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider, createConfig, http, useAccount, useChainId, useSwitchChain } from 'wagmi';
 import { celo, celoAlfajores } from 'wagmi/chains';
 import { farcasterMiniApp } from '@farcaster/miniapp-wagmi-connector';
-import { injected } from 'wagmi/connectors';
+import { injected, walletConnect } from 'wagmi/connectors';
 import { useState, useEffect, type ReactNode } from 'react';
+
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
 
 const config = createConfig({
   chains: [celo, celoAlfajores],
@@ -15,6 +17,15 @@ const config = createConfig({
   connectors: [
     farcasterMiniApp(),
     injected(),
+    walletConnect({ 
+      projectId,
+      metadata: {
+        name: 'Celo Game Arcade',
+        description: 'Play games and win CELO!',
+        url: typeof window !== 'undefined' ? window.location.origin : '',
+        icons: ['https://celo.org/favicon.ico'],
+      },
+    }),
   ],
 });
 
