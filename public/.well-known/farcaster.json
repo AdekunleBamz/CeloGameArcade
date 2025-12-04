@@ -1,1 +1,19 @@
-{"accountAssociation":{"header":"eyJmaWQiOjAsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIn0","payload":"eyJkb21haW4iOiJleGFtcGxlLmNvbSJ9","signature":"REPLACE_WITH_YOUR_SIGNATURE"},"frame":{"version":"1","name":"Celo Game Arcade","iconUrl":"https://example.com/icon.png","homeUrl":"https://example.com","splashImageUrl":"https://example.com/splash.png","splashBackgroundColor":"#0f0c29","subtitle":"Play & Win CELO!","description":"Play games and win the prize pool!","primaryCategory":"games","tags":["gaming","celo","blockchain"]}}
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjAsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIn0",
+    "payload": "eyJkb21haW4iOiJjZWxvZ2FtZWFyY2FkZS52ZXJjZWwuYXBwIn0",
+    "signature": "MHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw"
+  },
+  "frame": {
+    "version": "1",
+    "name": "Celo Game Arcade",
+    "iconUrl": "https://celogamearcade.vercel.app/icon.png",
+    "homeUrl": "https://celogamearcade.vercel.app",
+    "splashImageUrl": "https://celogamearcade.vercel.app/splash.png",
+    "splashBackgroundColor": "#0f0c29",
+    "subtitle": "Play & Win CELO!",
+    "description": "Play games and win the prize pool!",
+    "primaryCategory": "games",
+    "tags": ["gaming", "celo", "blockchain"]
+  }
+}
