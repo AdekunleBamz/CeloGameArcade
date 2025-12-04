@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { font-family: system-ui, sans-serif; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); min-height: 100vh; }
+button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button:active { transform: scale(0.95); }
