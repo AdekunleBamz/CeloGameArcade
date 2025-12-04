@@ -1,11 +1,53 @@
-<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#0f0c29;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#302b63;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#302b63;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#24243e;stop-opacity:1" />
     </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff88;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#00cc66;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="200" height="200" rx="40" fill="url(#grad)"/>
-  <text x="100" y="120" font-size="80" text-anchor="middle" fill="#00ff88">🎮</text>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="url(#bgGrad)"/>
+  
+  <!-- Arcade machine body -->
+  <rect x="140" y="180" width="232" height="280" rx="20" fill="#1a1a3e" stroke="url(#glowGrad)" stroke-width="4"/>
+  
+  <!-- Screen -->
+  <rect x="165" y="200" width="182" height="140" rx="8" fill="#000" stroke="#00ff88" stroke-width="3"/>
+  
+  <!-- Game icons on screen -->
+  <text x="256" y="245" font-size="32" text-anchor="middle">🏎️</text>
+  <text x="200" y="290" font-size="28" text-anchor="middle">🐍</text>
+  <text x="312" y="290" font-size="28" text-anchor="middle">🚀</text>
+  
+  <!-- Control panel -->
+  <rect x="165" y="355" width="182" height="80" rx="8" fill="#2a2a4e"/>
+  
+  <!-- Joystick -->
+  <circle cx="215" cy="395" r="22" fill="#ff6b6b" filter="url(#glow)"/>
+  <circle cx="215" cy="395" r="12" fill="#ff4444"/>
+  
+  <!-- Buttons -->
+  <circle cx="280" cy="385" r="14" fill="#ffd700" filter="url(#glow)"/>
+  <circle cx="310" cy="385" r="14" fill="#00ff88" filter="url(#glow)"/>
+  <circle cx="295" cy="410" r="14" fill="#9933ff" filter="url(#glow)"/>
+  
+  <!-- Coin slot -->
+  <rect x="235" y="165" width="42" height="8" rx="4" fill="#00ff88"/>
+  
+  <!-- Brand text -->
+  <text x="256" y="105" font-size="48" font-weight="bold" text-anchor="middle" fill="url(#glowGrad)" filter="url(#glow)">CA</text>
+  <text x="256" y="140" font-size="20" text-anchor="middle" fill="#ffffff" opacity="0.7">ARCADE</text>
 </svg>

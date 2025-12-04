@@ -1,0 +1,81 @@
+<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mobileBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#302b63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#24243e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.15);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" />
+    </linearGradient>
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#mobileBg)"/>
+  
+  <!-- Header -->
+  <text x="540" y="150" font-size="72" font-weight="bold" text-anchor="middle" fill="#ffffff">Celo Game Arcade</text>
+  <text x="540" y="220" font-size="36" text-anchor="middle" fill="#00ff88" opacity="0.8">Play & Win CELO!</text>
+  
+  <!-- Stats bar -->
+  <rect x="80" y="280" width="920" height="140" rx="20" fill="url(#cardGrad)" filter="url(#cardShadow)"/>
+  <text x="300" y="335" font-size="28" text-anchor="middle" fill="#00ff88">Prize Pool</text>
+  <text x="300" y="385" font-size="52" font-weight="bold" text-anchor="middle" fill="#ffd700" filter="url(#glow)">12.5 CELO</text>
+  <line x1="540" y1="310" x2="540" y2="390" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <text x="780" y="335" font-size="28" text-anchor="middle" fill="#ff6b6b">Season 1</text>
+  <text x="780" y="385" font-size="52" font-weight="bold" text-anchor="middle" fill="#ffffff">247 Players</text>
+  
+  <!-- Games grid -->
+  <text x="80" y="520" font-size="48" font-weight="bold" fill="#ffffff">Choose Your Game</text>
+  
+  <!-- Game card 1: Turbo Racing -->
+  <g filter="url(#cardShadow)">
+    <rect x="80" y="580" width="450" height="400" rx="24" fill="url(#cardGrad)" stroke="#00ff88" stroke-width="4"/>
+    <text x="305" y="720" font-size="120" text-anchor="middle">🏎️</text>
+    <text x="305" y="840" font-size="44" font-weight="bold" text-anchor="middle" fill="#00ff88">Turbo Racing</text>
+    <text x="305" y="900" font-size="28" text-anchor="middle" fill="#ffffff" opacity="0.7">Dodge & Collect!</text>
+  </g>
+  
+  <!-- Game card 2: Neon Snake -->
+  <g filter="url(#cardShadow)">
+    <rect x="550" y="580" width="450" height="400" rx="24" fill="url(#cardGrad)" stroke="#ff6b6b" stroke-width="4"/>
+    <text x="775" y="720" font-size="120" text-anchor="middle">🐍</text>
+    <text x="775" y="840" font-size="44" font-weight="bold" text-anchor="middle" fill="#ff6b6b">Neon Snake</text>
+    <text x="775" y="900" font-size="28" text-anchor="middle" fill="#ffffff" opacity="0.7">Classic Snake!</text>
+  </g>
+  
+  <!-- Game card 3: Flappy Celo -->
+  <g filter="url(#cardShadow)">
+    <rect x="80" y="1010" width="450" height="400" rx="24" fill="url(#cardGrad)" stroke="#ffd700" stroke-width="4"/>
+    <text x="305" y="1150" font-size="120" text-anchor="middle">🐦</text>
+    <text x="305" y="1270" font-size="44" font-weight="bold" text-anchor="middle" fill="#ffd700">Flappy Celo</text>
+    <text x="305" y="1330" font-size="28" text-anchor="middle" fill="#ffffff" opacity="0.7">Fly Through Pipes!</text>
+  </g>
+  
+  <!-- Game card 4: Space Blaster -->
+  <g filter="url(#cardShadow)">
+    <rect x="550" y="1010" width="450" height="400" rx="24" fill="url(#cardGrad)" stroke="#9933ff" stroke-width="4"/>
+    <text x="775" y="1150" font-size="120" text-anchor="middle">🚀</text>
+    <text x="775" y="1270" font-size="44" font-weight="bold" text-anchor="middle" fill="#9933ff">Space Blaster</text>
+    <text x="775" y="1330" font-size="28" text-anchor="middle" fill="#ffffff" opacity="0.7">Destroy Aliens!</text>
+  </g>
+  
+  <!-- Connect button -->
+  <rect x="140" y="1550" width="800" height="120" rx="60" fill="url(#cardGrad)" stroke="#00ff88" stroke-width="4" filter="url(#cardShadow)"/>
+  <text x="540" y="1630" font-size="52" font-weight="bold" text-anchor="middle" fill="#00ff88" filter="url(#glow)">CONNECT WALLET</text>
+  
+  <!-- Footer info -->
+  <text x="540" y="1750" font-size="32" text-anchor="middle" fill="#ffffff" opacity="0.6">Entry: 0.5 CELO per game</text>
+  <text x="540" y="1810" font-size="28" text-anchor="middle" fill="#ffd700">Top scorer wins the prize pool! 🏆</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mainBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#302b63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#24243e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00cc66;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glowEffect">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="dropShadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#mainBg)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="120" fill="#00ff88" opacity="0.08"/>
+  <circle cx="1100" cy="530" r="150" fill="#ff6b6b" opacity="0.08"/>
+  <circle cx="950" cy="100" r="100" fill="#ffd700" opacity="0.08"/>
+  
+  <!-- Main content card -->
+  <rect x="100" y="80" width="1000" height="470" rx="30" fill="rgba(0,0,0,0.4)" filter="url(#dropShadow)"/>
+  
+  <!-- Arcade machine icon -->
+  <rect x="150" y="150" width="180" height="280" rx="15" fill="#1a1a3e" stroke="url(#accent)" stroke-width="3"/>
+  <rect x="170" y="170" width="140" height="110" rx="8" fill="#000" stroke="#00ff88" stroke-width="2"/>
+  <text x="240" y="210" font-size="28" text-anchor="middle">🏎️</text>
+  <text x="205" y="245" font-size="22" text-anchor="middle">🐍</text>
+  <text x="275" y="245" font-size="22" text-anchor="middle">🚀</text>
+  <rect x="170" y="290" width="140" height="60" rx="8" fill="#2a2a4e"/>
+  <circle cx="210" cy="320" r="16" fill="#ff6b6b" filter="url(#glowEffect)"/>
+  <circle cx="255" cy="315" r="10" fill="#ffd700" filter="url(#glowEffect)"/>
+  <circle cx="285" cy="315" r="10" fill="#00ff88" filter="url(#glowEffect)"/>
+  <circle cx="270" cy="335" r="10" fill="#9933ff" filter="url(#glowEffect)"/>
+  
+  <!-- Text content -->
+  <g filter="url(#dropShadow)">
+    <text x="420" y="200" font-size="72" font-weight="bold" fill="#ffffff">Celo Game</text>
+    <text x="420" y="280" font-size="72" font-weight="bold" fill="url(#accent)" filter="url(#glowEffect)">Arcade</text>
+    
+    <text x="420" y="350" font-size="32" fill="#ffffff" opacity="0.9">🎮 Play Classic Arcade Games</text>
+    <text x="420" y="395" font-size="32" fill="#ffffff" opacity="0.9">💰 Compete for CELO Prizes</text>
+    <text x="420" y="440" font-size="32" fill="#ffffff" opacity="0.9">🏆 Climb the Leaderboard</text>
+    
+    <text x="420" y="510" font-size="38" font-weight="bold" fill="#ffd700" filter="url(#glowEffect)">0.5 CELO Entry • Daily Prizes!</text>
+  </g>
+</svg>

@@ -1,0 +1,79 @@
+<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gameBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#302b63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#24243e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a3e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="gameGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#gameBg)"/>
+  
+  <!-- Header -->
+  <text x="540" y="100" font-size="56" font-weight="bold" text-anchor="middle" fill="#00ff88" filter="url(#gameGlow)">🏎️ Turbo Racing</text>
+  
+  <!-- Stats -->
+  <rect x="100" y="150" width="400" height="80" rx="40" fill="rgba(0,0,0,0.6)"/>
+  <text x="300" y="205" font-size="36" font-weight="bold" text-anchor="middle" fill="#00ff88">SCORE: </text>
+  <text x="420" y="205" font-size="36" font-weight="bold" text-anchor="middle" fill="#ffd700">2,450</text>
+  
+  <rect x="580" y="150" width="400" height="80" rx="40" fill="rgba(0,0,0,0.6)"/>
+  <text x="700" y="205" font-size="36" font-weight="bold" text-anchor="middle" fill="#ff6b6b">LIVES: </text>
+  <text x="850" y="205" font-size="36" text-anchor="middle">❤️❤️🖤</text>
+  
+  <!-- Game screen -->
+  <rect x="140" y="280" width="800" height="1200" rx="24" fill="url(#roadGrad)" stroke="#00ff88" stroke-width="6"/>
+  
+  <!-- Road lines -->
+  <rect x="300" y="320" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="540" y="420" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="780" y="520" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="300" y="620" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="540" y="720" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="780" y="820" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="300" y="920" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="540" y="1020" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="780" y="1120" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="300" y="1220" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="540" y="1320" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  <rect x="780" y="1420" width="12" height="80" fill="#ffffff" opacity="0.7"/>
+  
+  <!-- Lane dividers -->
+  <line x1="300" y1="280" x2="300" y2="1480" stroke="#00ff88" stroke-width="4" opacity="0.5"/>
+  <line x1="540" y1="280" x2="540" y2="1480" stroke="#00ff88" stroke-width="4" opacity="0.5"/>
+  <line x1="780" y1="280" x2="780" y2="1480" stroke="#00ff88" stroke-width="4" opacity="0.5"/>
+  
+  <!-- Coins -->
+  <circle cx="420" cy="500" r="30" fill="#ffd700" filter="url(#gameGlow)"/>
+  <text x="420" y="515" font-size="32" font-weight="bold" text-anchor="middle" fill="#ff8800">C</text>
+  <circle cx="660" cy="800" r="30" fill="#ffd700" filter="url(#gameGlow)"/>
+  <text x="660" y="815" font-size="32" font-weight="bold" text-anchor="middle" fill="#ff8800">C</text>
+  
+  <!-- Obstacle cars -->
+  <rect x="330" y="600" width="100" height="160" rx="20" fill="#ff6b6b" filter="url(#gameGlow)"/>
+  <rect x="810" y="950" width="100" height="160" rx="20" fill="#4ecdc4" filter="url(#gameGlow)"/>
+  
+  <!-- Player car -->
+  <rect x="570" y="1280" width="100" height="160" rx="20" fill="#00ff88" filter="url(#gameGlow)"/>
+  <circle cx="590" cy="1300" r="8" fill="#ffffff"/>
+  <circle cx="650" cy="1300" r="8" fill="#ffffff"/>
+  
+  <!-- Controls -->
+  <circle cx="280" cy="1680" r="100" fill="rgba(0,255,136,0.3)" stroke="#00ff88" stroke-width="6"/>
+  <text x="280" y="1710" font-size="80" text-anchor="middle" fill="#00ff88">←</text>
+  
+  <circle cx="800" cy="1680" r="100" fill="rgba(0,255,136,0.3)" stroke="#00ff88" stroke-width="6"/>
+  <text x="800" y="1710" font-size="80" text-anchor="middle" fill="#00ff88">→</text>
+</svg>

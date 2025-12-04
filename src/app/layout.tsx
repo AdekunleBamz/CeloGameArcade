@@ -4,7 +4,21 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Celo Game Arcade',
-  description: 'Play games and win CELO!',
+  description: 'Play classic arcade games and compete for CELO prizes! 0.5 CELO entry, daily prizes for top scorers.',
+  openGraph: {
+    title: 'Celo Game Arcade',
+    description: 'Play classic arcade games and compete for CELO prizes!',
+    images: ['https://celogamearcade.vercel.app/og-image.png'],
+    url: 'https://celogamearcade.vercel.app',
+    siteName: 'Celo Game Arcade',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Celo Game Arcade',
+    description: 'Play classic arcade games and compete for CELO prizes!',
+    images: ['https://celogamearcade.vercel.app/og-image.png'],
+  },
   other: {
     'fc:frame': 'vNext',
     'fc:frame:name': 'Celo Game Arcade',
