@@ -67,12 +67,6 @@ export default function GameArcade() {
         const inMiniApp = await sdk.isInMiniApp();
         setIsInFarcaster(inMiniApp);
         console.log('Is in Farcaster:', inMiniApp);
-        
-        // Auto-connect if in Farcaster
-        if (inMiniApp && !isConnected) {
-          console.log('Auto-connecting Farcaster wallet...');
-          connect({ connector: farcasterMiniApp() });
-        }
       } catch (e) {
         console.log('Farcaster check failed:', e);
         setIsInFarcaster(false);
