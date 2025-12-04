@@ -9,7 +9,7 @@
     "name": "Celo Game Arcade",
     "iconUrl": "https://celogamearcade.vercel.app/icon-1024.png",
     "homeUrl": "https://celogamearcade.vercel.app",
-    "splashImageUrl": "https://celogamearcade.vercel.app/splash-200.svg",
+    "splashImageUrl": "https://celogamearcade.vercel.app/splash-200.png",
     "splashBackgroundColor": "#0f0c29"
   }
 }
