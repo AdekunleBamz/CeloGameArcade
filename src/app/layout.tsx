@@ -21,10 +21,11 @@ export const metadata: Metadata = {
   },
   other: {
     'fc:frame': 'vNext',
-    'fc:frame:name': 'Celo Game Arcade',
-    'fc:frame:icon': 'https://celogamearcade.vercel.app/icon.png',
-    'fc:frame:image': 'https://celogamearcade.vercel.app/splash.png',
-    'fc:frame:manifest': 'https://celogamearcade.vercel.app/.well-known/farcaster.json',
+    'fc:frame:image': 'https://celogamearcade.vercel.app/image-3-2.png',
+    'fc:frame:image:aspect_ratio': '3:2',
+    'fc:frame:button:1': 'Play Now',
+    'fc:frame:button:1:action': 'link',
+    'fc:frame:button:1:target': 'https://celogamearcade.vercel.app',
   },
 };
 
@@ -35,10 +36,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="theme-color" content="#0f0c29" />
         <meta property="fc:frame" content="vNext" />
-        <meta property="fc:frame:name" content="Celo Game Arcade" />
-        <meta property="fc:frame:icon" content="https://celogamearcade.vercel.app/icon.png" />
-        <meta property="fc:frame:image" content="https://celogamearcade.vercel.app/splash.png" />
-        <meta property="fc:frame:manifest" content="https://celogamearcade.vercel.app/.well-known/farcaster.json" />
+        <meta property="fc:frame:image" content="https://celogamearcade.vercel.app/image-3-2.png" />
+        <meta property="fc:frame:image:aspect_ratio" content="3:2" />
+        <meta property="fc:frame:button:1" content="Play Now" />
+        <meta property="fc:frame:button:1:action" content="link" />
+        <meta property="fc:frame:button:1:target" content="https://celogamearcade.vercel.app" />
       </head>
       <body>
         <Providers>{children}</Providers>
