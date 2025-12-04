@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useAccount, useConnect, useDisconnect, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+import { useAccount, useConnect, useDisconnect, useReadContract, useWriteContract, useWaitForTransactionReceipt, useBalance } from 'wagmi';
 import { formatEther } from 'viem';
 import { CONTRACT_ADDRESS, CONTRACT_ABI, GameType, Difficulty, ENTRY_FEE } from '@/lib/contract';
 
@@ -17,20 +17,28 @@ export default function GameArcade() {
 
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
-  const { disconnect, disconnectAsync } = useDisconnect();
+  const { disconnectAsync } = useDisconnect();
   const { writeContract, data: hash, isPending } = useWriteContract();
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash });
+
+  // Get CELO balance
+  const { data: balanceData } = useBalance({
+    address: address,
+  });
+  const celoBalance = balanceData ? Number(formatEther(balanceData.value)).toFixed(3) : '0.000';
 
   const { data: prizePoolData } = useReadContract({ address: CONTRACT_ADDRESS, abi: CONTRACT_ABI, functionName: 'getPrizePool' });
   const { data: playerStatsData, refetch: refetchPlayerStats } = useReadContract({ address: CONTRACT_ADDRESS, abi: CONTRACT_ABI, functionName: 'getPlayerStats', args: address ? [address] : undefined });
   const { data: leaderboardData, refetch: refetchLeaderboard } = useReadContract({ address: CONTRACT_ADDRESS, abi: CONTRACT_ABI, functionName: 'getLeaderboard' });
   const { data: arcadeStatsData } = useReadContract({ address: CONTRACT_ADDRESS, abi: CONTRACT_ABI, functionName: 'getArcadeStats' });
+  const { data: timeUntilClaimData } = useReadContract({ address: CONTRACT_ADDRESS, abi: CONTRACT_ABI, functionName: 'getTimeUntilNextClaim' });
 
   const prizePool = prizePoolData ? Number(formatEther(prizePoolData)) : 0;
   const hasAccess = playerStatsData?.[0] ?? false;
   const userTotalScore = playerStatsData?.[1] ? Number(playerStatsData[1]) : 0;
   const season = arcadeStatsData?.[3] ? Number(arcadeStatsData[3]) : 1;
   const totalPlayers = arcadeStatsData?.[1] ? Number(arcadeStatsData[1]) : 0;
+  const timeUntilClaim = timeUntilClaimData ? Number(timeUntilClaimData) : 0;
 
   const leaderboard = leaderboardData ? ([...leaderboardData] as LeaderboardEntry[]).filter((e) => e.player !== '0x0000000000000000000000000000000000000000').map((e, i) => ({ rank: i + 1, addr: `${e.player.slice(0, 6)}...${e.player.slice(-4)}`, fullAddr: e.player, score: Number(e.totalScore), isYou: e.player.toLowerCase() === address?.toLowerCase() })) : [];
   const userRank = leaderboard.findIndex((e) => e.isYou) + 1 || '-';
@@ -48,13 +56,34 @@ export default function GameArcade() {
     { id: 'space', name: 'Space Blaster', icon: '🚀', color: '#9933ff', desc: 'Destroy aliens!', gameType: GameType.SPACE_SHOOTER },
   ];
 
+  // Force fresh wallet connection
   const handleConnectWallet = async () => {
     try {
       await disconnectAsync();
     } catch (e) {}
     setTimeout(() => {
       connect({ connector: connectors[0] });
-    }, 100);
+    }, 200);
+  };
+
+  // Proper disconnect
+  const handleDisconnect = async () => {
+    try {
+      await disconnectAsync();
+      // Clear any cached connection
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_revokePermissions',
+            params: [{ eth_accounts: {} }],
+          });
+        } catch (e) {
+          // Not all wallets support this
+        }
+      }
+    } catch (e) {
+      console.error('Disconnect error:', e);
+    }
   };
 
   const handleDeposit = () => { writeContract({ address: CONTRACT_ADDRESS, abi: CONTRACT_ABI, functionName: 'depositToPlay', value: ENTRY_FEE }); };
@@ -76,6 +105,18 @@ export default function GameArcade() {
 
   const handleClaimPrize = () => { writeContract({ address: CONTRACT_ADDRESS, abi: CONTRACT_ABI, functionName: 'claimPrizePool' }); };
   const isTopPlayer = leaderboard[0]?.fullAddr?.toLowerCase() === address?.toLowerCase();
+  const canClaim = isTopPlayer && prizePool > 0 && timeUntilClaim === 0;
+
+  // Format time until claim
+  const formatTimeUntilClaim = (seconds: number) => {
+    if (seconds === 0) return 'Now';
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    if (days > 0) return `${days}d ${hours}h`;
+    if (hours > 0) return `${hours}h ${mins}m`;
+    return `${mins}m`;
+  };
 
   // CAR GAME
   const CarGame = ({ onEnd }: { onEnd: (score: number) => void }) => {
@@ -361,14 +402,33 @@ export default function GameArcade() {
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg,#0f0c29,#302b63,#24243e)', padding: '14px', fontFamily: 'system-ui' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
         <div><h1 style={{ fontSize: '24px', fontWeight: '900', background: 'linear-gradient(90deg,#0f8,#fd0,#f66,#93f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: 0 }}>🎮 CELO ARCADE</h1><p style={{ color: '#888', fontSize: '11px', margin: '2px 0 0' }}>Play • Compete • Win CELO!</p></div>
-        {isConnected ? (<div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><div style={{ background: 'rgba(0,255,136,0.2)', padding: '6px 10px', borderRadius: '16px', border: '1px solid #0f8' }}><span style={{ color: '#0f8', fontSize: '11px' }}>🟢 {address?.slice(0, 6)}...{address?.slice(-4)}</span></div><button onClick={() => disconnect()} style={{ background: 'rgba(255,68,68,0.2)', border: '1px solid #f44', borderRadius: '16px', padding: '6px 10px', color: '#f44', fontSize: '11px', cursor: 'pointer' }}>Disconnect</button></div>) : (<button onClick={handleConnectWallet} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>)}
+        {isConnected ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+              <div style={{ background: 'rgba(0,255,136,0.2)', padding: '6px 10px', borderRadius: '16px', border: '1px solid #0f8' }}>
+                <span style={{ color: '#0f8', fontSize: '11px' }}>🟢 {address?.slice(0, 6)}...{address?.slice(-4)}</span>
+              </div>
+              <button onClick={handleDisconnect} style={{ background: 'rgba(255,68,68,0.2)', border: '1px solid #f44', borderRadius: '16px', padding: '6px 10px', color: '#f44', fontSize: '11px', cursor: 'pointer' }}>Disconnect</button>
+            </div>
+            <div style={{ background: 'rgba(255,215,0,0.15)', padding: '4px 10px', borderRadius: '12px', border: '1px solid rgba(255,215,0,0.3)' }}>
+              <span style={{ color: '#fd0', fontSize: '11px', fontWeight: '600' }}>💰 {celoBalance} CELO</span>
+            </div>
+          </div>
+        ) : (
+          <button onClick={handleConnectWallet} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>
+        )}
       </div>
       <div style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,136,0,0.2))', borderRadius: '16px', padding: '16px', marginBottom: '16px', border: '2px solid rgba(255,215,0,0.3)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-15px', right: '-15px', fontSize: '60px', opacity: '0.1' }}>🏆</div>
         <p style={{ color: '#fd0', fontSize: '12px', margin: '0 0 4px', fontWeight: '600' }}>💰 PRIZE POOL</p>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}><span style={{ fontSize: '36px', fontWeight: '900', color: '#fff' }}>{prizePool.toFixed(3)}</span><span style={{ fontSize: '18px', color: '#fd0', fontWeight: '600' }}>CELO</span></div>
         <p style={{ color: '#aaa', fontSize: '11px', margin: '6px 0 0' }}>🥇 #1 player claims ALL! Season {season}</p>
-        {isTopPlayer && prizePool > 0 && (<button onClick={handleClaimPrize} disabled={isPending || isConfirming} style={{ marginTop: '10px', background: 'linear-gradient(135deg,#fd0,#f80)', border: 'none', borderRadius: '12px', padding: '10px 20px', color: '#000', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer' }}>{isPending || isConfirming ? 'Claiming...' : '🏆 Claim Prize!'}</button>)}
+        {timeUntilClaim > 0 && (<p style={{ color: '#888', fontSize: '10px', margin: '4px 0 0' }}>⏰ Next claim in: {formatTimeUntilClaim(timeUntilClaim)}</p>)}
+        {isTopPlayer && prizePool > 0 && (
+          <button onClick={handleClaimPrize} disabled={isPending || isConfirming || !canClaim} style={{ marginTop: '10px', background: canClaim ? 'linear-gradient(135deg,#fd0,#f80)' : 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '12px', padding: '10px 20px', color: canClaim ? '#000' : '#666', fontSize: '14px', fontWeight: 'bold', cursor: canClaim ? 'pointer' : 'not-allowed' }}>
+            {isPending || isConfirming ? 'Claiming...' : canClaim ? '🏆 Claim Prize!' : `⏰ Wait ${formatTimeUntilClaim(timeUntilClaim)}`}
+          </button>
+        )}
       </div>
       {isConnected && (hasAccess ? (<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '16px' }}><div style={{ background: 'rgba(0,255,136,0.1)', borderRadius: '14px', padding: '12px', border: '1px solid rgba(0,255,136,0.3)' }}><p style={{ color: '#0f8', fontSize: '11px', margin: '0 0 2px' }}>YOUR SCORE</p><p style={{ color: '#fff', fontSize: '20px', fontWeight: '800', margin: 0 }}>{userTotalScore.toLocaleString()}</p></div><div style={{ background: 'rgba(153,51,255,0.1)', borderRadius: '14px', padding: '12px', border: '1px solid rgba(153,51,255,0.3)' }}><p style={{ color: '#93f', fontSize: '11px', margin: '0 0 2px' }}>YOUR RANK</p><p style={{ color: '#fff', fontSize: '20px', fontWeight: '800', margin: 0 }}>#{userRank} {userRank === 1 ? '👑' : userRank === 2 ? '🥈' : userRank === 3 ? '🥉' : '🎮'}</p></div></div>) : (<div style={{ background: 'linear-gradient(135deg,rgba(0,255,136,0.2),rgba(0,200,100,0.1))', borderRadius: '16px', padding: '16px', marginBottom: '16px', border: '1px solid rgba(0,255,136,0.3)', textAlign: 'center' }}><p style={{ color: '#fff', fontSize: '14px', margin: '0 0 10px' }}>💎 Deposit <strong style={{ color: '#fd0' }}>0.1 CELO</strong> to play all games!</p><p style={{ color: '#888', fontSize: '11px', margin: '0 0 12px' }}>20% Creator Fee • 80% goes to Prize Pool</p><button onClick={handleDeposit} disabled={isPending || isConfirming} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '14px', padding: '12px 24px', color: '#fff', fontSize: '15px', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 8px 20px rgba(0,255,136,0.3)' }}>{isPending || isConfirming ? 'Processing...' : '🚀 Deposit & Play'}</button></div>))}
       {!isConnected && (<div style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '16px', padding: '20px', marginBottom: '16px', textAlign: 'center' }}><p style={{ color: '#888', fontSize: '14px', margin: 0 }}>Connect your wallet to start playing!</p></div>)}
