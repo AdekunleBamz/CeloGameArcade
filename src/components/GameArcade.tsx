@@ -17,7 +17,7 @@ export default function GameArcade() {
 
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
-  const { disconnect } = useDisconnect();
+  const { disconnect, disconnectAsync } = useDisconnect();
   const { writeContract, data: hash, isPending } = useWriteContract();
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash });
 
@@ -47,6 +47,15 @@ export default function GameArcade() {
     { id: 'flappy', name: 'Flappy Celo', icon: '🐦', color: '#ffd700', desc: 'Fly through pipes!', gameType: GameType.FLAPPY },
     { id: 'space', name: 'Space Blaster', icon: '🚀', color: '#9933ff', desc: 'Destroy aliens!', gameType: GameType.SPACE_SHOOTER },
   ];
+
+  const handleConnectWallet = async () => {
+    try {
+      await disconnectAsync();
+    } catch (e) {}
+    setTimeout(() => {
+      connect({ connector: connectors[0] });
+    }, 100);
+  };
 
   const handleDeposit = () => { writeContract({ address: CONTRACT_ADDRESS, abi: CONTRACT_ABI, functionName: 'depositToPlay', value: ENTRY_FEE }); };
 
@@ -352,7 +361,7 @@ export default function GameArcade() {
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg,#0f0c29,#302b63,#24243e)', padding: '14px', fontFamily: 'system-ui' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
         <div><h1 style={{ fontSize: '24px', fontWeight: '900', background: 'linear-gradient(90deg,#0f8,#fd0,#f66,#93f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: 0 }}>🎮 CELO ARCADE</h1><p style={{ color: '#888', fontSize: '11px', margin: '2px 0 0' }}>Play • Compete • Win CELO!</p></div>
-        {isConnected ? (<div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><div style={{ background: 'rgba(0,255,136,0.2)', padding: '6px 10px', borderRadius: '16px', border: '1px solid #0f8' }}><span style={{ color: '#0f8', fontSize: '11px' }}>🟢 {address?.slice(0, 6)}...{address?.slice(-4)}</span></div><button onClick={() => disconnect()} style={{ background: 'rgba(255,68,68,0.2)', border: '1px solid #f44', borderRadius: '16px', padding: '6px 10px', color: '#f44', fontSize: '11px', cursor: 'pointer' }}>Disconnect</button></div>) : (<button onClick={() => connect({ connector: connectors[0] })} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>)}
+        {isConnected ? (<div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><div style={{ background: 'rgba(0,255,136,0.2)', padding: '6px 10px', borderRadius: '16px', border: '1px solid #0f8' }}><span style={{ color: '#0f8', fontSize: '11px' }}>🟢 {address?.slice(0, 6)}...{address?.slice(-4)}</span></div><button onClick={() => disconnect()} style={{ background: 'rgba(255,68,68,0.2)', border: '1px solid #f44', borderRadius: '16px', padding: '6px 10px', color: '#f44', fontSize: '11px', cursor: 'pointer' }}>Disconnect</button></div>) : (<button onClick={handleConnectWallet} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>)}
       </div>
       <div style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,136,0,0.2))', borderRadius: '16px', padding: '16px', marginBottom: '16px', border: '2px solid rgba(255,215,0,0.3)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-15px', right: '-15px', fontSize: '60px', opacity: '0.1' }}>🏆</div>
