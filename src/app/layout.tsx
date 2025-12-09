@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   title: "Celo Game Arcade",
   description: "Play classic arcade games and compete for CELO prizes! 0.1 CELO entry, daily prizes for top scorers.",
   metadataBase: new URL(APP_URL),
+  icons: {
+    icon: "/icon-1024.png",
+    shortcut: "/icon-1024.png",
+    apple: "/icon-1024.png",
+  },
   openGraph: {
     title: "Celo Game Arcade",
     description: "Play classic arcade games and compete for CELO prizes! 0.1 CELO entry, daily prizes for top scorers.",
