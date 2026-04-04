@@ -11,3 +11,7 @@ test('assertDecimals accepts supported token decimal bounds', () => {
 test('assertDecimals rejects negative decimal values', () => {
   assert.throws(() => assertDecimals(-1), /Invalid token decimals: -1/)
 })
+
+test('assertDecimals rejects decimals above eighteen', () => {
+  assert.throws(() => assertDecimals(19), /Invalid token decimals: 19/)
+})
