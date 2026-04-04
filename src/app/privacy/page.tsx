@@ -1,3 +1,9 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Celo Game Arcade',
+};
+
 const pageStyle: React.CSSProperties = {
   minHeight: '100vh',
   background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)',
