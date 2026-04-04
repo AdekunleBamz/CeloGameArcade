@@ -615,7 +615,7 @@ export default function GameArcade() {
 
   // WALLET MODAL
   const WalletModal = () => (
-    <div role="dialog" aria-modal="true" style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(10px)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '14px' }}>
+    <div role="dialog" style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(10px)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '14px' }}>
       <div style={{ background: 'linear-gradient(135deg,#1a1a3e,#0f0c29)', borderRadius: '20px', padding: '24px', maxWidth: '320px', width: '100%', border: '1px solid rgba(255,255,255,0.1)' }}>
         <h2 style={{ color: '#fff', fontSize: '20px', fontWeight: '800', margin: '0 0 8px', textAlign: 'center' }}>🔗 Connect Wallet</h2>
         <p style={{ color: '#888', fontSize: '12px', margin: '0 0 20px', textAlign: 'center' }}>Choose how to connect</p>
