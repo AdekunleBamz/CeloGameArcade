@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   applicationName: "Celo Game Arcade",
   title: "Celo Game Arcade",
   description: "Play classic arcade games and compete for stablecoin prizes on Celo mainnet.",
-  metadataBase: new URL(APP_URL),
+  metadataBase: METADATA_BASE,
   alternates: {
     canonical: APP_URL,
   },
