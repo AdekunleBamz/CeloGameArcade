@@ -7,7 +7,6 @@ import { injected, walletConnect } from 'wagmi/connectors';
 import { useState, useEffect, type ReactNode } from 'react';
 
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID?.trim() || '';
-const hasWalletConnectProjectId = projectId.length > 0;
 
 const config = createConfig({
   chains: [celo],
