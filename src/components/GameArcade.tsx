@@ -524,7 +524,7 @@ export default function GameArcade() {
               <div style={{ background: 'rgba(0,255,136,0.2)', padding: '6px 10px', borderRadius: '16px', border: '1px solid #0f8' }}>
                 <span style={{ color: '#0f8', fontSize: '11px' }}>🟢 {address?.slice(0, 6)}...{address?.slice(-4)}</span>
               </div>
-              <button type="button" onClick={handleDisconnect} aria-label="Disconnect wallet" style={{ background: 'rgba(255,68,68,0.2)', border: '1px solid #f44', borderRadius: '16px', padding: '6px 10px', color: '#f44', fontSize: '11px', cursor: 'pointer', transition: 'all 0.2s ease-out' }}>Disconnect</button>
+              <button type="button" onClick={handleDisconnect} style={{ background: 'rgba(255,68,68,0.2)', border: '1px solid #f44', borderRadius: '16px', padding: '6px 10px', color: '#f44', fontSize: '11px', cursor: 'pointer' }}>Disconnect</button>
             </div>
             <div style={{ background: 'rgba(255,215,0,0.15)', padding: '4px 10px', borderRadius: '12px', border: '1px solid rgba(255,215,0,0.3)' }}>
               <span style={{ color: '#fd0', fontSize: '11px', fontWeight: '600' }}>💰 {celoBalance} CELO</span>
