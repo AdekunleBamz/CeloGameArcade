@@ -650,7 +650,7 @@ export default function GameArcade() {
   // GAME VIEW
   const GameView = () => (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg,#0f0c29,#302b63,#24243e)', fontFamily: 'system-ui' }}>
-      <div style={{ display: 'flex', alignItems: 'center', padding: '12px', gap: '10px' }}><button type="button" onClick={() => setView('home')} aria-label="Return to home screen" style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '10px', padding: '8px 12px', color: '#fff', fontSize: '14px', cursor: 'pointer' }}>← Exit</button><span style={{ fontSize: '22px' }}>{game?.icon}</span><span style={{ color: '#fff', fontSize: '16px', fontWeight: '700' }}>{game?.name}</span></div>
+      <div style={{ display: 'flex', alignItems: 'center', padding: '12px', gap: '10px' }}><button type="button" onClick={() => setView('home')} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '10px', padding: '8px 12px', color: '#fff', fontSize: '14px', cursor: 'pointer' }}>← Exit</button><span style={{ fontSize: '22px' }}>{game?.icon}</span><span style={{ color: '#fff', fontSize: '16px', fontWeight: '700' }}>{game?.name}</span></div>
       {game?.id === 'car' && <CarGame onEnd={handleEnd} />}
       {game?.id === 'snake' && <SnakeGame onEnd={handleEnd} />}
       {game?.id === 'flappy' && <FlappyGame onEnd={handleEnd} />}
