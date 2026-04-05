@@ -63,3 +63,7 @@ test('formatTokenUnits formats fractional token values', () => {
 test('formatTokenUnits trims trailing zeroes', () => {
   assert.equal(formatTokenUnits(1200000n, 6), '1.2')
 })
+
+test('formatTokenUnits formats negative token values', () => {
+  assert.equal(formatTokenUnits(-1250000n, 6), '-1.25')
+})
