@@ -34,3 +34,7 @@ test('parseTokenUnits parses fractional strings', () => {
 test('parseTokenUnits parses number inputs', () => {
   assert.equal(parseTokenUnits(2.5, 6), 2500000n)
 })
+
+test('parseTokenUnits rejects invalid token strings', () => {
+  assert.throws(() => parseTokenUnits('1e3', 6), /Invalid token amount: 1e3/)
+})
