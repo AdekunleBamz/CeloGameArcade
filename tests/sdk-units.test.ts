@@ -46,3 +46,7 @@ test('parseTokenUnits rejects excess decimal precision', () => {
 test('parseTokenUnits trims surrounding whitespace', () => {
   assert.equal(parseTokenUnits(' 3.5 ', 6), 3500000n)
 })
+
+test('parseTokenUnits supports zero-decimal tokens', () => {
+  assert.equal(parseTokenUnits('7', 0), 7n)
+})
