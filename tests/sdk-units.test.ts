@@ -26,3 +26,7 @@ test('parseTokenUnits passes bigint inputs through unchanged', () => {
 test('parseTokenUnits parses whole-number strings', () => {
   assert.equal(parseTokenUnits('42', 6), 42000000n)
 })
+
+test('parseTokenUnits parses fractional strings', () => {
+  assert.equal(parseTokenUnits('1.25', 6), 1250000n)
+})
