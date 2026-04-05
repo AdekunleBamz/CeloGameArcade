@@ -42,3 +42,7 @@ test('parseTokenUnits rejects invalid token strings', () => {
 test('parseTokenUnits rejects excess decimal precision', () => {
   assert.throws(() => parseTokenUnits('1.234', 2), /Too many decimal places/)
 })
+
+test('parseTokenUnits trims surrounding whitespace', () => {
+  assert.equal(parseTokenUnits(' 3.5 ', 6), 3500000n)
+})
