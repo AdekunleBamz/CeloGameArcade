@@ -30,3 +30,7 @@ test('parseTokenUnits parses whole-number strings', () => {
 test('parseTokenUnits parses fractional strings', () => {
   assert.equal(parseTokenUnits('1.25', 6), 1250000n)
 })
+
+test('parseTokenUnits parses number inputs', () => {
+  assert.equal(parseTokenUnits(2.5, 6), 2500000n)
+})
