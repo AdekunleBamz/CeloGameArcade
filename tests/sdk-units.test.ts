@@ -55,3 +55,7 @@ test('parseTokenUnits supports zero-decimal tokens', () => {
 test('formatTokenUnits formats whole token values', () => {
   assert.equal(formatTokenUnits(42000000n, 6), '42')
 })
+
+test('formatTokenUnits formats fractional token values', () => {
+  assert.equal(formatTokenUnits(1250000n, 6), '1.25')
+})
