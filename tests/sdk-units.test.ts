@@ -22,3 +22,7 @@ test('assertDecimals rejects decimals above eighteen', () => {
 test('parseTokenUnits passes bigint inputs through unchanged', () => {
   assert.equal(parseTokenUnits(1234n, 6), 1234n)
 })
+
+test('parseTokenUnits parses whole-number strings', () => {
+  assert.equal(parseTokenUnits('42', 6), 42000000n)
+})
