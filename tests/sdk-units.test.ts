@@ -38,3 +38,7 @@ test('parseTokenUnits parses number inputs', () => {
 test('parseTokenUnits rejects invalid token strings', () => {
   assert.throws(() => parseTokenUnits('1e3', 6), /Invalid token amount: 1e3/)
 })
+
+test('parseTokenUnits rejects excess decimal precision', () => {
+  assert.throws(() => parseTokenUnits('1.234', 2), /Too many decimal places/)
+})
