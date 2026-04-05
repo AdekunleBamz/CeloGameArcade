@@ -3,6 +3,7 @@ import test from 'node:test'
 
 import {
   assertDecimals,
+  formatTokenUnits,
   parseTokenUnits,
 } from '../packages/celo-arcade-sdk/src/units.ts'
 
@@ -49,4 +50,8 @@ test('parseTokenUnits trims surrounding whitespace', () => {
 
 test('parseTokenUnits supports zero-decimal tokens', () => {
   assert.equal(parseTokenUnits('7', 0), 7n)
+})
+
+test('formatTokenUnits formats whole token values', () => {
+  assert.equal(formatTokenUnits(42000000n, 6), '42')
 })
