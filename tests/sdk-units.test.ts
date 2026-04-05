@@ -67,3 +67,7 @@ test('formatTokenUnits trims trailing zeroes', () => {
 test('formatTokenUnits formats negative token values', () => {
   assert.equal(formatTokenUnits(-1250000n, 6), '-1.25')
 })
+
+test('formatTokenUnits supports zero-decimal tokens', () => {
+  assert.equal(formatTokenUnits(7n, 0), '7')
+})
