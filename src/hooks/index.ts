@@ -3,6 +3,7 @@
  * Centralized export point for all custom hooks.
  */
 
+export * from './useDocumentTitle';
 export * from './useLocalStorage';
 export * from './useMiniPay';
 export * from './useWindowSize';
