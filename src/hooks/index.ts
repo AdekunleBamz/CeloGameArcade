@@ -9,5 +9,6 @@ export * from './useDocumentTitle';
 export * from './useInterval';
 export * from './useKeyboardEvent';
 export * from './useLocalStorage';
+export * from './useMediaQuery';
 export * from './useMiniPay';
 export * from './useWindowSize';
