@@ -5,6 +5,7 @@
 
 export * from './useClickOutside';
 export * from './useDocumentTitle';
+export * from './useKeyboardEvent';
 export * from './useLocalStorage';
 export * from './useMiniPay';
 export * from './useWindowSize';
