@@ -5,3 +5,4 @@
 
 export * from './useLocalStorage';
 export * from './useMiniPay';
+export * from './useWindowSize';
