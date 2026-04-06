@@ -14,5 +14,6 @@ export * from './useLocalStorage';
 export * from './useMediaQuery';
 export * from './useMiniPay';
 export * from './useOnlineStatus';
+export * from './useThrottle';
 export * from './useToggle';
 export * from './useWindowSize';
