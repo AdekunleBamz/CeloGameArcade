@@ -12,5 +12,6 @@ export * from './useKeyboardEvent';
 export * from './useLocalStorage';
 export * from './useMediaQuery';
 export * from './useMiniPay';
+export * from './useOnlineStatus';
 export * from './useToggle';
 export * from './useWindowSize';
