@@ -3,6 +3,7 @@
  * Centralized export point for all custom hooks.
  */
 
+export * from './useAsync';
 export * from './useClickOutside';
 export * from './useDocumentTitle';
 export * from './useKeyboardEvent';
