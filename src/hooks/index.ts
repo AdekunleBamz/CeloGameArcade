@@ -6,6 +6,7 @@
 export * from './useAsync';
 export * from './useClickOutside';
 export * from './useDocumentTitle';
+export * from './useInterval';
 export * from './useKeyboardEvent';
 export * from './useLocalStorage';
 export * from './useMiniPay';
