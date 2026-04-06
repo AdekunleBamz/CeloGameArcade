@@ -7,6 +7,7 @@ export * from './useAsync';
 export * from './useClickOutside';
 export * from './useCopyToClipboard';
 export * from './useDocumentTitle';
+export * from './useInput';
 export * from './useInterval';
 export * from './useKeyboardEvent';
 export * from './useLocalStorage';
