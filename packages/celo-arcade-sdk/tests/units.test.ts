@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { assertDecimals, parseTokenUnits } from '../src/units';
+import { assertDecimals, formatTokenUnits, parseTokenUnits } from '../src/units';
 
 describe('units assertDecimals', () => {
   it('rejects token decimals above eighteen', () => {
@@ -16,5 +16,11 @@ describe('units parseTokenUnits', () => {
     expect(() => parseTokenUnits('1.234', 2)).toThrow(
       'Too many decimal places for 2-decimals token amount: 1.234',
     );
+  });
+});
+
+describe('units formatTokenUnits', () => {
+  it('strips trailing zeros from fractional output', () => {
+    expect(formatTokenUnits(1234000n, 6)).toBe('1.234');
   });
 });
