@@ -11,6 +11,7 @@ const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID?.trim() || ''
 const MINI_PAY_ADD_CASH_URL = 'https://minipay.opera.com/add_cash';
 const MENTO_SWAP_URL = 'https://app.mento.org';
 const MINIPAY_GAS_TOKEN_SYMBOL = 'USDm';
+const CAR_COLORS = [{ c: '#ff6b6b', a: '#ee5a5a' }, { c: '#4ecdc4', a: '#3dbdb5' }, { c: '#ffe66d', a: '#efd55c' }] as const;
 
 interface LeaderboardEntry { player: string; totalScore: bigint; }
 interface GameInfo { id: string; name: string; icon: string; color: string; desc: string; gameType: number; }
@@ -210,7 +211,6 @@ export default function GameArcade() {
     const ref = useRef<number | null>(null);
     const scoreRef = useRef(score);
     scoreRef.current = score;
-    const colors = [{ c: '#ff6b6b', a: '#ee5a5a' }, { c: '#4ecdc4', a: '#3dbdb5' }, { c: '#ffe66d', a: '#efd55c' }];
 
     const loop = useCallback(() => {
       if (state !== 'play') return;
@@ -219,7 +219,7 @@ export default function GameArcade() {
       setSpeed((s) => Math.min(s + 0.003, diff === 'easy' ? 10 : diff === 'medium' ? 13 : 16));
       if (Math.random() < (diff === 'easy' ? 0.02 : diff === 'medium' ? 0.03 : 0.04)) {
         const lanes = [22, 38, 50, 62, 78];
-        const col = colors[Math.floor(Math.random() * 3)];
+        const col = CAR_COLORS[Math.floor(Math.random() * 3)];
         setObs((o) => [...o, { id: Date.now() + Math.random(), x: lanes[Math.floor(Math.random() * 5)], y: -15, ...col }]);
       }
       if (Math.random() < 0.02) {
@@ -229,7 +229,7 @@ export default function GameArcade() {
       setObs((o) => o.map((i) => ({ ...i, y: i.y + speed * 0.8 })).filter((i) => i.y < 110));
       setCoins((c) => c.map((i) => ({ ...i, y: i.y + speed * 0.8 })).filter((i) => i.y < 110));
       ref.current = requestAnimationFrame(loop);
-    }, [state, speed, diff]);
+    }, [state, speed]);
 
     useEffect(() => {
       if (state !== 'play') return;
