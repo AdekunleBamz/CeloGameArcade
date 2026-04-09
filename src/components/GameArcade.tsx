@@ -359,7 +359,9 @@ export default function GameArcade() {
     const gap = diff === 'easy' ? 35 : diff === 'medium' ? 30 : 25;
     const pSpd = diff === 'easy' ? 1.5 : diff === 'medium' ? 2 : 2.5;
 
-    const jump = () => { if (state === 'play') setVel(-6); };
+    const jump = useCallback(() => {
+      if (state === 'play') setVel(-6);
+    }, [state]);
 
     useEffect(() => {
       if (state !== 'play') return;
@@ -381,7 +383,7 @@ export default function GameArcade() {
       return () => { if (ref.current) cancelAnimationFrame(ref.current); };
     }, [state, grav, gap, pSpd, onEnd]);
 
-    useEffect(() => { const h = (e: KeyboardEvent) => { if (e.code === 'Space') jump(); }; window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h); }, [state]);
+    useEffect(() => { const h = (e: KeyboardEvent) => { if (e.code === 'Space') jump(); }; window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h); }, [jump]);
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px' }}>
