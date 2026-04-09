@@ -18,6 +18,10 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
     "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.4"
   }
 }
