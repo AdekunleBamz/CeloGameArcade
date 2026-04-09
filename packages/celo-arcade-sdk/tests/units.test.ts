@@ -23,4 +23,8 @@ describe('units formatTokenUnits', () => {
   it('strips trailing zeros from fractional output', () => {
     expect(formatTokenUnits(1234000n, 6)).toBe('1.234');
   });
+
+  it('preserves negative signs when formatting', () => {
+    expect(formatTokenUnits(-250000n, 6)).toBe('-0.25');
+  });
 });
