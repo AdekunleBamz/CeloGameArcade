@@ -24,4 +24,10 @@ describe('config createArcadeConfig', () => {
   it('recomputes the default entry fee for custom token decimals', () => {
     expect(createArcadeConfig({ stableTokenDecimals: 18 }).entryFee).toBe(parseTokenUnits('0.01', 18));
   });
+
+  it('rejects invalid MiniPay fee currency addresses', () => {
+    expect(() => createArcadeConfig({ miniPayFeeCurrency: '0x1234' as `0x${string}` })).toThrow(
+      'Invalid MiniPay fee currency: 0x1234',
+    );
+  });
 });
