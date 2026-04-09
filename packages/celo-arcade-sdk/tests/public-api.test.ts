@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { BASIS_POINTS, CREATOR_SHARE_BPS, Difficulty, GameType, PRIZE_SHARE_BPS } from '../src/constants';
 import { ContractEvent } from '../src/events';
-import { ReadMethod } from '../src/methods';
+import { ReadMethod, WriteMethod } from '../src/methods';
 
 describe('constants prize shares', () => {
   it('fill the remainder of the basis point budget', () => {
@@ -30,5 +30,11 @@ describe('events ContractEvent', () => {
 describe('methods ReadMethod', () => {
   it('exposes the prize pool getter name', () => {
     expect(ReadMethod.GET_PRIZE_POOL).toBe('getPrizePool');
+  });
+});
+
+describe('methods WriteMethod', () => {
+  it('exposes the creator earnings withdrawal name', () => {
+    expect(WriteMethod.WITHDRAW_CREATOR_EARNINGS).toBe('withdrawCreatorEarnings');
   });
 });
