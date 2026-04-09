@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 import { useAccount, useConnect, useDisconnect, useReadContract, useWriteContract, useWaitForTransactionReceipt, useBalance } from 'wagmi';
 import { farcasterMiniApp } from '@farcaster/miniapp-wagmi-connector';
 import { injected, walletConnect } from 'wagmi/connectors';
@@ -483,9 +484,12 @@ export default function GameArcade() {
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg,#0f0c29,#302b63,#24243e)', padding: '14px', fontFamily: 'system-ui' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
-          <img
+          <Image
             src="/brand-mark.svg"
             alt="Celo Arcade"
+            width={56}
+            height={56}
+            priority
             style={{
               width: '56px',
               height: '56px',
