@@ -511,7 +511,7 @@ export default function GameArcade() {
         <p style={{ color: '#aaa', fontSize: '11px', margin: '6px 0 0' }}>🥇 #1 player claims ALL! Season {season}</p>
         {timeUntilClaim > 0 && (<p style={{ color: '#888', fontSize: '10px', margin: '4px 0 0' }}>⏰ Next claim in: {formatTimeUntilClaim(timeUntilClaim)}</p>)}
         {isTopPlayer && prizePool > 0 && (
-          <button onClick={handleClaimPrize} disabled={isPending || isConfirming || !canClaim} style={{ marginTop: '10px', background: canClaim ? 'linear-gradient(135deg,#fd0,#f80)' : 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '12px', padding: '10px 20px', color: canClaim ? '#000' : '#666', fontSize: '14px', fontWeight: 'bold', cursor: canClaim ? 'pointer' : 'not-allowed' }}>
+          <button type="button" onClick={handleClaimPrize} disabled={isPending || isConfirming || !canClaim} style={{ marginTop: '10px', background: canClaim ? 'linear-gradient(135deg,#fd0,#f80)' : 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '12px', padding: '10px 20px', color: canClaim ? '#000' : '#666', fontSize: '14px', fontWeight: 'bold', cursor: canClaim ? 'pointer' : 'not-allowed' }}>
             {isPending || isConfirming ? 'Claiming...' : canClaim ? '🏆 Claim Prize!' : `⏰ Wait ${formatTimeUntilClaim(timeUntilClaim)}`}
           </button>
         )}
