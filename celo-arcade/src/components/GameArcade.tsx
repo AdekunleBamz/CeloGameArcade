@@ -607,7 +607,7 @@ export default function GameArcade() {
   // GAME VIEW
   const GameView = () => (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg,#0f0c29,#302b63,#24243e)', fontFamily: 'system-ui' }}>
-      <div style={{ display: 'flex', alignItems: 'center', padding: '12px', gap: '10px' }}><button onClick={() => setView('home')} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '10px', padding: '8px 12px', color: '#fff', fontSize: '14px', cursor: 'pointer' }}>← Exit</button><span style={{ fontSize: '22px' }}>{game?.icon}</span><span style={{ color: '#fff', fontSize: '16px', fontWeight: '700' }}>{game?.name}</span></div>
+      <div style={{ display: 'flex', alignItems: 'center', padding: '12px', gap: '10px' }}><button type="button" onClick={() => setView('home')} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '10px', padding: '8px 12px', color: '#fff', fontSize: '14px', cursor: 'pointer' }}>← Exit</button><span style={{ fontSize: '22px' }}>{game?.icon}</span><span style={{ color: '#fff', fontSize: '16px', fontWeight: '700' }}>{game?.name}</span></div>
       {game?.id === 'car' && <CarGame onEnd={handleEnd} />}
       {game?.id === 'snake' && <SnakeGame onEnd={handleEnd} />}
       {game?.id === 'flappy' && <FlappyGame onEnd={handleEnd} />}
@@ -630,7 +630,7 @@ export default function GameArcade() {
             <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '10px', display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#fd0', fontWeight: '600' }}>Final Score</span><span style={{ color: '#fd0', fontSize: '24px', fontWeight: '900' }}>{lastScore?.final.toLocaleString()}</span></div>
           </div>
           <div style={{ background: isSuccess ? 'rgba(0,255,136,0.1)' : 'rgba(255,215,0,0.1)', borderRadius: '10px', padding: '10px', marginBottom: '20px', border: `1px solid ${isSuccess ? 'rgba(0,255,136,0.3)' : 'rgba(255,215,0,0.3)'}` }}><p style={{ color: isSuccess ? '#0f8' : '#fd0', margin: 0, fontSize: '13px' }}>{isPending || isConfirming ? '⏳ Submitting score...' : isSuccess ? '✅ Score submitted!' : '📝 Score recorded'}</p></div>
-          <div style={{ display: 'flex', gap: '10px' }}><button onClick={() => setView('game')} style={{ flex: 1, padding: '12px', background: `linear-gradient(135deg,${game?.color},${game?.color}cc)`, border: 'none', borderRadius: '12px', color: '#000', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>🔄 Again</button><button onClick={() => setView('home')} style={{ flex: 1, padding: '12px', background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '12px', color: '#fff', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>🏠 Home</button></div>
+          <div style={{ display: 'flex', gap: '10px' }}><button type="button" onClick={() => setView('game')} style={{ flex: 1, padding: '12px', background: `linear-gradient(135deg,${game?.color},${game?.color}cc)`, border: 'none', borderRadius: '12px', color: '#000', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>🔄 Again</button><button type="button" onClick={() => setView('home')} style={{ flex: 1, padding: '12px', background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '12px', color: '#fff', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>🏠 Home</button></div>
         </div>
       </div>
     );
