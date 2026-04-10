@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { assertAddress, isAddress } from '../src/addresses';
-import { ENTRY_FEE } from '../src/constants';
+import { DEFAULT_STABLE_TOKEN_SYMBOL, ENTRY_FEE } from '../src/constants';
 import { createArcadeConfig } from '../src/config';
 import { parseTokenUnits } from '../src/units';
 
@@ -37,5 +37,11 @@ describe('config createArcadeConfig', () => {
         contractAddress: ' 0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0 ' as `0x${string}`,
       }).contractAddress,
     ).toBe('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0');
+  });
+
+  it('falls back to the default symbol when the override is blank', () => {
+    expect(createArcadeConfig({ stableTokenSymbol: '   ' }).stableTokenSymbol).toBe(
+      DEFAULT_STABLE_TOKEN_SYMBOL,
+    );
   });
 });

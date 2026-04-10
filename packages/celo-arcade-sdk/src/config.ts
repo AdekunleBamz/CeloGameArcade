@@ -20,11 +20,12 @@ export function createArcadeConfig(overrides: Partial<ArcadeSdkConfig> = {}): Ar
   assertAddress(contractAddress, 'contract address');
   assertAddress(stableTokenAddress, 'stable token address');
   assertAddress(miniPayFeeCurrency, 'MiniPay fee currency');
+  const configuredStableTokenSymbol = String(overrides.stableTokenSymbol ?? '').trim();
 
   return {
     contractAddress,
     stableTokenAddress,
-    stableTokenSymbol: overrides.stableTokenSymbol ?? DEFAULT_STABLE_TOKEN_SYMBOL,
+    stableTokenSymbol: configuredStableTokenSymbol || DEFAULT_STABLE_TOKEN_SYMBOL,
     stableTokenDecimals,
     miniPayFeeCurrency,
     entryFee: overrides.entryFee ?? parseTokenUnits('0.01', stableTokenDecimals),
