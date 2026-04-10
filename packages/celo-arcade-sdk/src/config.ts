@@ -11,9 +11,11 @@ import { parseTokenUnits } from './units';
 
 export function createArcadeConfig(overrides: Partial<ArcadeSdkConfig> = {}): ArcadeSdkConfig {
   const stableTokenDecimals = overrides.stableTokenDecimals ?? DEFAULT_STABLE_TOKEN_DECIMALS;
-  const contractAddress = overrides.contractAddress ?? DEFAULT_CONTRACT_ADDRESS;
-  const stableTokenAddress = overrides.stableTokenAddress ?? DEFAULT_STABLE_TOKEN_ADDRESS;
-  const miniPayFeeCurrency = overrides.miniPayFeeCurrency ?? DEFAULT_MINIPAY_FEE_CURRENCY;
+  const contractAddress = String(overrides.contractAddress ?? DEFAULT_CONTRACT_ADDRESS).trim();
+  const stableTokenAddress = String(overrides.stableTokenAddress ?? DEFAULT_STABLE_TOKEN_ADDRESS).trim();
+  const miniPayFeeCurrency = String(
+    overrides.miniPayFeeCurrency ?? DEFAULT_MINIPAY_FEE_CURRENCY,
+  ).trim();
 
   assertAddress(contractAddress, 'contract address');
   assertAddress(stableTokenAddress, 'stable token address');

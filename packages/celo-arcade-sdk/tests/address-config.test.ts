@@ -30,4 +30,12 @@ describe('config createArcadeConfig', () => {
       'Invalid MiniPay fee currency: 0x1234',
     );
   });
+
+  it('trims configured addresses before validating', () => {
+    expect(
+      createArcadeConfig({
+        contractAddress: ' 0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0 ' as `0x${string}`,
+      }).contractAddress,
+    ).toBe('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0');
+  });
 });
