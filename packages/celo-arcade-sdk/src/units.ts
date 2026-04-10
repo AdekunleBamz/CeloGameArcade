@@ -10,11 +10,12 @@ export function parseTokenUnits(value: string | number | bigint, decimals: numbe
   if (typeof value === 'bigint') return value;
 
   const normalized = String(value).trim();
-  if (!/^\d+(\.\d+)?$/.test(normalized)) {
+  if (!/^(\d+(\.\d+)?|\.\d+)$/.test(normalized)) {
     throw new Error(`Invalid token amount: ${normalized}`);
   }
 
-  const [whole, fraction = ''] = normalized.split('.');
+  const [wholePart, fraction = ''] = normalized.split('.');
+  const whole = wholePart === '' ? '0' : wholePart;
   if (fraction.length > decimals) {
     throw new Error(`Too many decimal places for ${decimals}-decimals token amount: ${normalized}`);
   }

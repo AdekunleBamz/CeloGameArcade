@@ -12,6 +12,10 @@ describe('units parseTokenUnits', () => {
     expect(parseTokenUnits(' 1.25 ', 6)).toBe(1250000n);
   });
 
+  it('parses fractional amounts without a leading zero', () => {
+    expect(parseTokenUnits('.5', 6)).toBe(500000n);
+  });
+
   it('rejects amounts with too much precision', () => {
     expect(() => parseTokenUnits('1.234', 2)).toThrow(
       'Too many decimal places for 2-decimals token amount: 1.234',
