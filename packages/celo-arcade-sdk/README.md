@@ -31,3 +31,8 @@ console.log(CONTRACT_ABI.length);
 npm install
 npm run build
 ```
+
+## Validation Notes
+
+- `parseTokenUnits` accepts values like `1`, `1.`, and `.5` when precision is valid.
+- `createArcadeConfig` expects `entryFee` overrides as `bigint` values in base units.
