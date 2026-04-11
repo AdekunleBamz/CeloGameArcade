@@ -15,7 +15,7 @@ export function parseTokenUnits(value: string | number | bigint, decimals: numbe
   }
 
   const normalized = String(value).trim();
-  if (!/^(\d+(\.\d+)?|\.\d+)$/.test(normalized)) {
+  if (!/^(\d+(\.\d*)?|\.\d+)$/.test(normalized)) {
     throw new Error(`Invalid token amount: ${normalized}`);
   }
 
