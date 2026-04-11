@@ -5,9 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "sdk:build": "npm --prefix packages/celo-arcade-sdk run build",
+    "sdk:test": "npm --prefix packages/celo-arcade-sdk run test",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "check:fast": "npm run sdk:test && npm run lint"
   },
   "dependencies": {
     "@farcaster/frame-sdk": "^0.0.26",
