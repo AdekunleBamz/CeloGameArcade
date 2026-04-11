@@ -7,10 +7,11 @@ import {
   DEFAULT_STABLE_TOKEN_DECIMALS,
   DEFAULT_STABLE_TOKEN_SYMBOL,
 } from './constants';
-import { parseTokenUnits } from './units';
+import { assertDecimals, parseTokenUnits } from './units';
 
 export function createArcadeConfig(overrides: Partial<ArcadeSdkConfig> = {}): ArcadeSdkConfig {
   const stableTokenDecimals = overrides.stableTokenDecimals ?? DEFAULT_STABLE_TOKEN_DECIMALS;
+  assertDecimals(stableTokenDecimals);
   const contractAddress = String(overrides.contractAddress ?? DEFAULT_CONTRACT_ADDRESS).trim();
   const stableTokenAddress = String(overrides.stableTokenAddress ?? DEFAULT_STABLE_TOKEN_ADDRESS).trim();
   const miniPayFeeCurrency = String(
