@@ -16,6 +16,10 @@ describe('units parseTokenUnits', () => {
     expect(parseTokenUnits('.5', 6)).toBe(500000n);
   });
 
+  it('parses amounts with a trailing decimal point', () => {
+    expect(parseTokenUnits('1.', 6)).toBe(1000000n);
+  });
+
   it('rejects amounts with too much precision', () => {
     expect(() => parseTokenUnits('1.234', 2)).toThrow(
       'Too many decimal places for 2-decimals token amount: 1.234',
