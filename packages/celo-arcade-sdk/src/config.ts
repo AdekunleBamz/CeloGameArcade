@@ -22,6 +22,10 @@ export function createArcadeConfig(overrides: Partial<ArcadeSdkConfig> = {}): Ar
   assertAddress(stableTokenAddress, 'stable token address');
   assertAddress(miniPayFeeCurrency, 'MiniPay fee currency');
   const configuredStableTokenSymbol = String(overrides.stableTokenSymbol ?? '').trim();
+  const entryFee = overrides.entryFee ?? parseTokenUnits('0.01', stableTokenDecimals);
+  if (entryFee < 0n) {
+    throw new Error('Entry fee cannot be negative');
+  }
 
   return {
     contractAddress,
@@ -29,7 +33,7 @@ export function createArcadeConfig(overrides: Partial<ArcadeSdkConfig> = {}): Ar
     stableTokenSymbol: configuredStableTokenSymbol || DEFAULT_STABLE_TOKEN_SYMBOL,
     stableTokenDecimals,
     miniPayFeeCurrency,
-    entryFee: overrides.entryFee ?? parseTokenUnits('0.01', stableTokenDecimals),
+    entryFee,
   };
 }
 
