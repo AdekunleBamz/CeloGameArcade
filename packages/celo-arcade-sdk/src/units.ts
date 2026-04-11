@@ -7,7 +7,12 @@ export function assertDecimals(decimals: number) {
 export function parseTokenUnits(value: string | number | bigint, decimals: number): bigint {
   assertDecimals(decimals);
 
-  if (typeof value === 'bigint') return value;
+  if (typeof value === 'bigint') {
+    if (value < 0n) {
+      throw new Error(`Invalid token amount: ${value.toString()}`);
+    }
+    return value;
+  }
 
   const normalized = String(value).trim();
   if (!/^(\d+(\.\d+)?|\.\d+)$/.test(normalized)) {
