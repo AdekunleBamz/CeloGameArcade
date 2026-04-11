@@ -36,6 +36,12 @@ git clone https://github.com/AdekunleBamz/CeloGameArcade.git
 cd CeloGameArcade
 npm install
 npm run dev
+
+# Run SDK unit tests
+npm run sdk:test
+
+# Run fast local checks
+npm run check:fast
 ```
 
 ## 📦 Deploy
