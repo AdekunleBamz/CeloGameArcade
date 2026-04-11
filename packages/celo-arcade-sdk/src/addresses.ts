@@ -1,7 +1,8 @@
 import type { Address } from './types';
 
 export function isAddress(value: string): value is Address {
-  return /^0x[a-fA-F0-9]{40}$/.test(value);
+  const normalizedValue = typeof value === 'string' ? value.trim() : '';
+  return /^0x[a-fA-F0-9]{40}$/.test(normalizedValue);
 }
 
 export function assertAddress(value: string, label = 'address'): asserts value is Address {
