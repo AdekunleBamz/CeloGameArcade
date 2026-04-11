@@ -53,4 +53,8 @@ describe('config createArcadeConfig', () => {
       }),
     ).toThrow('Invalid token decimals: 19');
   });
+
+  it('rejects negative entry fee overrides', () => {
+    expect(() => createArcadeConfig({ entryFee: -1n })).toThrow('Entry fee cannot be negative');
+  });
 });
