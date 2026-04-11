@@ -44,4 +44,13 @@ describe('config createArcadeConfig', () => {
       DEFAULT_STABLE_TOKEN_SYMBOL,
     );
   });
+
+  it('rejects invalid decimals even when entry fee is overridden', () => {
+    expect(() =>
+      createArcadeConfig({
+        stableTokenDecimals: 19,
+        entryFee: 1n,
+      }),
+    ).toThrow('Invalid token decimals: 19');
+  });
 });
