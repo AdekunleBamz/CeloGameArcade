@@ -23,6 +23,9 @@ export function createArcadeConfig(overrides: Partial<ArcadeSdkConfig> = {}): Ar
   assertAddress(miniPayFeeCurrency, 'MiniPay fee currency');
   const configuredStableTokenSymbol = String(overrides.stableTokenSymbol ?? '').trim();
   const entryFee = overrides.entryFee ?? parseTokenUnits('0.01', stableTokenDecimals);
+  if (typeof entryFee !== 'bigint') {
+    throw new Error('Entry fee must be a bigint amount in token base units');
+  }
   if (entryFee < 0n) {
     throw new Error('Entry fee cannot be negative');
   }
