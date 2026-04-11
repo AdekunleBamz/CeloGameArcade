@@ -21,6 +21,10 @@ describe('units parseTokenUnits', () => {
       'Too many decimal places for 2-decimals token amount: 1.234',
     );
   });
+
+  it('rejects negative bigint values', () => {
+    expect(() => parseTokenUnits(-1n, 6)).toThrow('Invalid token amount: -1');
+  });
 });
 
 describe('units formatTokenUnits', () => {
