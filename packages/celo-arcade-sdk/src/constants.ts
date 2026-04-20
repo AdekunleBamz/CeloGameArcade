@@ -18,6 +18,7 @@ export const CLAIM_COOLDOWN_SECONDS = 7 * 24 * 60 * 60;
 export const LEADERBOARD_SIZE = 10;
 export const CREATOR_SHARE_BPS = 2000;
 export const BASIS_POINTS = 10_000;
+export const MAX_BASIS_POINTS = BASIS_POINTS;
 export const PRIZE_SHARE_BPS = BASIS_POINTS - CREATOR_SHARE_BPS;
 
 export const GameType = {
