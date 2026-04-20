@@ -43,6 +43,10 @@ describe('constants Difficulty', () => {
 });
 
 describe('events ContractEvent', () => {
+  it('exposes the access granted event name', () => {
+    expect(ContractEvent.ACCESS_GRANTED).toBe('AccessGranted');
+  });
+
   it('exposes the leaderboard updated event name', () => {
     expect(ContractEvent.LEADERBOARD_UPDATED).toBe('LeaderboardUpdated');
   });
