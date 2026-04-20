@@ -64,3 +64,14 @@ export function parseIntegerUnits(value: string | number | bigint): bigint {
   }
   return BigInt(normalizedValue);
 }
+
+export function tryParseTokenUnits(
+  value: string | number | bigint,
+  decimals: number,
+): bigint | null {
+  try {
+    return parseTokenUnits(value, decimals);
+  } catch {
+    return null;
+  }
+}
