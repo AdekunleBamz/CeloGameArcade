@@ -11,6 +11,7 @@ export const DEFAULT_STABLE_TOKEN: StableTokenMetadata = {
   decimals: DEFAULT_STABLE_TOKEN_DECIMALS,
 };
 export const DEFAULT_MINIPAY_FEE_CURRENCY = '0x765DE816845861e75A25fCA122bb6898B8B1282a' as Address;
+export const CELO_MAINNET_CHAIN_ID = 42220;
 export const CLAIM_COOLDOWN_SECONDS = 7 * 24 * 60 * 60;
 export const LEADERBOARD_SIZE = 10;
 export const CREATOR_SHARE_BPS = 2000;
