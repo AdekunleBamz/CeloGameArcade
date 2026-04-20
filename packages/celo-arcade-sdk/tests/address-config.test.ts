@@ -90,6 +90,10 @@ describe('config createArcadeConfig', () => {
     expect(() => createArcadeConfig({ entryFee: -1n })).toThrow('Entry fee cannot be negative');
   });
 
+  it('accepts explicit bigint entry fee overrides', () => {
+    expect(createArcadeConfig({ entryFee: 500000n }).entryFee).toBe(500000n);
+  });
+
   it('rejects non-bigint entry fee overrides at runtime', () => {
     expect(() =>
       createArcadeConfig({
