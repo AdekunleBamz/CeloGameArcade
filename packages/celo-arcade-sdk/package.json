@@ -6,7 +6,7 @@
     "url": "https://github.com/AdekunleBamz/CeloGameArcade/issues"
   },
   "license": "MIT",
-  "author": "AdekunleBamz",
+  "repository": {"type": "git", "url": "https://github.com/AdekunleBamz/CeloGameArcade.git"},
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
