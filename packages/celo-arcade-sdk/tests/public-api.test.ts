@@ -53,6 +53,10 @@ describe('events ContractEvent', () => {
 });
 
 describe('methods ReadMethod', () => {
+  it('exposes the leaderboard getter name', () => {
+    expect(ReadMethod.GET_LEADERBOARD).toBe('getLeaderboard');
+  });
+
   it('exposes the prize pool getter name', () => {
     expect(ReadMethod.GET_PRIZE_POOL).toBe('getPrizePool');
   });
