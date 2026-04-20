@@ -35,4 +35,5 @@ export const Difficulty = {
   HARD: 2,
 } as const;
 
-export const ENTRY_FEE = parseTokenUnits('0.01', DEFAULT_STABLE_TOKEN_DECIMALS);
+export const DEFAULT_ENTRY_FEE_STRING = '0.01';
+export const ENTRY_FEE = parseTokenUnits(DEFAULT_ENTRY_FEE_STRING, DEFAULT_STABLE_TOKEN_DECIMALS);
