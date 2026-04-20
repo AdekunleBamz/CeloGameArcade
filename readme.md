@@ -21,8 +21,8 @@ A blockchain-powered gaming arcade built as a Farcaster mini app on the Celo net
 
 - **Frontend:** Next.js 14, React, TypeScript, Tailwind CSS
 - **Blockchain:** Celo, Solidity, Wagmi, Viem
-- **Farcaster:** @farcaster/frame-sdk, @farcaster/miniapp-sdk, @farcaster/miniapp-wagmi-connector
-- **Wallet:** WalletConnect, Injected providers
+- **Farcaster:** @farcaster/miniapp-sdk, @farcaster/miniapp-wagmi-connector
+- **Wallet:** WalletConnect, Injected wallets
 
 ## 📋 Contract
 
