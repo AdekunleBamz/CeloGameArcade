@@ -6,6 +6,10 @@ describe('units assertDecimals', () => {
     expect(() => assertDecimals(-1)).toThrow('Invalid token decimals: -1');
   });
 
+  it('rejects non-integer token decimals', () => {
+    expect(() => assertDecimals(6.5)).toThrow('Invalid token decimals: 6.5');
+  });
+
   it('rejects token decimals above eighteen', () => {
     expect(() => assertDecimals(19)).toThrow('Invalid token decimals: 19');
   });
