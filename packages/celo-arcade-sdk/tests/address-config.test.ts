@@ -9,6 +9,10 @@ describe('addresses isAddress', () => {
     expect(isAddress('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0')).toBe(true);
   });
 
+  it('rejects addresses without the 0x prefix', () => {
+    expect(isAddress('D3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0')).toBe(false);
+  });
+
   it('accepts valid addresses with surrounding whitespace', () => {
     expect(isAddress(' 0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0 ')).toBe(true);
   });
