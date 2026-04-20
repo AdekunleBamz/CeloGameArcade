@@ -28,6 +28,10 @@ describe('units parseTokenUnits', () => {
     expect(parseTokenUnits('.5', 6)).toBe(500000n);
   });
 
+  it('parses numeric inputs directly', () => {
+    expect(parseTokenUnits(2.5, 6)).toBe(2500000n);
+  });
+
   it('parses amounts with a trailing decimal point', () => {
     expect(parseTokenUnits('1.', 6)).toBe(1000000n);
   });
