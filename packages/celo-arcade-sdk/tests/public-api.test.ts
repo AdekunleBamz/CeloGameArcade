@@ -26,6 +26,10 @@ describe('constants GameType', () => {
   it('keeps puzzle mapped to game type four', () => {
     expect(GameType.PUZZLE).toBe(4);
   });
+
+  it('includes five supported game types', () => {
+    expect(Object.keys(GameType)).toHaveLength(5);
+  });
 });
 
 describe('constants Difficulty', () => {
