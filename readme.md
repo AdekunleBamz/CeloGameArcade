@@ -40,6 +40,9 @@ npm run dev
 # Run SDK unit tests
 npm run sdk:test
 
+# Build SDK artifacts
+npm run sdk:build
+
 # Run fast local checks
 npm run check:fast
 ```
