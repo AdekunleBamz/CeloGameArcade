@@ -46,3 +46,8 @@ export function toTokenDivisor(decimals: number): bigint {
   assertDecimals(decimals);
   return BigInt(`1${'0'.repeat(decimals)}`);
 }
+
+export function isValidTokenAmountString(value: string): boolean {
+  const normalizedValue = String(value).trim();
+  return /^(\d+(\.\d*)?|\.\d+)$/.test(normalizedValue);
+}
