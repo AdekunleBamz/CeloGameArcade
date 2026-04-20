@@ -51,6 +51,14 @@ describe('config createArcadeConfig', () => {
     ).toBe('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0');
   });
 
+  it('trims stable token addresses before validating', () => {
+    expect(
+      createArcadeConfig({
+        stableTokenAddress: ' 0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0 ' as `0x${string}`,
+      }).stableTokenAddress,
+    ).toBe('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0');
+  });
+
   it('falls back to the default symbol when the override is blank', () => {
     expect(createArcadeConfig({ stableTokenSymbol: '   ' }).stableTokenSymbol).toBe(
       DEFAULT_STABLE_TOKEN_SYMBOL,
