@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Reusable SDK for integrating with the Celo Arcade contract.",
   "license": "MIT",
+  "homepage": "https://github.com/AdekunleBamz/CeloGameArcade/tree/main/packages/celo-arcade-sdk",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
