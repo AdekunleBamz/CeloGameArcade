@@ -29,6 +29,7 @@ const config = createConfig({
 });
 
 const CELO_MAINNET_ID = 42220;
+const CELO_MAINNET_HEX = '0xA4EC';
 const NETWORK_NAMES: Record<number, string> = {
   1: 'Ethereum',
   10: 'Optimism',
@@ -72,7 +73,7 @@ function NetworkGuard({ children }: { children: ReactNode }) {
         await window.ethereum?.request({
           method: 'wallet_addEthereumChain',
           params: [{
-            chainId: '0xA4EC',
+            chainId: CELO_MAINNET_HEX,
             chainName: 'Celo',
             nativeCurrency: { name: 'CELO', symbol: 'CELO', decimals: 18 },
             rpcUrls: ['https://forno.celo.org'],
