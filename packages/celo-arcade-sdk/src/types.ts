@@ -18,3 +18,11 @@ export interface ArcadeSdkConfig {
   miniPayFeeCurrency: Address;
   entryFee: bigint;
 }
+
+export interface PlayerStats {
+  hasAccess: boolean;
+  totalScore: bigint;
+  gamesPlayed: bigint;
+  lastPlayTime: bigint;
+  seasonJoined: bigint;
+}
