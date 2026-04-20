@@ -41,3 +41,8 @@ export function formatTokenUnits(value: bigint, decimals: number): string {
 
   return negative ? `-${formatted}` : formatted;
 }
+
+export function toTokenDivisor(decimals: number): bigint {
+  assertDecimals(decimals);
+  return BigInt(`1${'0'.repeat(decimals)}`);
+}
