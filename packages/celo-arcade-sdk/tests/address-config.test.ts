@@ -77,6 +77,12 @@ describe('config createArcadeConfig', () => {
     ).toBe('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0');
   });
 
+  it('rejects invalid stable token address overrides', () => {
+    expect(() => createArcadeConfig({ stableTokenAddress: '0x1234' as `0x${string}` })).toThrow(
+      'Invalid stable token address: 0x1234',
+    );
+  });
+
   it('falls back to the default symbol when the override is blank', () => {
     expect(createArcadeConfig({ stableTokenSymbol: '   ' }).stableTokenSymbol).toBe(
       DEFAULT_STABLE_TOKEN_SYMBOL,
