@@ -1,5 +1,7 @@
 export type Address = `0x${string}`;
 
+export type ArcadeChainId = 42220 | 44787;
+
 export interface StableTokenMetadata {
   address: Address;
   symbol: string;
