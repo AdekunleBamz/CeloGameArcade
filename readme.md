@@ -51,6 +51,7 @@ npm run check:fast
 
 ## 📦 Deploy
 ```bash
+npm run sdk:test
 npm run build
 npx vercel --prod
 ```
