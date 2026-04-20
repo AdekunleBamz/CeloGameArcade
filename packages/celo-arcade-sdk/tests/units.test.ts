@@ -16,6 +16,10 @@ describe('units assertDecimals', () => {
 });
 
 describe('units parseTokenUnits', () => {
+  it('parses zero amounts safely', () => {
+    expect(parseTokenUnits('0', 6)).toBe(0n);
+  });
+
   it('trims surrounding whitespace before parsing', () => {
     expect(parseTokenUnits(' 1.25 ', 6)).toBe(1250000n);
   });
