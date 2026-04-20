@@ -1,0 +1,36 @@
+export declare const ReadMethod: {
+    readonly CLAIM_COOLDOWN: "CLAIM_COOLDOWN";
+    readonly ENTRY_FEE: "ENTRY_FEE";
+    readonly MAX_DIFFICULTY: "MAX_DIFFICULTY";
+    readonly MAX_ENTRY_FEE: "MAX_ENTRY_FEE";
+    readonly MAX_GAME_TYPE: "MAX_GAME_TYPE";
+    readonly MIN_ENTRY_FEE: "MIN_ENTRY_FEE";
+    readonly CAN_CLAIM_PRIZE: "canClaimPrize";
+    readonly CHECK_ACCESS: "checkAccess";
+    readonly CREATOR_EARNINGS: "creatorEarnings";
+    readonly ENTRY_FEE_CURRENT: "entryFee";
+    readonly GET_ARCADE_STATS: "getArcadeStats";
+    readonly GET_CURRENT_SEASON: "getCurrentSeason";
+    readonly GET_LEADERBOARD: "getLeaderboard";
+    readonly GET_MULTIPLIER: "getMultiplier";
+    readonly GET_PLAYER_STATS: "getPlayerStats";
+    readonly GET_PRIZE_POOL: "getPrizePool";
+    readonly GET_TIME_UNTIL_NEXT_CLAIM: "getTimeUntilNextClaim";
+    readonly GET_TOP_PLAYER: "getTopPlayer";
+    readonly LAST_CLAIM_TIME: "lastClaimTime";
+    readonly OWNER: "owner";
+    readonly PRIZE_POOL: "prizePool";
+    readonly SEASON_NUMBER: "seasonNumber";
+    readonly SEASON_START_TIME: "seasonStartTime";
+    readonly TOTAL_GAMES_PLAYED: "totalGamesPlayed";
+    readonly TOTAL_PLAYERS: "totalPlayers";
+    readonly USDM_TOKEN: "usdmToken";
+};
+export declare const WriteMethod: {
+    readonly CLAIM_PRIZE_POOL: "claimPrizePool";
+    readonly DEPOSIT_TO_PLAY: "depositToPlay";
+    readonly SET_ENTRY_FEE: "setEntryFee";
+    readonly SUBMIT_SCORE: "submitScore";
+    readonly TRANSFER_OWNERSHIP: "transferOwnership";
+    readonly WITHDRAW_CREATOR_EARNINGS: "withdrawCreatorEarnings";
+};
