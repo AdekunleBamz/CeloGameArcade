@@ -8,7 +8,7 @@ Standalone SDK for integrating with the Celo Arcade contract and app defaults.
 npm install celo-arcade-sdk
 ```
 
-## Use
+## Usage
 
 ```ts
 import {
