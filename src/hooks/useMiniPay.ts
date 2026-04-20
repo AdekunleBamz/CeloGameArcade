@@ -64,5 +64,6 @@ export function useMiniPay() {
     isMiniPay,
     hideConnectWalletButton: isMiniPay,
     refreshDetection,
+    isAutoConnectAttempted: attemptedAutoConnect.current,
   };
 }
