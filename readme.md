@@ -63,4 +63,4 @@ npx vercel --prod
 
 ## 📄 License
 
-MIT
+[MIT](LICENSE)
