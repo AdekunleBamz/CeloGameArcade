@@ -47,6 +47,12 @@ describe('config createArcadeConfig', () => {
     );
   });
 
+  it('rejects invalid contract address overrides', () => {
+    expect(() => createArcadeConfig({ contractAddress: '0x1234' as `0x${string}` })).toThrow(
+      'Invalid contract address: 0x1234',
+    );
+  });
+
   it('trims MiniPay fee currency addresses before validating', () => {
     expect(
       createArcadeConfig({
