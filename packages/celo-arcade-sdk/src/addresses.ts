@@ -23,3 +23,9 @@ export function isSameAddress(a: string, b: string): boolean {
   if (!a || !b) return false;
   return normalizeAddress(a) === normalizeAddress(b);
 }
+
+export function parseAddress(value: string, label = 'address'): Address {
+  const trimmedValue = value.trim();
+  assertAddress(trimmedValue, label);
+  return trimmedValue;
+}
