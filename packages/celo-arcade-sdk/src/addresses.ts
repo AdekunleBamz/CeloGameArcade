@@ -10,3 +10,7 @@ export function assertAddress(value: string, label = 'address'): asserts value i
     throw new Error(`Invalid ${label}: ${value}`);
   }
 }
+
+export function isZeroAddress(value: string): boolean {
+  return value.trim().toLowerCase() === '0x0000000000000000000000000000000000000000';
+}
