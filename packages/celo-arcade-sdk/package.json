@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Reusable SDK for integrating with the Celo Arcade contract.",
   "license": "MIT",
+  "engines": {"node": ">=18.0.0"},
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
