@@ -33,6 +33,10 @@ describe('constants GameType', () => {
 });
 
 describe('constants Difficulty', () => {
+  it('keeps easy mapped to difficulty zero', () => {
+    expect(Difficulty.EASY).toBe(0);
+  });
+
   it('keeps hard mapped to difficulty two', () => {
     expect(Difficulty.HARD).toBe(2);
   });
