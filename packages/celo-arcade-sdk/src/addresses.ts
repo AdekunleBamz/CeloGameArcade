@@ -18,3 +18,8 @@ export function isZeroAddress(value: string): boolean {
 export function normalizeAddress(value: string): string {
   return value.trim().toLowerCase();
 }
+
+export function isSameAddress(a: string, b: string): boolean {
+  if (!a || !b) return false;
+  return normalizeAddress(a) === normalizeAddress(b);
+}
