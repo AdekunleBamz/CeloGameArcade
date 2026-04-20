@@ -4,6 +4,7 @@
   "description": "Reusable SDK for integrating with the Celo Arcade contract.",
   "homepage": "https://github.com/AdekunleBamz/CeloGameArcade/tree/main/packages/celo-arcade-sdk",
   "license": "MIT",
+  "homepage": "https://github.com/AdekunleBamz/CeloGameArcade/tree/main/packages/celo-arcade-sdk",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
