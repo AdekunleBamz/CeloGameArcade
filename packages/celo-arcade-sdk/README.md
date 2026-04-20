@@ -28,7 +28,7 @@ console.log(CONTRACT_ABI.length);
 ## Build Locally
 
 ```bash
-npm install
+npm ci
 npm run build
 npm run test
 ```
