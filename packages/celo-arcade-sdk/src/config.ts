@@ -59,3 +59,8 @@ export function getDefaultEntryFee(decimals = DEFAULT_STABLE_TOKEN_DECIMALS): bi
   assertDecimals(decimals);
   return parseTokenUnits('0.01', decimals);
 }
+
+export function resolveStableTokenSymbol(symbol?: string): string {
+  const configuredSymbol = String(symbol ?? '').trim();
+  return configuredSymbol || DEFAULT_STABLE_TOKEN_SYMBOL;
+}
