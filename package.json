@@ -2,6 +2,7 @@
   "name": "celo-game-arcade",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://github.com/AdekunleBamz/CeloGameArcade#readme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
