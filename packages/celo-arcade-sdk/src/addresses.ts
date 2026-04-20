@@ -34,3 +34,9 @@ export function isHexString(value: string): boolean {
   const normalizedValue = typeof value === 'string' ? value.trim() : '';
   return /^0x[a-fA-F0-9]+$/.test(normalizedValue);
 }
+
+export function truncateAddress(value: string, start = 6, end = 4): string {
+  const normalizedValue = value.trim();
+  if (normalizedValue.length <= start + end) return normalizedValue;
+  return `${normalizedValue.slice(0, start)}...${normalizedValue.slice(-end)}`;
+}
