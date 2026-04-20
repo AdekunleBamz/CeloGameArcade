@@ -2,6 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { assertDecimals, formatTokenUnits, parseTokenUnits } from '../src/units';
 
 describe('units assertDecimals', () => {
+  it('rejects negative token decimals', () => {
+    expect(() => assertDecimals(-1)).toThrow('Invalid token decimals: -1');
+  });
+
   it('rejects token decimals above eighteen', () => {
     expect(() => assertDecimals(19)).toThrow('Invalid token decimals: 19');
   });
