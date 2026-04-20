@@ -7,7 +7,7 @@
     "url": "https://github.com/AdekunleBamz/CeloGameArcade.git"
   },
   "license": "MIT",
-  "engines": {"node": ">=18.0.0"},
+  "homepage": "https://github.com/AdekunleBamz/CeloGameArcade/tree/main/packages/celo-arcade-sdk",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
