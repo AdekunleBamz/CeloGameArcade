@@ -26,3 +26,8 @@ export interface PlayerStats {
   lastPlayTime: bigint;
   seasonJoined: bigint;
 }
+
+export interface SdkLeaderboardEntry {
+  player: Address;
+  totalScore: bigint;
+}
