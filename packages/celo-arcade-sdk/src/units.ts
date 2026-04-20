@@ -51,3 +51,8 @@ export function isValidTokenAmountString(value: string): boolean {
   const normalizedValue = String(value).trim();
   return /^(\d+(\.\d*)?|\.\d+)$/.test(normalizedValue);
 }
+
+export function clampDecimals(decimals: number, min = 0, max = 18): number {
+  if (!Number.isFinite(decimals)) return min;
+  return Math.min(max, Math.max(min, Math.trunc(decimals)));
+}
