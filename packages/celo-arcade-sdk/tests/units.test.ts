@@ -60,6 +60,10 @@ describe('units formatTokenUnits', () => {
     expect(formatTokenUnits(123n, 0)).toBe('123');
   });
 
+  it('omits fractional output when remainder is zero', () => {
+    expect(formatTokenUnits(2000000n, 6)).toBe('2');
+  });
+
   it('strips trailing zeros from fractional output', () => {
     expect(formatTokenUnits(1234000n, 6)).toBe('1.234');
   });
