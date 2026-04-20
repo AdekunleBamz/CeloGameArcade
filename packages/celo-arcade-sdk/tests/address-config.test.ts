@@ -43,6 +43,14 @@ describe('config createArcadeConfig', () => {
     );
   });
 
+  it('trims MiniPay fee currency addresses before validating', () => {
+    expect(
+      createArcadeConfig({
+        miniPayFeeCurrency: ' 0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0 ' as `0x${string}`,
+      }).miniPayFeeCurrency,
+    ).toBe('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0');
+  });
+
   it('trims configured addresses before validating', () => {
     expect(
       createArcadeConfig({
