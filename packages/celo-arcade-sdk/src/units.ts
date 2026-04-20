@@ -56,3 +56,11 @@ export function clampDecimals(decimals: number, min = 0, max = 18): number {
   if (!Number.isFinite(decimals)) return min;
   return Math.min(max, Math.max(min, Math.trunc(decimals)));
 }
+
+export function parseIntegerUnits(value: string | number | bigint): bigint {
+  const normalizedValue = typeof value === 'bigint' ? value.toString() : String(value).trim();
+  if (!/^\d+$/.test(normalizedValue)) {
+    throw new Error(`Invalid integer token amount: ${normalizedValue}`);
+  }
+  return BigInt(normalizedValue);
+}
