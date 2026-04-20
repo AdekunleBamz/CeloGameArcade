@@ -31,3 +31,5 @@ export interface SdkLeaderboardEntry {
   player: Address;
   totalScore: bigint;
 }
+
+export type TransactionStatus = 'idle' | 'pending' | 'confirmed' | 'failed';
