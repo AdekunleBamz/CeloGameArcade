@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Farcaster mini app arcade on Celo with on-chain scoring and prize pool",
   "private": true,
-  "homepage": "https://github.com/AdekunleBamz/CeloGameArcade#readme",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
