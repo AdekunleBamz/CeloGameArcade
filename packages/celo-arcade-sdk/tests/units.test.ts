@@ -42,6 +42,10 @@ describe('units parseTokenUnits', () => {
     );
   });
 
+  it('rejects scientific notation values', () => {
+    expect(() => parseTokenUnits('1e2', 6)).toThrow('Invalid token amount: 1e2');
+  });
+
   it('rejects negative bigint values', () => {
     expect(() => parseTokenUnits(-1n, 6)).toThrow('Invalid token amount: -1');
   });
