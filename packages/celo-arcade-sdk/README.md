@@ -38,3 +38,4 @@ npm run test
 - `parseTokenUnits` accepts values like `1`, `1.`, and `.5` when precision is valid.
 - `parseTokenUnits` rejects unsupported notation such as `1e2` to avoid ambiguous parsing.
 - `createArcadeConfig` expects `entryFee` overrides as `bigint` values in base units.
+- For zero-decimal tokens, provide `entryFee` explicitly in base units when overriding config.
