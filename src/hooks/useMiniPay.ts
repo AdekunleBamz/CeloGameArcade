@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAccount, useConnect } from 'wagmi';
 
 type MaybeMiniPayProvider = {
@@ -28,27 +28,27 @@ export function useMiniPay() {
   const [isMiniPay, setIsMiniPay] = useState(false);
   const attemptedAutoConnect = useRef(false);
 
-  useEffect(() => {
-    const detectMiniPay = () => {
-      setIsMiniPay(isMiniPayProviderAvailable());
-    };
+  const refreshDetection = useCallback(() => {
+    setIsMiniPay(isMiniPayProviderAvailable());
+  }, []);
 
-    detectMiniPay();
+  useEffect(() => {
+    refreshDetection();
 
     // Some injected wallets initialize shortly after page load.
-    const intervalId = window.setInterval(detectMiniPay, 250);
+    const intervalId = window.setInterval(refreshDetection, 250);
     const timeoutId = window.setTimeout(() => {
       window.clearInterval(intervalId);
     }, 5000);
 
-    window.addEventListener('ethereum#initialized', detectMiniPay as EventListener);
+    window.addEventListener('ethereum#initialized', refreshDetection as EventListener);
 
     return () => {
       window.clearInterval(intervalId);
       window.clearTimeout(timeoutId);
-      window.removeEventListener('ethereum#initialized', detectMiniPay as EventListener);
+      window.removeEventListener('ethereum#initialized', refreshDetection as EventListener);
     };
-  }, []);
+  }, [refreshDetection]);
 
   useEffect(() => {
     if (!isMiniPay || isConnected || attemptedAutoConnect.current) return;
@@ -63,5 +63,6 @@ export function useMiniPay() {
   return {
     isMiniPay,
     hideConnectWalletButton: isMiniPay,
+    refreshDetection,
   };
 }
