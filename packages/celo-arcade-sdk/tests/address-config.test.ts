@@ -19,6 +19,10 @@ describe('addresses isAddress', () => {
 });
 
 describe('addresses assertAddress', () => {
+  it('accepts valid addresses with surrounding whitespace', () => {
+    expect(() => assertAddress(' 0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0 ')).not.toThrow();
+  });
+
   it('uses the default label in validation errors', () => {
     expect(() => assertAddress('0x1234')).toThrow('Invalid address: 0x1234');
   });
