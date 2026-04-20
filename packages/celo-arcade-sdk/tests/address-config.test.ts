@@ -19,6 +19,10 @@ describe('addresses isAddress', () => {
 });
 
 describe('addresses assertAddress', () => {
+  it('uses the default label in validation errors', () => {
+    expect(() => assertAddress('0x1234')).toThrow('Invalid address: 0x1234');
+  });
+
   it('includes custom labels in validation errors', () => {
     expect(() => assertAddress('0x1234', 'fee currency')).toThrow('Invalid fee currency: 0x1234');
   });
