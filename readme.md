@@ -53,6 +53,10 @@ npm run build
 npx vercel --prod
 ```
 
+## 🔐 Security Notes
+
+- Keep `.env.local` out of commits and avoid sharing WalletConnect keys in logs.
+
 ## 📄 License
 
 MIT
