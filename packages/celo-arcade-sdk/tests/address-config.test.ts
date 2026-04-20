@@ -73,6 +73,10 @@ describe('config createArcadeConfig', () => {
     );
   });
 
+  it('trims non-empty stable token symbols', () => {
+    expect(createArcadeConfig({ stableTokenSymbol: ' cUSD ' }).stableTokenSymbol).toBe('cUSD');
+  });
+
   it('rejects invalid decimals even when entry fee is overridden', () => {
     expect(() =>
       createArcadeConfig({
