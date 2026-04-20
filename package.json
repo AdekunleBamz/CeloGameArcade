@@ -2,10 +2,7 @@
   "name": "celo-game-arcade",
   "version": "1.0.0",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AdekunleBamz/CeloGameArcade.git"
-  },
+  "repository": {"type": "git", "url": "https://github.com/AdekunleBamz/CeloGameArcade.git"},
   "scripts": {
     "dev": "next dev",
     "build": "next build",
