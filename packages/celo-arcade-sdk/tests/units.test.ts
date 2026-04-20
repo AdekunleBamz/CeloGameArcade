@@ -56,6 +56,10 @@ describe('units parseTokenUnits', () => {
 });
 
 describe('units formatTokenUnits', () => {
+  it('formats whole numbers when decimals are zero', () => {
+    expect(formatTokenUnits(123n, 0)).toBe('123');
+  });
+
   it('strips trailing zeros from fractional output', () => {
     expect(formatTokenUnits(1234000n, 6)).toBe('1.234');
   });
