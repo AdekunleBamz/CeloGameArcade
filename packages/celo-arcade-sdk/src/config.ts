@@ -54,3 +54,8 @@ export function isArcadeConfig(value: unknown): value is ArcadeSdkConfig {
     && typeof config.entryFee === 'bigint'
   );
 }
+
+export function getDefaultEntryFee(decimals = DEFAULT_STABLE_TOKEN_DECIMALS): bigint {
+  assertDecimals(decimals);
+  return parseTokenUnits('0.01', decimals);
+}
