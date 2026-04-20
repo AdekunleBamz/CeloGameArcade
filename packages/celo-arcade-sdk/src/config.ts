@@ -41,3 +41,16 @@ export function createArcadeConfig(overrides: Partial<ArcadeSdkConfig> = {}): Ar
 }
 
 export const DEFAULT_ARCADE_CONFIG = createArcadeConfig();
+
+export function isArcadeConfig(value: unknown): value is ArcadeSdkConfig {
+  if (!value || typeof value !== 'object') return false;
+  const config = value as Partial<ArcadeSdkConfig>;
+  return (
+    typeof config.contractAddress === 'string'
+    && typeof config.stableTokenAddress === 'string'
+    && typeof config.stableTokenSymbol === 'string'
+    && typeof config.stableTokenDecimals === 'number'
+    && typeof config.miniPayFeeCurrency === 'string'
+    && typeof config.entryFee === 'bigint'
+  );
+}
