@@ -11,6 +11,7 @@ export const DEFAULT_STABLE_TOKEN: StableTokenMetadata = {
   decimals: DEFAULT_STABLE_TOKEN_DECIMALS,
 };
 export const DEFAULT_MINIPAY_FEE_CURRENCY = '0x765DE816845861e75A25fCA122bb6898B8B1282a' as Address;
+export const DEFAULT_CELO_RPC_URL = 'https://forno.celo.org';
 export const CELO_MAINNET_CHAIN_ID = 42220;
 export const CELO_ALFAJORES_CHAIN_ID = 44787;
 export const SUPPORTED_CHAIN_IDS = [CELO_MAINNET_CHAIN_ID, CELO_ALFAJORES_CHAIN_ID] as const;
