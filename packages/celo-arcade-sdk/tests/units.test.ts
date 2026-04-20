@@ -49,6 +49,10 @@ describe('units parseTokenUnits', () => {
   it('rejects negative bigint values', () => {
     expect(() => parseTokenUnits(-1n, 6)).toThrow('Invalid token amount: -1');
   });
+
+  it('returns bigint inputs unchanged when non-negative', () => {
+    expect(parseTokenUnits(2500000n, 6)).toBe(2500000n);
+  });
 });
 
 describe('units formatTokenUnits', () => {
