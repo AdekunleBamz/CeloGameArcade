@@ -29,6 +29,19 @@ const config = createConfig({
 });
 
 const CELO_MAINNET_ID = 42220;
+const NETWORK_NAMES: Record<number, string> = {
+  1: 'Ethereum',
+  10: 'Optimism',
+  56: 'BNB Chain',
+  137: 'Polygon',
+  8453: 'Base',
+  42161: 'Arbitrum',
+  44787: 'Celo Alfajores',
+};
+
+export function getChainDisplayName(chainId: number): string {
+  return NETWORK_NAMES[chainId] || `Chain ${chainId}`;
+}
 
 function NetworkGuard({ children }: { children: ReactNode }) {
   const { isConnected, address } = useAccount();
@@ -45,8 +58,7 @@ function NetworkGuard({ children }: { children: ReactNode }) {
     const isOnCeloMainnet = chainId === CELO_MAINNET_ID;
     if (!isOnCeloMainnet) {
       setWrongNetwork(true);
-      const chainNames: { [key: number]: string } = { 1: 'Ethereum', 137: 'Polygon', 56: 'BNB Chain', 8453: 'Base', 42161: 'Arbitrum', 10: 'Optimism', 44787: 'Celo Alfajores' };
-      setCurrentChainName(chainNames[chainId] || `Chain ${chainId}`);
+      setCurrentChainName(getChainDisplayName(chainId));
     } else {
       setWrongNetwork(false);
     }
