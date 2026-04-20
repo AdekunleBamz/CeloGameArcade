@@ -1,11 +1,24 @@
 import { describe, expect, it } from 'vitest';
-import { BASIS_POINTS, CREATOR_SHARE_BPS, Difficulty, GameType, PRIZE_SHARE_BPS } from '../src/constants';
+import {
+  BASIS_POINTS,
+  CLAIM_COOLDOWN_SECONDS,
+  CREATOR_SHARE_BPS,
+  Difficulty,
+  GameType,
+  PRIZE_SHARE_BPS,
+} from '../src/constants';
 import { ContractEvent } from '../src/events';
 import { ReadMethod, WriteMethod } from '../src/methods';
 
 describe('constants prize shares', () => {
   it('fill the remainder of the basis point budget', () => {
     expect(PRIZE_SHARE_BPS).toBe(BASIS_POINTS - CREATOR_SHARE_BPS);
+  });
+});
+
+describe('constants cooldown', () => {
+  it('uses a seven-day prize claim cooldown window', () => {
+    expect(CLAIM_COOLDOWN_SECONDS).toBe(7 * 24 * 60 * 60);
   });
 });
 
