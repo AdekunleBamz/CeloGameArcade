@@ -63,6 +63,10 @@ describe('methods ReadMethod', () => {
 });
 
 describe('methods WriteMethod', () => {
+  it('exposes the score submission method name', () => {
+    expect(WriteMethod.SUBMIT_SCORE).toBe('submitScore');
+  });
+
   it('exposes the creator earnings withdrawal name', () => {
     expect(WriteMethod.WITHDRAW_CREATOR_EARNINGS).toBe('withdrawCreatorEarnings');
   });
