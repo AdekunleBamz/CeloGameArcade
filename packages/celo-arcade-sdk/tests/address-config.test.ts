@@ -117,4 +117,13 @@ describe('config createArcadeConfig', () => {
       }),
     ).toThrow('Entry fee must be a bigint amount in token base units');
   });
+
+  it('supports zero-decimal tokens when entry fee is provided in base units', () => {
+    expect(
+      createArcadeConfig({
+        stableTokenDecimals: 0,
+        entryFee: 1n,
+      }).stableTokenDecimals,
+    ).toBe(0);
+  });
 });
