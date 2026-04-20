@@ -29,3 +29,8 @@ export function parseAddress(value: string, label = 'address'): Address {
   assertAddress(trimmedValue, label);
   return trimmedValue;
 }
+
+export function isHexString(value: string): boolean {
+  const normalizedValue = typeof value === 'string' ? value.trim() : '';
+  return /^0x[a-fA-F0-9]+$/.test(normalizedValue);
+}
