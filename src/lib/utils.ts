@@ -128,3 +128,13 @@ export function calcNetPrize(wagerMicro: bigint, multiplierBps: bigint, feeBps =
   const gross = (wagerMicro * multiplierBps) / 10_000n
   return gross - calcHouseFee(gross, feeBps)
 }
+
+/**
+ * Validates that a wager string input can be parsed to a valid USDT amount.
+ * @param input - Raw user input string.
+ */
+export function parseWagerInput(input: string): bigint | null {
+  const parsed = parseFloat(input)
+  if (!Number.isFinite(parsed) || parsed <= 0) return null
+  return BigInt(Math.round(parsed * 1_000_000))
+}
