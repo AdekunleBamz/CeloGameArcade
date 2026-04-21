@@ -53,8 +53,10 @@ export function isValidTokenAmountString(value: string): boolean {
 }
 
 export function clampDecimals(decimals: number, min = 0, max = 18): number {
-  if (!Number.isFinite(decimals)) return min;
-  return Math.min(max, Math.max(min, Math.trunc(decimals)));
+  const normalizedMin = Math.min(min, max);
+  const normalizedMax = Math.max(min, max);
+  if (!Number.isFinite(decimals)) return normalizedMin;
+  return Math.min(normalizedMax, Math.max(normalizedMin, Math.trunc(decimals)));
 }
 
 export function parseIntegerUnits(value: string | number | bigint): bigint {
