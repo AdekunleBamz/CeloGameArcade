@@ -61,3 +61,6 @@ export const MAX_ACTIVE_GAMES_DISPLAY = 20
 
 /** Maximum number of games a wallet can have in pending state simultaneously. */
 export const MAX_PENDING_GAMES = 3
+
+/** Default page size for paginated game history queries. */
+export const DEFAULT_PAGE_SIZE = 10
