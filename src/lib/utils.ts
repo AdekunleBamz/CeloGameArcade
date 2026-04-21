@@ -97,3 +97,14 @@ export function formatDate(timestamp: number): string {
 export function isPrizePoolSufficient(poolMicro: bigint): boolean {
   return poolMicro >= 100_000n
 }
+
+/**
+ * Converts a bigint percentage value (0-10000) to a display string.
+ * Uses 2 implied decimal places, e.g. 5000 => "50.00%".
+ * @param bps - Basis-point-style bigint (10000 = 100%).
+ */
+export function formatBps(bps: bigint): string {
+  const whole = bps / 100n
+  const frac = (bps % 100n).toString().padStart(2, '0')
+  return `${whole}.${frac}%`
+}
