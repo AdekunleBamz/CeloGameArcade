@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { assertAddress, isAddress } from '../src/addresses';
+import { assertAddress, isAddress, truncateAddress } from '../src/addresses';
 import { DEFAULT_STABLE_TOKEN_SYMBOL, ENTRY_FEE } from '../src/constants';
 import { createArcadeConfig } from '../src/config';
 import { parseTokenUnits } from '../src/units';
@@ -29,6 +29,12 @@ describe('addresses assertAddress', () => {
 
   it('includes custom labels in validation errors', () => {
     expect(() => assertAddress('0x1234', 'fee currency')).toThrow('Invalid fee currency: 0x1234');
+  });
+});
+
+describe('addresses truncateAddress', () => {
+  it('does not truncate values that already fit the start/end plus ellipsis boundary', () => {
+    expect(truncateAddress('0x1234567890abc', 6, 4)).toBe('0x1234567890abc');
   });
 });
 
