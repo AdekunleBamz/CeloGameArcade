@@ -89,3 +89,11 @@ export function formatWithCommas(n: number): string {
 export function formatDate(timestamp: number): string {
   return new Date(timestamp * 1000).toLocaleDateString()
 }
+
+/**
+ * Returns true if the prize pool has enough funds to allow gameplay.
+ * @param poolMicro - Current pool balance in micro USDT.
+ */
+export function isPrizePoolSufficient(poolMicro: bigint): boolean {
+  return poolMicro >= 100_000n
+}
