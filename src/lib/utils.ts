@@ -81,3 +81,11 @@ export function isZeroAddress(addr: string): boolean {
 export function formatWithCommas(n: number): string {
   return n.toLocaleString()
 }
+
+/**
+ * Returns a short date string from a Unix timestamp (seconds).
+ * @param timestamp - Unix timestamp in seconds.
+ */
+export function formatDate(timestamp: number): string {
+  return new Date(timestamp * 1000).toLocaleDateString()
+}
