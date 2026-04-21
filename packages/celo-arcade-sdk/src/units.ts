@@ -101,3 +101,7 @@ export function addBigInt(a: bigint, b: bigint): bigint {
 export function subBigIntSafe(a: bigint, b: bigint): bigint {
   return a > b ? a - b : 0n;
 }
+
+export function mulBigIntBps(value: bigint, bps: number, totalBps = 10_000): bigint {
+  return (value * BigInt(bps)) / BigInt(totalBps);
+}
