@@ -4,7 +4,7 @@
  * @param decimals - Number of decimals for the token.
  */
 export function formatTokenAmount(micro: bigint, decimals: number): string {
-  const divisor = BigInt(10 ** decimals)
+  const divisor = 10n ** BigInt(decimals)
   const whole = micro / divisor
   const frac = micro % divisor
   const fracStr = frac.toString().padStart(decimals, '0').slice(0, 2)
