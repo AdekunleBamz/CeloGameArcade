@@ -95,3 +95,11 @@ export const CONTRACT_ABI = [
   { inputs: [], name: 'withdrawCreatorEarnings', outputs: [], stateMutability: 'nonpayable', type: 'function' },
   { stateMutability: 'payable', type: 'receive' },
 ] as const;
+
+/**
+ * Returns true if the given stable token decimals value is within valid ERC-20 range.
+ * @param decimals - Token decimals to validate.
+ */
+export function isValidTokenDecimals(decimals: number): boolean {
+  return Number.isInteger(decimals) && decimals >= 0 && decimals <= 18
+}
