@@ -105,3 +105,8 @@ export function subBigIntSafe(a: bigint, b: bigint): bigint {
 export function mulBigIntBps(value: bigint, bps: number, totalBps = 10_000): bigint {
   return (value * BigInt(bps)) / BigInt(totalBps);
 }
+
+export function scaleBigInt(value: bigint, numerator: number, denominator: number): bigint {
+  if (denominator === 0) throw new Error('scaleBigInt: denominator cannot be zero');
+  return (value * BigInt(numerator)) / BigInt(denominator);
+}
