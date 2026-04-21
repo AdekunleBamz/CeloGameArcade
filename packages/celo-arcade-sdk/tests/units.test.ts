@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { assertDecimals, formatTokenUnits, parseTokenUnits } from '../src/units';
+import { assertDecimals, clampDecimals, formatTokenUnits, parseTokenUnits } from '../src/units';
 
 describe('units assertDecimals', () => {
   it('rejects negative token decimals', () => {
@@ -70,5 +70,11 @@ describe('units formatTokenUnits', () => {
 
   it('preserves negative signs when formatting', () => {
     expect(formatTokenUnits(-250000n, 6)).toBe('-0.25');
+  });
+});
+
+describe('units clampDecimals', () => {
+  it('supports reversed bound arguments by normalizing min/max order', () => {
+    expect(clampDecimals(25, 18, 6)).toBe(18);
   });
 });
