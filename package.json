@@ -12,7 +12,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "check:fast": "npm run sdk:test && npm run lint"
+    "check:fast": "npm run sdk:test && npm run lint",
+    "validate": "npm run typecheck && npm run check:fast"
   },
   "dependencies": {
     "@farcaster/frame-sdk": "^0.0.26",
