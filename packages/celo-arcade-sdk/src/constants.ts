@@ -67,6 +67,7 @@ export const MAX_SCORE = 999_999;
 export const CLAIM_COOLDOWN_DAYS = Math.round(CLAIM_COOLDOWN_SECONDS / 86400);
 export const MAX_LEADERBOARD_SIZE = LEADERBOARD_SIZE;
 export const SEASON_DURATION_DAYS = 30;
+export const DEFAULT_GAME_COUNT = Object.keys(GameType).length;
 
 export function getExplorerTxUrl(chainId: number, txHash: string): string {
   const base = chainId === CELO_ALFAJORES_CHAIN_ID ? ALFAJORES_EXPLORER_URL : CELO_EXPLORER_URL;
