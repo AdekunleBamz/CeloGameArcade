@@ -19,3 +19,11 @@ export function shortAddress(addr: string): string {
   if (addr.length < 10) return addr
   return `${addr.slice(0, 6)}...${addr.slice(-4)}`
 }
+
+/**
+ * Returns true if the given amount is greater than zero.
+ * @param amount - Token amount as bigint.
+ */
+export function isPositiveAmount(amount: bigint): boolean {
+  return amount > 0n
+}
