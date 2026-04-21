@@ -60,3 +60,6 @@ export const DIFFICULTY_MULTIPLIERS: Record<number, number> = {
   [Difficulty.MEDIUM]: 2,
   [Difficulty.HARD]: 3,
 };
+
+export const MIN_SCORE = 0;
+export const MAX_SCORE = 999_999;
