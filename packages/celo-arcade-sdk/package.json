@@ -2,9 +2,8 @@
   "name": "celo-arcade-sdk",
   "version": "0.1.0",
   "description": "Reusable SDK for integrating with the Celo Arcade contract.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AdekunleBamz/CeloGameArcade.git"
+  "bugs": {
+    "url": "https://github.com/AdekunleBamz/CeloGameArcade/issues"
   },
   "license": "MIT",
   "engines": {"node": ">=18.0.0"},
