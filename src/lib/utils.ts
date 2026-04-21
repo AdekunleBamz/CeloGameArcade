@@ -1,3 +1,5 @@
+import { STABLE_TOKEN_DECIMALS, STABLE_TOKEN_SYMBOL } from './contract'
+
 /**
  * Converts a value in USDT micro-units to a display string.
  * @param micro - Amount in smallest token unit (e.g. 1_000_000 = 1.00 USDT).
@@ -46,7 +48,7 @@ export function clamp(value: number, min: number, max: number): number {
  * @param micro - Amount in micro USDT (6 decimals).
  */
 export function formatPrize(micro: bigint): string {
-  return `${formatTokenAmount(micro, 6)} USDT`
+  return `${formatTokenAmount(micro, STABLE_TOKEN_DECIMALS)} ${STABLE_TOKEN_SYMBOL}`
 }
 
 /**
