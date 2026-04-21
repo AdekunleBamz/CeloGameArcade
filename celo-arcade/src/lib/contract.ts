@@ -97,6 +97,18 @@ export function computeFinalScore(rawScore: number, difficulty: number): number 
   return Math.min(999_999, Math.trunc(rawScore * multiplier));
 }
 
+export function getGameCount(): number {
+  return Object.keys(GAME_TYPE_NAMES).length;
+}
+
+export function formatCooldownRemaining(secondsLeft: number): string {
+  if (secondsLeft <= 0) return 'now';
+  const hours = Math.floor(secondsLeft / 3600);
+  const minutes = Math.floor((secondsLeft % 3600) / 60);
+  if (hours > 0) return `${hours}h ${minutes}m`;
+  return `${minutes}m`;
+}
+
 export const CONTRACT_ABI = [
   { inputs: [{ internalType: 'address', name: 'usdmTokenAddress', type: 'address' }, { internalType: 'uint256', name: 'initialEntryFee', type: 'uint256' }], stateMutability: 'nonpayable', type: 'constructor' },
   { anonymous: false, inputs: [{ indexed: true, name: 'player', type: 'address' }, { indexed: false, name: 'deposited', type: 'uint256' }, { indexed: false, name: 'toPrizePool', type: 'uint256' }, { indexed: false, name: 'season', type: 'uint256' }], name: 'AccessGranted', type: 'event' },
