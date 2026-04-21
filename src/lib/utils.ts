@@ -138,7 +138,7 @@ export function calcNetPrize(wagerMicro: bigint, multiplierBps: bigint, feeBps =
  * @param input - Raw user input string.
  */
 export function parseWagerInput(input: string): bigint | null {
-  const trimmed = input.trim()
+  const trimmed = input.trim().replace(/,/g, '')
   if (!/^(?:\d+\.?\d*|\.\d+)$/.test(trimmed)) return null
   const parsed = parseFloat(trimmed)
   if (!Number.isFinite(parsed) || parsed <= 0) return null
