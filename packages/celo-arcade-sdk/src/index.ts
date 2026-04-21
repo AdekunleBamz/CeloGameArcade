@@ -25,4 +25,4 @@ export { ContractEvent } from './events';
 export { ReadMethod, WriteMethod } from './methods';
 export { assertDecimals, formatTokenUnits, parseTokenUnits } from './units';
 export { CONTRACT_ABI } from './abi';
-export { assertAddress, isAddress } from './addresses';
+export { assertAddress, isAddress, isZeroAddress, normalizeAddress, isSameAddress, parseAddress, truncateAddress, isHexString } from './addresses';
