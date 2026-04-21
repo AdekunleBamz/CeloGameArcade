@@ -69,6 +69,7 @@ export const MAX_LEADERBOARD_SIZE = LEADERBOARD_SIZE;
 export const SEASON_DURATION_DAYS = 30;
 export const DEFAULT_GAME_COUNT = Object.keys(GameType).length;
 export const MIN_ENTRY_FEE_STRING = '0.001';
+export const MAX_ENTRY_FEE_STRING = '100';
 
 export function getExplorerTxUrl(chainId: number, txHash: string): string {
   const base = chainId === CELO_ALFAJORES_CHAIN_ID ? ALFAJORES_EXPLORER_URL : CELO_EXPLORER_URL;
