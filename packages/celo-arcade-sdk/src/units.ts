@@ -87,3 +87,9 @@ export function formatTokenDisplay(value: bigint, decimals: number, symbol: stri
 export function isPositiveAmount(value: bigint): boolean {
   return value > 0n;
 }
+
+export function clampBigInt(value: bigint, min: bigint, max: bigint): bigint {
+  if (value < min) return min;
+  if (value > max) return max;
+  return value;
+}
