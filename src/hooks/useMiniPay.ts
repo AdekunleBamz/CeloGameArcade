@@ -57,7 +57,9 @@ export function useMiniPay() {
   useEffect(() => {
     if (!isMiniPay || isConnected || attemptedAutoConnect.current) return;
 
-    const injectedConnector = connectors.find((connector) => connector.id === 'injected');
+    const injectedConnector = connectors.find(
+      (connector) => connector.id === 'injected' || connector.type === 'injected',
+    );
     if (!injectedConnector) return;
 
     attemptedAutoConnect.current = true;
