@@ -16,7 +16,7 @@ export {
   LEADERBOARD_SIZE,
   PRIZE_SHARE_BPS,
 } from './constants';
-export { createArcadeConfig, DEFAULT_ARCADE_CONFIG } from './config';
+export { createArcadeConfig, DEFAULT_ARCADE_CONFIG, getDefaultEntryFee, resolveStableTokenSymbol, isArcadeConfig } from './config';
 export { ContractEvent } from './events';
 export { ReadMethod, WriteMethod } from './methods';
 export { assertDecimals, formatTokenUnits, parseTokenUnits } from './units';
