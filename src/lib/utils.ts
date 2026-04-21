@@ -65,3 +65,11 @@ export function microToUsdt(micro: bigint): string {
   const frac = (micro % 1_000_000n).toString().padStart(6, '0').slice(0, 2)
   return `${whole}.${frac}`
 }
+
+/**
+ * Returns true if the given address is the zero address.
+ * @param addr - EVM address string to check.
+ */
+export function isZeroAddress(addr: string): boolean {
+  return addr === '0x0000000000000000000000000000000000000000'
+}
