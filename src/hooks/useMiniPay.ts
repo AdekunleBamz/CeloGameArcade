@@ -33,6 +33,10 @@ export function useMiniPay() {
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     refreshDetection();
 
     // Some injected wallets initialize shortly after page load.
