@@ -83,3 +83,7 @@ export function isZeroAmount(value: bigint): boolean {
 export function formatTokenDisplay(value: bigint, decimals: number, symbol: string): string {
   return `${formatTokenUnits(value, decimals)} ${symbol}`;
 }
+
+export function isPositiveAmount(value: bigint): boolean {
+  return value > 0n;
+}
