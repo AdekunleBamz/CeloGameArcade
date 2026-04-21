@@ -58,3 +58,6 @@ export const HOUSE_FEE_BPS = 500n
 
 /** Maximum number of active games displayed on the board. */
 export const MAX_ACTIVE_GAMES_DISPLAY = 20
+
+/** Maximum number of games a wallet can have in pending state simultaneously. */
+export const MAX_PENDING_GAMES = 3
