@@ -93,3 +93,11 @@ export function clampBigInt(value: bigint, min: bigint, max: bigint): bigint {
   if (value > max) return max;
   return value;
 }
+
+export function addBigInt(a: bigint, b: bigint): bigint {
+  return a + b;
+}
+
+export function subBigIntSafe(a: bigint, b: bigint): bigint {
+  return a > b ? a - b : 0n;
+}
