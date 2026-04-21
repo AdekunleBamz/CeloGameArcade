@@ -48,6 +48,18 @@ export const Difficulty = {
   HARD: 2,
 } as const;
 
+const GAME_TYPE_LABEL: Record<number, string> = {
+  [GameType.CAR_RACE]: 'Car Race',
+  [GameType.SNAKE]: 'Snake',
+  [GameType.FLAPPY]: 'Flappy Bird',
+  [GameType.SPACE_SHOOTER]: 'Space Shooter',
+  [GameType.PUZZLE]: 'Puzzle',
+};
+
+export function getGameTypeName(gameType: number): string {
+  return GAME_TYPE_LABEL[gameType] ?? 'Unknown';
+}
+
 export const CONTRACT_ABI = [
   { inputs: [{ internalType: 'address', name: 'usdmTokenAddress', type: 'address' }, { internalType: 'uint256', name: 'initialEntryFee', type: 'uint256' }], stateMutability: 'nonpayable', type: 'constructor' },
   { anonymous: false, inputs: [{ indexed: true, name: 'player', type: 'address' }, { indexed: false, name: 'deposited', type: 'uint256' }, { indexed: false, name: 'toPrizePool', type: 'uint256' }, { indexed: false, name: 'season', type: 'uint256' }], name: 'AccessGranted', type: 'event' },
