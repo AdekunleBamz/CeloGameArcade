@@ -109,5 +109,7 @@ export function isValidTokenDecimals(decimals: number): boolean {
  * @param addr - The address string to validate.
  */
 export function isValidContractAddress(addr: string): boolean {
-  return /^0x[a-fA-F0-9]{40}$/.test(addr) && addr !== '0x0000000000000000000000000000000000000000'
+  const normalizedAddress = addr.trim()
+  return /^0x[a-fA-F0-9]{40}$/.test(normalizedAddress)
+    && normalizedAddress !== '0x0000000000000000000000000000000000000000'
 }
