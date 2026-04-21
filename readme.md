@@ -36,11 +36,7 @@ A blockchain-powered gaming arcade built as a Farcaster mini app on the Celo net
 ```bash
 git clone https://github.com/AdekunleBamz/CeloGameArcade.git
 cd CeloGameArcade
-npm install
-
-# Optional: set WalletConnect project id for QR wallet flow
-echo "NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_project_id" >> .env.local
-
+npm ci
 npm run dev
 
 # Run SDK unit tests
