@@ -22,3 +22,7 @@ export function shortenAddress(address: string, chars = 4): string {
   if (address.length < chars * 2 + 2) return address;
   return `${address.slice(0, chars + 2)}...${address.slice(-chars)}`;
 }
+
+export function isValidScoreRange(score: number): boolean {
+  return Number.isInteger(score) && score >= 0 && score <= 999_999;
+}
