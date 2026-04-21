@@ -146,3 +146,13 @@ export function parseWagerInput(input: string): bigint | null {
 export function hasBalance(balance: bigint): boolean {
   return balance > 0n
 }
+
+/**
+ * Pluralizes a word based on a count.
+ * @param count - The count to check.
+ * @param singular - Singular form.
+ * @param plural - Plural form (defaults to singular + 's').
+ */
+export function pluralize(count: number, singular: string, plural = `${singular}s`): string {
+  return count === 1 ? singular : plural
+}
