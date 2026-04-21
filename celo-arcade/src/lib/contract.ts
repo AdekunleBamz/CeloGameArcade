@@ -60,6 +60,16 @@ export function getGameTypeName(gameType: number): string {
   return GAME_TYPE_LABEL[gameType] ?? 'Unknown';
 }
 
+const DIFFICULTY_LABEL: Record<number, string> = {
+  [Difficulty.EASY]: 'Easy',
+  [Difficulty.MEDIUM]: 'Medium',
+  [Difficulty.HARD]: 'Hard',
+};
+
+export function getDifficultyName(difficulty: number): string {
+  return DIFFICULTY_LABEL[difficulty] ?? 'Unknown';
+}
+
 export const CONTRACT_ABI = [
   { inputs: [{ internalType: 'address', name: 'usdmTokenAddress', type: 'address' }, { internalType: 'uint256', name: 'initialEntryFee', type: 'uint256' }], stateMutability: 'nonpayable', type: 'constructor' },
   { anonymous: false, inputs: [{ indexed: true, name: 'player', type: 'address' }, { indexed: false, name: 'deposited', type: 'uint256' }, { indexed: false, name: 'toPrizePool', type: 'uint256' }, { indexed: false, name: 'season', type: 'uint256' }], name: 'AccessGranted', type: 'event' },
