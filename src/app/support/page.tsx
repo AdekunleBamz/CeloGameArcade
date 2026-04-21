@@ -27,7 +27,7 @@ export default function SupportPage() {
     <main style={pageStyle}>
       <article style={cardStyle}>
         <h1 style={{ marginTop: 0 }}>Support</h1>
-        <p>Need help with Celo Arcade? Reach us through any of the channels below.</p>
+        <p>Need help with Celo Game Arcade? Reach us through any of the channels below.</p>
         <ul>
           <li>
             Email:{' '}
