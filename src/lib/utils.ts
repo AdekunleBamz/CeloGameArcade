@@ -90,6 +90,7 @@ export function formatWithCommas(n: number): string {
  * @param timestamp - Unix timestamp in seconds.
  */
 export function formatDate(timestamp: number): string {
+  if (!Number.isFinite(timestamp) || timestamp <= 0) return ''
   return new Date(timestamp * 1000).toLocaleDateString()
 }
 
