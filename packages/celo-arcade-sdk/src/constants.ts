@@ -40,3 +40,11 @@ export const Difficulty = {
 
 export const DEFAULT_ENTRY_FEE_STRING = '0.01';
 export const ENTRY_FEE = parseTokenUnits(DEFAULT_ENTRY_FEE_STRING, DEFAULT_STABLE_TOKEN_DECIMALS);
+
+export const GAME_TYPE_NAMES: Record<number, string> = {
+  [GameType.CAR_RACE]: 'Car Race',
+  [GameType.SNAKE]: 'Snake',
+  [GameType.FLAPPY]: 'Flappy Bird',
+  [GameType.SPACE_SHOOTER]: 'Space Shooter',
+  [GameType.PUZZLE]: 'Puzzle',
+};
