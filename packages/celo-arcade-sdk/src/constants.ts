@@ -48,3 +48,9 @@ export const GAME_TYPE_NAMES: Record<number, string> = {
   [GameType.SPACE_SHOOTER]: 'Space Shooter',
   [GameType.PUZZLE]: 'Puzzle',
 };
+
+export const DIFFICULTY_NAMES: Record<number, string> = {
+  [Difficulty.EASY]: 'Easy',
+  [Difficulty.MEDIUM]: 'Medium',
+  [Difficulty.HARD]: 'Hard',
+};
