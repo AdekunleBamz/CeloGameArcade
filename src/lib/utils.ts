@@ -10,3 +10,12 @@ export function formatTokenAmount(micro: bigint, decimals: number): string {
   const fracStr = frac.toString().padStart(decimals, '0').slice(0, 2)
   return `${whole.toString()}.${fracStr}`
 }
+
+/**
+ * Truncates a hex wallet address to short form: 0xabcd...1234
+ * @param addr - Full EVM address string.
+ */
+export function shortAddress(addr: string): string {
+  if (addr.length < 10) return addr
+  return `${addr.slice(0, 6)}...${addr.slice(-4)}`
+}
