@@ -80,6 +80,14 @@ export function getDifficultyMultiplier(difficulty: number): number {
   return DIFFICULTY_MULTIPLIER[difficulty] ?? 1;
 }
 
+export function isValidGameType(value: number): boolean {
+  return Object.values(GameType).includes(value as typeof GameType[keyof typeof GameType]);
+}
+
+export function isValidDifficulty(value: number): boolean {
+  return Object.values(Difficulty).includes(value as typeof Difficulty[keyof typeof Difficulty]);
+}
+
 export const CONTRACT_ABI = [
   { inputs: [{ internalType: 'address', name: 'usdmTokenAddress', type: 'address' }, { internalType: 'uint256', name: 'initialEntryFee', type: 'uint256' }], stateMutability: 'nonpayable', type: 'constructor' },
   { anonymous: false, inputs: [{ indexed: true, name: 'player', type: 'address' }, { indexed: false, name: 'deposited', type: 'uint256' }, { indexed: false, name: 'toPrizePool', type: 'uint256' }, { indexed: false, name: 'season', type: 'uint256' }], name: 'AccessGranted', type: 'event' },
