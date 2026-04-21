@@ -49,3 +49,6 @@ export const GAME_STATUS = Object.freeze({
   COMPLETE: 'complete',
   ERROR: 'error',
 } as const)
+
+/** Minimum prize pool balance (micro USDT) before games are allowed. */
+export const MIN_PRIZE_POOL_MICRO = 100_000n
