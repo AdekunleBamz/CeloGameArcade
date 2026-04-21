@@ -63,3 +63,6 @@ export const DIFFICULTY_MULTIPLIERS: Record<number, number> = {
 
 export const MIN_SCORE = 0;
 export const MAX_SCORE = 999_999;
+
+export const CLAIM_COOLDOWN_DAYS = Math.round(CLAIM_COOLDOWN_SECONDS / 86400);
+export const MAX_LEADERBOARD_SIZE = LEADERBOARD_SIZE;
