@@ -55,3 +55,6 @@ export const MIN_PRIZE_POOL_MICRO = 100_000n
 
 /** House fee in basis points (e.g. 500 = 5%). */
 export const HOUSE_FEE_BPS = 500n
+
+/** Maximum number of active games displayed on the board. */
+export const MAX_ACTIVE_GAMES_DISPLAY = 20
