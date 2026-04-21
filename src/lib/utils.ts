@@ -55,3 +55,13 @@ export function isValidWager(micro: bigint): boolean {
   const MAX = 100_000_000n
   return micro >= MIN && micro <= MAX
 }
+
+/**
+ * Converts micro USDT to human-readable USDT string with 2 decimal places.
+ * @param micro - Amount in 6-decimal micro units.
+ */
+export function microToUsdt(micro: bigint): string {
+  const whole = micro / 1_000_000n
+  const frac = (micro % 1_000_000n).toString().padStart(6, '0').slice(0, 2)
+  return `${whole}.${frac}`
+}
