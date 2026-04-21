@@ -109,6 +109,8 @@ export function formatCooldownRemaining(secondsLeft: number): string {
   return `${minutes}m`;
 }
 
+export const MAX_USDM_APPROVAL = parseUnits('1000000', STABLE_TOKEN_DECIMALS);
+
 export const CONTRACT_ABI = [
   { inputs: [{ internalType: 'address', name: 'usdmTokenAddress', type: 'address' }, { internalType: 'uint256', name: 'initialEntryFee', type: 'uint256' }], stateMutability: 'nonpayable', type: 'constructor' },
   { anonymous: false, inputs: [{ indexed: true, name: 'player', type: 'address' }, { indexed: false, name: 'deposited', type: 'uint256' }, { indexed: false, name: 'toPrizePool', type: 'uint256' }, { indexed: false, name: 'season', type: 'uint256' }], name: 'AccessGranted', type: 'event' },
