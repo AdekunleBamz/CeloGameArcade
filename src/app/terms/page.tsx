@@ -29,11 +29,11 @@ export default function TermsPage() {
         <h1 style={{ marginTop: 0 }}>Terms of Service</h1>
         <p>Effective date: April 2, 2026</p>
         <p>
-          By using Celo Arcade, you agree to these terms. If you do not agree, do not use the service.
+          By using Celo Game Arcade, you agree to these terms. If you do not agree, do not use the service.
         </p>
         <h2>Non-Custodial Use</h2>
         <p>
-          Celo Arcade is non-custodial. You are fully responsible for your wallet, private keys, and transaction
+          Celo Game Arcade is non-custodial. You are fully responsible for your wallet, private keys, and transaction
           approvals.
         </p>
         <h2>Onchain Transactions</h2>
@@ -43,7 +43,7 @@ export default function TermsPage() {
         </p>
         <h2>No Financial Advice</h2>
         <p>
-          Celo Arcade provides game functionality and does not provide financial, legal, or tax advice.
+          Celo Game Arcade provides game functionality and does not provide financial, legal, or tax advice.
         </p>
         <h2>Liability</h2>
         <p>
