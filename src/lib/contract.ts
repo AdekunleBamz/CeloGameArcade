@@ -103,3 +103,11 @@ export const CONTRACT_ABI = [
 export function isValidTokenDecimals(decimals: number): boolean {
   return Number.isInteger(decimals) && decimals >= 0 && decimals <= 18
 }
+
+/**
+ * Returns true if the given contract address is a valid non-zero EVM address.
+ * @param addr - The address string to validate.
+ */
+export function isValidContractAddress(addr: string): boolean {
+  return /^0x[a-fA-F0-9]{40}$/.test(addr) && addr !== '0x0000000000000000000000000000000000000000'
+}
