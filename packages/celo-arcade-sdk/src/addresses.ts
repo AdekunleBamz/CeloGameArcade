@@ -40,3 +40,7 @@ export function truncateAddress(value: string, start = 6, end = 4): string {
   if (normalizedValue.length <= start + end) return normalizedValue;
   return `${normalizedValue.slice(0, start)}...${normalizedValue.slice(-end)}`;
 }
+
+export function getAddressShort(value: string): string {
+  return truncateAddress(value, 6, 4);
+}
