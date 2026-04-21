@@ -7,6 +7,7 @@ export function formatTokenAmount(micro: bigint, decimals: number): string {
   const divisor = 10n ** BigInt(decimals)
   const whole = micro / divisor
   const frac = micro % divisor
+  if (decimals === 0) return whole.toString()
   const fracStr = frac.toString().padStart(decimals, '0').slice(0, 2)
   return `${whole.toString()}.${fracStr}`
 }
