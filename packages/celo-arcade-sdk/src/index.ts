@@ -36,6 +36,6 @@ export {
 export { createArcadeConfig, DEFAULT_ARCADE_CONFIG, getDefaultEntryFee, resolveStableTokenSymbol, isArcadeConfig } from './config';
 export { ContractEvent } from './events';
 export { ReadMethod, WriteMethod } from './methods';
-export { assertDecimals, formatTokenUnits, parseTokenUnits, toTokenDivisor, isValidTokenAmountString, clampDecimals, parseIntegerUnits, tryParseTokenUnits, isZeroAmount, formatTokenDisplay, isPositiveAmount, clampBigInt, addBigInt, subBigIntSafe } from './units';
+export { assertDecimals, formatTokenUnits, parseTokenUnits, toTokenDivisor, isValidTokenAmountString, clampDecimals, parseIntegerUnits, tryParseTokenUnits, isZeroAmount, formatTokenDisplay, isPositiveAmount, clampBigInt, addBigInt, subBigIntSafe, mulBigIntBps, scaleBigInt } from './units';
 export { CONTRACT_ABI } from './abi';
 export { assertAddress, isAddress, isZeroAddress, normalizeAddress, isSameAddress, parseAddress, truncateAddress, isHexString } from './addresses';
