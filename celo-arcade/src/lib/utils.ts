@@ -17,3 +17,8 @@ export function formatTimeRemaining(seconds: number): string {
   if (m > 0) return `${m}m ${s}s`;
   return `${s}s`;
 }
+
+export function shortenAddress(address: string, chars = 4): string {
+  if (address.length < chars * 2 + 2) return address;
+  return `${address.slice(0, chars + 2)}...${address.slice(-chars)}`;
+}
