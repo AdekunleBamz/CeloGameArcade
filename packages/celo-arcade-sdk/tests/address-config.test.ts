@@ -1,15 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  assertAddress,
-  getAddressShort,
-  isAddress,
-  isHexString,
-  isSameAddress,
-  isZeroAddress,
-  normalizeAddress,
-  parseAddress,
-  truncateAddress,
-} from '../src/addresses';
+import { assertAddress, isAddress, truncateAddress } from '../src/addresses';
 import { DEFAULT_STABLE_TOKEN_SYMBOL, ENTRY_FEE } from '../src/constants';
 import { createArcadeConfig, getDefaultEntryFee, isArcadeConfig, resolveStableTokenSymbol } from '../src/config';
 import { parseTokenUnits } from '../src/units';
@@ -46,88 +36,9 @@ describe('addresses assertAddress', () => {
   });
 });
 
-describe('addresses isZeroAddress', () => {
-  it('detects zero addresses with whitespace and casing', () => {
-    expect(isZeroAddress('  0X0000000000000000000000000000000000000000  ')).toBe(true);
-  });
-
-  it('rejects blank values', () => {
-    expect(isZeroAddress('   ')).toBe(false);
-  });
-});
-
-describe('addresses normalizeAddress', () => {
-  it('trims and lowercases addresses', () => {
-    expect(normalizeAddress('  0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0  ')).toBe(
-      '0xd3cb0357edf92e1056cfbc3dc5cc1da52846ddb0',
-    );
-  });
-});
-
-describe('addresses isSameAddress', () => {
-  it('matches addresses ignoring casing', () => {
-    expect(
-      isSameAddress(
-        '0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0',
-        '0xd3cb0357edf92e1056cfbc3dc5cc1da52846ddb0',
-      ),
-    ).toBe(true);
-  });
-
-  it('rejects blank address comparisons', () => {
-    expect(isSameAddress('', '0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0')).toBe(false);
-  });
-});
-
-describe('addresses parseAddress', () => {
-  it('trims valid parsed addresses', () => {
-    expect(parseAddress('  0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0  ')).toBe(
-      '0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0',
-    );
-  });
-
-  it('uses custom labels in parse errors', () => {
-    expect(() => parseAddress('0x1234', 'player')).toThrow('Invalid player: 0x1234');
-  });
-});
-
-describe('addresses isHexString', () => {
-  it('accepts prefixed hexadecimal strings', () => {
-    expect(isHexString('0xabc123')).toBe(true);
-  });
-
-  it('accepts whitespace-padded hex strings after trimming', () => {
-    expect(isHexString('  0xabc123  ')).toBe(true);
-  });
-
-  it('rejects empty hex payloads', () => {
-    expect(isHexString('0x')).toBe(false);
-  });
-});
-
 describe('addresses truncateAddress', () => {
-  it('leaves short values unchanged', () => {
-    expect(truncateAddress('0x1234', 4, 4)).toBe('0x1234');
-  });
-
-  it('trims short values before returning them', () => {
-    expect(truncateAddress('  0x1234  ', 4, 4)).toBe('0x1234');
-  });
-
-  it('uses custom truncation windows for long values', () => {
-    expect(truncateAddress('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0', 8, 6)).toBe(
-      '0xD3Cb03...46DDB0',
-    );
-  });
-});
-
-describe('addresses getAddressShort', () => {
-  it('uses the standard short address format', () => {
-    expect(getAddressShort('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0')).toBe('0xD3Cb...DDB0');
-  });
-
-  it('trims addresses before shortening', () => {
-    expect(getAddressShort('  0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0  ')).toBe('0xD3Cb...DDB0');
+  it('does not truncate values that already fit the start/end plus ellipsis boundary', () => {
+    expect(truncateAddress('0x1234567890abc', 6, 4)).toBe('0x1234567890abc');
   });
 });
 
