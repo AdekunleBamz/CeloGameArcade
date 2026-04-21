@@ -87,9 +87,8 @@ export default function GameArcade() {
         const { sdk } = await import('@farcaster/miniapp-sdk');
         const inMiniApp = await sdk.isInMiniApp();
         setIsInFarcaster(inMiniApp);
-        console.log('Is in Farcaster:', inMiniApp);
       } catch (e) {
-        console.log('Farcaster check failed:', e);
+        console.error('Farcaster environment check failed:', e);
         setIsInFarcaster(false);
       }
     };
