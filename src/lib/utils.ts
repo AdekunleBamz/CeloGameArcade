@@ -37,3 +37,11 @@ export function isPositiveAmount(amount: bigint): boolean {
 export function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value))
 }
+
+/**
+ * Formats a prize amount in USDT for display in the UI.
+ * @param micro - Amount in micro USDT (6 decimals).
+ */
+export function formatPrize(micro: bigint): string {
+  return `${formatTokenAmount(micro, 6)} USDT`
+}
