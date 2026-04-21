@@ -114,3 +114,8 @@ export function scaleBigInt(value: bigint, numerator: number, denominator: numbe
 export function formatPercent(bps: number): string {
   return `${(bps / 100).toFixed(2)}%`;
 }
+
+export function divBigIntSafe(a: bigint, b: bigint): bigint {
+  if (b === 0n) return 0n;
+  return a / b;
+}
