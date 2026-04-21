@@ -54,3 +54,9 @@ export const DIFFICULTY_NAMES: Record<number, string> = {
   [Difficulty.MEDIUM]: 'Medium',
   [Difficulty.HARD]: 'Hard',
 };
+
+export const DIFFICULTY_MULTIPLIERS: Record<number, number> = {
+  [Difficulty.EASY]: 1,
+  [Difficulty.MEDIUM]: 2,
+  [Difficulty.HARD]: 3,
+};
