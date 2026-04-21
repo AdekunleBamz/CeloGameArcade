@@ -117,3 +117,14 @@ export function formatBps(bps: bigint): string {
 export function calcHouseFee(wagerMicro: bigint, feeBps = 500n): bigint {
   return (wagerMicro * feeBps) / 10_000n
 }
+
+/**
+ * Returns the net prize a player receives after house fee.
+ * @param wagerMicro - Wager in micro USDT.
+ * @param multiplierBps - Win multiplier in basis points (e.g. 19500 = 1.95x).
+ * @param feeBps - House fee in basis points.
+ */
+export function calcNetPrize(wagerMicro: bigint, multiplierBps: bigint, feeBps = 500n): bigint {
+  const gross = (wagerMicro * multiplierBps) / 10_000n
+  return gross - calcHouseFee(gross, feeBps)
+}
