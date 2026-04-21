@@ -5,13 +5,14 @@ import { celo } from 'wagmi/chains';
 import { farcasterMiniApp } from '@farcaster/miniapp-wagmi-connector';
 import { injected, walletConnect } from 'wagmi/connectors';
 import { useState, useEffect, type ReactNode } from 'react';
+import { CELO_MAINNET_CHAIN_ID, DEFAULT_CELO_RPC_URL, CELO_EXPLORER_URL } from 'celo-arcade-sdk';
 
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
 
 const config = createConfig({
   chains: [celo],
   transports: {
-    [celo.id]: http('https://forno.celo.org'),
+    [celo.id]: http(DEFAULT_CELO_RPC_URL),
   },
   connectors: [
     farcasterMiniApp(),
