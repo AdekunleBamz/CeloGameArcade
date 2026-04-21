@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "sdk:install": "npm --prefix packages/celo-arcade-sdk ci",
+    "typecheck": "tsc --noEmit",
     "sdk:build": "npm --prefix packages/celo-arcade-sdk run build",
     "sdk:test": "npm --prefix packages/celo-arcade-sdk run test",
     "start": "next start",
