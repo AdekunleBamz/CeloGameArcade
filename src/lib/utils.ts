@@ -138,3 +138,11 @@ export function parseWagerInput(input: string): bigint | null {
   if (!Number.isFinite(parsed) || parsed <= 0) return null
   return BigInt(Math.round(parsed * 1_000_000))
 }
+
+/**
+ * Returns true if the account has any USDT balance.
+ * @param balance - Balance in micro USDT.
+ */
+export function hasBalance(balance: bigint): boolean {
+  return balance > 0n
+}
