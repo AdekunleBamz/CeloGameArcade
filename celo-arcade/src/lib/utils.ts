@@ -34,3 +34,7 @@ export function pluralize(count: number, word: string): string {
 export function buildExplorerLink(address: string): string {
   return `https://explorer.celo.org/mainnet/address/${address}`;
 }
+
+export function buildExplorerTxLink(txHash: string): string {
+  return `https://explorer.celo.org/mainnet/tx/${txHash}`;
+}
