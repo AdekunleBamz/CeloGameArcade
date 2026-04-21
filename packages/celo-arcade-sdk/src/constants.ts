@@ -70,6 +70,7 @@ export const SEASON_DURATION_DAYS = 30;
 export const DEFAULT_GAME_COUNT = Object.keys(GameType).length;
 export const MIN_ENTRY_FEE_STRING = '0.001';
 export const MAX_ENTRY_FEE_STRING = '100';
+export const PRIZE_POOL_SHARE_BPS_DISPLAY = `${(PRIZE_SHARE_BPS / 100).toFixed(0)}%`;
 
 export function getExplorerTxUrl(chainId: number, txHash: string): string {
   const base = chainId === CELO_ALFAJORES_CHAIN_ID ? ALFAJORES_EXPLORER_URL : CELO_EXPLORER_URL;
