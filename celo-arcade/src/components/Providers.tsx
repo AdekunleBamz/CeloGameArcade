@@ -29,7 +29,7 @@ const config = createConfig({
   ],
 });
 
-const CELO_MAINNET_ID = 42220;
+const CELO_MAINNET_ID = CELO_MAINNET_CHAIN_ID;
 
 function NetworkGuard({ children }: { children: ReactNode }) {
   const { isConnected, address } = useAccount();
@@ -64,8 +64,8 @@ function NetworkGuard({ children }: { children: ReactNode }) {
             chainId: '0xA4EC',
             chainName: 'Celo',
             nativeCurrency: { name: 'CELO', symbol: 'CELO', decimals: 18 },
-            rpcUrls: ['https://forno.celo.org'],
-            blockExplorerUrls: ['https://celoscan.io'],
+            rpcUrls: [DEFAULT_CELO_RPC_URL],
+            blockExplorerUrls: [CELO_EXPLORER_URL],
           }],
         });
       } catch (e) {
