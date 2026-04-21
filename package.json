@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "test": "npm run sdk:test",
     "sdk:build": "npm --prefix packages/celo-arcade-sdk run build",
     "sdk:test": "npm --prefix packages/celo-arcade-sdk run test",
     "start": "next start",
