@@ -108,3 +108,12 @@ export function formatBps(bps: bigint): string {
   const frac = (bps % 100n).toString().padStart(2, '0')
   return `${whole}.${frac}%`
 }
+
+/**
+ * Calculates the house fee for a given wager.
+ * @param wagerMicro - Wager in micro USDT.
+ * @param feeBps - Fee in basis points (default 500 = 5%).
+ */
+export function calcHouseFee(wagerMicro: bigint, feeBps = 500n): bigint {
+  return (wagerMicro * feeBps) / 10_000n
+}
