@@ -98,7 +98,7 @@ export function computeFinalScore(rawScore: number, difficulty: number): number 
 }
 
 export function getGameCount(): number {
-  return Object.keys(GAME_TYPE_NAMES).length;
+  return Object.keys(GameType).length;
 }
 
 export function formatCooldownRemaining(secondsLeft: number): string {
