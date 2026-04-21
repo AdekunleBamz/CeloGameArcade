@@ -22,6 +22,9 @@ const isMiniPayProviderAvailable = () => {
   return false;
 };
 
+const DETECTION_INTERVAL_MS = 250;
+const DETECTION_TIMEOUT_MS = 5000;
+
 export function useMiniPay() {
   const { isConnected } = useAccount();
   const { connect, connectors } = useConnect();
