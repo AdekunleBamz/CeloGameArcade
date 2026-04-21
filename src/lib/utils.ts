@@ -73,3 +73,11 @@ export function microToUsdt(micro: bigint): string {
 export function isZeroAddress(addr: string): boolean {
   return addr === '0x0000000000000000000000000000000000000000'
 }
+
+/**
+ * Formats a number with commas as thousands separator.
+ * @param n - The number to format.
+ */
+export function formatWithCommas(n: number): string {
+  return n.toLocaleString()
+}
