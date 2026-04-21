@@ -66,3 +66,13 @@ export const MAX_SCORE = 999_999;
 
 export const CLAIM_COOLDOWN_DAYS = Math.round(CLAIM_COOLDOWN_SECONDS / 86400);
 export const MAX_LEADERBOARD_SIZE = LEADERBOARD_SIZE;
+
+export function getExplorerTxUrl(chainId: number, txHash: string): string {
+  const base = chainId === CELO_ALFAJORES_CHAIN_ID ? ALFAJORES_EXPLORER_URL : CELO_EXPLORER_URL;
+  return `${base}/tx/${txHash}`;
+}
+
+export function getExplorerAddressUrl(chainId: number, address: string): string {
+  const base = chainId === CELO_ALFAJORES_CHAIN_ID ? ALFAJORES_EXPLORER_URL : CELO_EXPLORER_URL;
+  return `${base}/address/${address}`;
+}
