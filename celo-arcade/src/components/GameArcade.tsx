@@ -4,12 +4,10 @@ import { useAccount, useConnect, useDisconnect, useReadContract, useWriteContrac
 import { farcasterMiniApp } from '@farcaster/miniapp-wagmi-connector';
 import { injected, walletConnect } from 'wagmi/connectors';
 import { formatEther, formatUnits } from 'viem';
-import { CONTRACT_ADDRESS, CONTRACT_ABI, GameType, Difficulty, ENTRY_FEE, USDM_TOKEN_ADDRESS, STABLE_TOKEN_DECIMALS, STABLE_TOKEN_SYMBOL, MINIPAY_FEE_CURRENCY } from '@/lib/contract';
+import { CONTRACT_ADDRESS, CONTRACT_ABI, GameType, Difficulty, ENTRY_FEE, USDM_TOKEN_ADDRESS, STABLE_TOKEN_DECIMALS, STABLE_TOKEN_SYMBOL, MINIPAY_FEE_CURRENCY, MINIPAY_ADD_CASH_URL, MENTO_SWAP_URL } from '@/lib/contract';
 import { useMiniPay } from '@/hooks/useMiniPay';
 
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
-const MINI_PAY_ADD_CASH_URL = 'https://minipay.opera.com/add_cash';
-const MENTO_SWAP_URL = 'https://app.mento.org';
 const MINIPAY_GAS_TOKEN_SYMBOL = 'USDm';
 
 interface LeaderboardEntry { player: string; totalScore: bigint; }
@@ -531,7 +529,7 @@ export default function GameArcade() {
           <p style={{ color: '#888', fontSize: '14px', margin: 0 }}>{hideConnectWalletButton ? 'MiniPay detected. Connecting wallet automatically...' : 'Connect your wallet to start playing!'}</p>
           {hideConnectWalletButton && (
             <a
-              href={MINI_PAY_ADD_CASH_URL}
+              href={MINIPAY_ADD_CASH_URL}
               style={{ display: 'inline-block', marginTop: '12px', padding: '10px 14px', borderRadius: '12px', background: 'linear-gradient(135deg,#ffd700,#ff9800)', color: '#111', fontSize: '12px', fontWeight: '700', textDecoration: 'none' }}
             >
               Add cash in MiniPay
