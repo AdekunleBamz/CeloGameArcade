@@ -17,11 +17,13 @@ import {
   DEFAULT_STABLE_TOKEN,
   ENTRY_FEE,
   formatTokenUnits,
+  parseTokenUnits,
 } from 'celo-arcade-sdk';
 
 console.log(DEFAULT_ARCADE_CONFIG.contractAddress);
 console.log(DEFAULT_STABLE_TOKEN.symbol);
 console.log(formatTokenUnits(ENTRY_FEE, DEFAULT_STABLE_TOKEN.decimals));
+console.log(parseTokenUnits("1.5", DEFAULT_STABLE_TOKEN.decimals));
 console.log(CONTRACT_ABI.length);
 ```
 
