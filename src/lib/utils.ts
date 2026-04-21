@@ -71,7 +71,7 @@ export function microToUsdt(micro: bigint): string {
  * @param addr - EVM address string to check.
  */
 export function isZeroAddress(addr: string): boolean {
-  return addr === '0x0000000000000000000000000000000000000000'
+  return addr.trim().toLowerCase() === '0x0000000000000000000000000000000000000000'
 }
 
 /**
