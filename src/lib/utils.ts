@@ -78,7 +78,7 @@ export function isZeroAddress(addr: string): boolean {
  * Formats a number with commas as thousands separator.
  * @param n - The number to format.
  */
-export function formatWithCommas(n: number): string {
+export function formatWithCommas(n: number | bigint): string {
   return n.toLocaleString()
 }
 
