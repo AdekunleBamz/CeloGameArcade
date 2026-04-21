@@ -45,3 +45,13 @@ export function clamp(value: number, min: number, max: number): number {
 export function formatPrize(micro: bigint): string {
   return `${formatTokenAmount(micro, 6)} USDT`
 }
+
+/**
+ * Returns true if the given amount is within the allowed wager range.
+ * @param micro - Amount in micro USDT.
+ */
+export function isValidWager(micro: bigint): boolean {
+  const MIN = 10_000n
+  const MAX = 100_000_000n
+  return micro >= MIN && micro <= MAX
+}
