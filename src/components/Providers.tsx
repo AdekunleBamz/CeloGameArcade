@@ -38,6 +38,7 @@ const NETWORK_NAMES: Record<number, string> = {
   137: 'Polygon',
   8453: 'Base',
   42161: 'Arbitrum',
+  42220: 'Celo',
   44787: 'Celo Alfajores',
 };
 
