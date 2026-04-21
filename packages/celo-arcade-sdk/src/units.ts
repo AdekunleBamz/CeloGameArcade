@@ -75,3 +75,7 @@ export function tryParseTokenUnits(
     return null;
   }
 }
+
+export function isZeroAmount(value: bigint): boolean {
+  return value === 0n;
+}
