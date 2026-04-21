@@ -2,8 +2,9 @@
   "name": "celo-game-arcade",
   "version": "1.0.0",
   "private": true,
-  "engines": {
-    "node": ">=18.0.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdekunleBamz/CeloGameArcade.git"
   },
   "scripts": {
     "dev": "next dev",
