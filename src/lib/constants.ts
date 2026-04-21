@@ -34,3 +34,6 @@ export const TOAST_ERROR_DURATION_MS = 6_000
 
 /** Zero address used as a sentinel for uninitialized addresses. */
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000' as const
+
+/** Delay (ms) before retrying a failed RPC call. */
+export const RPC_RETRY_DELAY_MS = 2_000
