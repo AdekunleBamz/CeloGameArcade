@@ -31,6 +31,10 @@ export const MINIPAY_FEE_CURRENCY = (
 // Backward-compatible export name used across the app.
 export const USDM_TOKEN_ADDRESS = STABLE_TOKEN_ADDRESS;
 
+// External app URLs
+export const MINIPAY_ADD_CASH_URL = 'https://minipay.opera.com/add_cash';
+export const MENTO_SWAP_URL = 'https://app.mento.org';
+
 // Frontend fallback only; app now reads ENTRY_FEE from contract at runtime.
 export const ENTRY_FEE = parseUnits('0.01', STABLE_TOKEN_DECIMALS);
 
