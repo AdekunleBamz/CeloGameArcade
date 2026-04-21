@@ -92,6 +92,11 @@ export function isValidDifficulty(value: number): boolean {
   return Object.values(Difficulty).includes(value as typeof Difficulty[keyof typeof Difficulty]);
 }
 
+export function computeFinalScore(rawScore: number, difficulty: number): number {
+  const multiplier = getDifficultyMultiplier(difficulty);
+  return Math.min(999_999, Math.trunc(rawScore * multiplier));
+}
+
 export const CONTRACT_ABI = [
   { inputs: [{ internalType: 'address', name: 'usdmTokenAddress', type: 'address' }, { internalType: 'uint256', name: 'initialEntryFee', type: 'uint256' }], stateMutability: 'nonpayable', type: 'constructor' },
   { anonymous: false, inputs: [{ indexed: true, name: 'player', type: 'address' }, { indexed: false, name: 'deposited', type: 'uint256' }, { indexed: false, name: 'toPrizePool', type: 'uint256' }, { indexed: false, name: 'season', type: 'uint256' }], name: 'AccessGranted', type: 'event' },
