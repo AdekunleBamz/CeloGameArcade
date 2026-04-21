@@ -64,3 +64,6 @@ export const MAX_PENDING_GAMES = 3
 
 /** Default page size for paginated game history queries. */
 export const DEFAULT_PAGE_SIZE = 10
+
+/** Debounce delay in ms applied to user input handlers. */
+export const INPUT_DEBOUNCE_MS = 300
