@@ -27,3 +27,13 @@ export function shortAddress(addr: string): string {
 export function isPositiveAmount(amount: bigint): boolean {
   return amount > 0n
 }
+
+/**
+ * Clamps a number between min and max values (inclusive).
+ * @param value - The value to clamp.
+ * @param min - Minimum allowed value.
+ * @param max - Maximum allowed value.
+ */
+export function clamp(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value))
+}
