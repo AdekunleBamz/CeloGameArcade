@@ -110,3 +110,7 @@ export function scaleBigInt(value: bigint, numerator: number, denominator: numbe
   if (denominator === 0) throw new Error('scaleBigInt: denominator cannot be zero');
   return (value * BigInt(numerator)) / BigInt(denominator);
 }
+
+export function formatPercent(bps: number): string {
+  return `${(bps / 100).toFixed(2)}%`;
+}
