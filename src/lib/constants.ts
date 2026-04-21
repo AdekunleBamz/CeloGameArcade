@@ -37,3 +37,6 @@ export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000' as cons
 
 /** Delay (ms) before retrying a failed RPC call. */
 export const RPC_RETRY_DELAY_MS = 2_000
+
+/** Maximum number of RPC retry attempts before giving up. */
+export const MAX_RPC_RETRIES = 5
