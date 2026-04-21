@@ -70,6 +70,16 @@ export function getDifficultyName(difficulty: number): string {
   return DIFFICULTY_LABEL[difficulty] ?? 'Unknown';
 }
 
+const DIFFICULTY_MULTIPLIER: Record<number, number> = {
+  [Difficulty.EASY]: 1,
+  [Difficulty.MEDIUM]: 2,
+  [Difficulty.HARD]: 3,
+};
+
+export function getDifficultyMultiplier(difficulty: number): number {
+  return DIFFICULTY_MULTIPLIER[difficulty] ?? 1;
+}
+
 export const CONTRACT_ABI = [
   { inputs: [{ internalType: 'address', name: 'usdmTokenAddress', type: 'address' }, { internalType: 'uint256', name: 'initialEntryFee', type: 'uint256' }], stateMutability: 'nonpayable', type: 'constructor' },
   { anonymous: false, inputs: [{ indexed: true, name: 'player', type: 'address' }, { indexed: false, name: 'deposited', type: 'uint256' }, { indexed: false, name: 'toPrizePool', type: 'uint256' }, { indexed: false, name: 'season', type: 'uint256' }], name: 'AccessGranted', type: 'event' },
