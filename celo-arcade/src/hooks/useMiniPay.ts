@@ -39,10 +39,10 @@ export function useMiniPay() {
     detectMiniPay();
 
     // Some injected wallets initialize shortly after page load.
-    const intervalId = window.setInterval(detectMiniPay, 250);
+    const intervalId = window.setInterval(detectMiniPay, DETECTION_INTERVAL_MS);
     const timeoutId = window.setTimeout(() => {
       window.clearInterval(intervalId);
-    }, 5000);
+    }, DETECTION_TIMEOUT_MS);
 
     window.addEventListener('ethereum#initialized', detectMiniPay as EventListener);
 
