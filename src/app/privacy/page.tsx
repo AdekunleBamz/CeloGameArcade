@@ -29,7 +29,7 @@ export default function PrivacyPage() {
         <h1 style={{ marginTop: 0 }}>Privacy Policy</h1>
         <p>Effective date: April 2, 2026</p>
         <p>
-          Celo Arcade is a non-custodial MiniApp. We do not hold user funds or private keys. Wallet actions are
+          Celo Game Arcade is a non-custodial MiniApp. We do not hold user funds or private keys. Wallet actions are
           executed through your connected wallet (for example MiniPay).
         </p>
         <h2>What We Collect</h2>
