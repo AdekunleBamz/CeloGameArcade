@@ -156,3 +156,16 @@ export function hasBalance(balance: bigint): boolean {
 export function pluralize(count: number, singular: string, plural = `${singular}s`): string {
   return count === 1 ? singular : plural
 }
+
+/**
+ * Returns a debounced version of fn that fires after delay ms.
+ * @param fn - The function to debounce.
+ * @param delay - Delay in milliseconds.
+ */
+export function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: number): (...args: Parameters<T>) => void {
+  let timer: ReturnType<typeof setTimeout> | null = null
+  return (...args: Parameters<T>) => {
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(() => fn(...args), delay)
+  }
+}
