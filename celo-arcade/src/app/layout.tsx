@@ -1,7 +1,22 @@
 import type { Metadata } from 'next';
 import { Providers } from '@/components/Providers';
 import './globals.css';
-export const metadata: Metadata = { title: 'Celo Game Arcade', description: 'Play games and win CELO!' };
+export const metadata: Metadata = {
+  title: 'Celo Game Arcade',
+  description: 'Play games, climb the leaderboard, and win USDm prizes on Celo!',
+  keywords: ['celo', 'web3', 'games', 'arcade', 'minipay', 'USDm', 'crypto', 'prizes'],
+  openGraph: {
+    type: 'website',
+    title: 'Celo Game Arcade',
+    description: 'Play games, climb the leaderboard, and win USDm prizes on Celo!',
+    siteName: 'Celo Game Arcade',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Celo Game Arcade',
+    description: 'Play games, climb the leaderboard, and win USDm prizes on Celo!',
+  },
+};
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
