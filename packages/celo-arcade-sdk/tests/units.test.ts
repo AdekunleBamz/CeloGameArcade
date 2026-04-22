@@ -254,4 +254,8 @@ describe('units clampBigInt', () => {
   it('lowers values above the maximum', () => {
     expect(clampBigInt(12n, 0n, 10n)).toBe(10n);
   });
+
+  it('keeps values already inside bounds', () => {
+    expect(clampBigInt(5n, 0n, 10n)).toBe(5n);
+  });
 });
