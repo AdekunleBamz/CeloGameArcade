@@ -182,4 +182,8 @@ describe('units clampDecimals', () => {
   it('uses the minimum for non-finite decimals', () => {
     expect(clampDecimals(Number.NaN)).toBe(0);
   });
+
+  it('honors custom decimal bounds', () => {
+    expect(clampDecimals(2, 4, 8)).toBe(4);
+  });
 });
