@@ -178,4 +178,8 @@ describe('units clampDecimals', () => {
   it('clamps decimals above the maximum', () => {
     expect(clampDecimals(30)).toBe(18);
   });
+
+  it('uses the minimum for non-finite decimals', () => {
+    expect(clampDecimals(Number.NaN)).toBe(0);
+  });
 });
