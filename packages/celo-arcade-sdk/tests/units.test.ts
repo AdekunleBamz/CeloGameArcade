@@ -51,6 +51,10 @@ describe('units parseTokenUnits', () => {
     expect(parseTokenUnits('12', 0)).toBe(12n);
   });
 
+  it('preserves leading zero amounts during parsing', () => {
+    expect(parseTokenUnits('0001.50', 6)).toBe(1500000n);
+  });
+
   it('trims surrounding whitespace before parsing', () => {
     expect(parseTokenUnits(' 1.25 ', 6)).toBe(1250000n);
   });
