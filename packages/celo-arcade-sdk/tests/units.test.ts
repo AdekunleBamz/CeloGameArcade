@@ -85,6 +85,10 @@ describe('units parseTokenUnits', () => {
     expect(() => parseTokenUnits('1,000', 6)).toThrow('Invalid token amount: 1,000');
   });
 
+  it('rejects blank amount strings', () => {
+    expect(() => parseTokenUnits('   ', 6)).toThrow('Invalid token amount:');
+  });
+
   it('rejects negative bigint values', () => {
     expect(() => parseTokenUnits(-1n, 6)).toThrow('Invalid token amount: -1');
   });
