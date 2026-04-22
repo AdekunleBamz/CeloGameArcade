@@ -46,6 +46,12 @@ describe('addresses assertAddress', () => {
   });
 });
 
+describe('addresses isZeroAddress', () => {
+  it('detects zero addresses with whitespace and casing', () => {
+    expect(isZeroAddress('  0X0000000000000000000000000000000000000000  ')).toBe(true);
+  });
+});
+
 describe('config createArcadeConfig', () => {
   it('uses the default entry fee when none is provided', () => {
     expect(createArcadeConfig().entryFee).toBe(ENTRY_FEE);
