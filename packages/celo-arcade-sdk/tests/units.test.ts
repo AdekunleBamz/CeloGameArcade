@@ -133,3 +133,9 @@ describe('units formatTokenUnits', () => {
     expect(formatTokenUnits(-250000n, 6)).toBe('-0.25');
   });
 });
+
+describe('units toTokenDivisor', () => {
+  it('returns one for zero-decimal tokens', () => {
+    expect(toTokenDivisor(0)).toBe(1n);
+  });
+});
