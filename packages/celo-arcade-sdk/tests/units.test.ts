@@ -156,4 +156,8 @@ describe('units isValidTokenAmountString', () => {
   it('trims token amount text before validating', () => {
     expect(isValidTokenAmountString(' 1.25 ')).toBe(true);
   });
+
+  it('rejects negative token amount text', () => {
+    expect(isValidTokenAmountString('-1')).toBe(false);
+  });
 });
