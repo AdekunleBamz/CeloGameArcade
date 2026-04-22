@@ -54,6 +54,10 @@ describe('constants GameType', () => {
   it('includes five supported game types', () => {
     expect(Object.keys(GameType)).toHaveLength(5);
   });
+
+  it('labels snake game types for display', () => {
+    expect(GAME_TYPE_NAMES[GameType.SNAKE]).toBe('Snake');
+  });
 });
 
 describe('constants Difficulty', () => {
