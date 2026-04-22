@@ -25,6 +25,10 @@ describe('units assertDecimals', () => {
     expect(() => assertDecimals(0)).not.toThrow();
   });
 
+  it('accepts eighteen token decimals', () => {
+    expect(() => assertDecimals(18)).not.toThrow();
+  });
+
   it('rejects negative token decimals', () => {
     expect(() => assertDecimals(-1)).toThrow('Invalid token decimals: -1');
   });
