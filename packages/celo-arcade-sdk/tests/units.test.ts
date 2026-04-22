@@ -291,3 +291,9 @@ describe('units scaleBigInt', () => {
     expect(() => scaleBigInt(100n, 1, 0)).toThrow('scaleBigInt: denominator cannot be zero');
   });
 });
+
+describe('units formatPercent', () => {
+  it('formats basis points as percentages', () => {
+    expect(formatPercent(250)).toBe('2.50%');
+  });
+});
