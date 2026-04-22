@@ -196,4 +196,8 @@ describe('units parseIntegerUnits', () => {
   it('parses integer numbers', () => {
     expect(parseIntegerUnits(456)).toBe(456n);
   });
+
+  it('parses integer bigints', () => {
+    expect(parseIntegerUnits(789n)).toBe(789n);
+  });
 });
