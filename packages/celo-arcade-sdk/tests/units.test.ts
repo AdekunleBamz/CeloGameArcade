@@ -240,4 +240,8 @@ describe('units isPositiveAmount', () => {
   it('accepts positive amounts', () => {
     expect(isPositiveAmount(1n)).toBe(true);
   });
+
+  it('rejects zero as a positive amount', () => {
+    expect(isPositiveAmount(0n)).toBe(false);
+  });
 });
