@@ -214,4 +214,8 @@ describe('units tryParseTokenUnits', () => {
   it('returns parsed units for valid token amounts', () => {
     expect(tryParseTokenUnits('2.5', 6)).toBe(2_500_000n);
   });
+
+  it('returns null for invalid token amounts', () => {
+    expect(tryParseTokenUnits('bad', 6)).toBeNull();
+  });
 });
