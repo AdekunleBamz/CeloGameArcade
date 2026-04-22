@@ -206,3 +206,9 @@ describe('config createArcadeConfig', () => {
     ).toBe(0);
   });
 });
+
+describe('config isArcadeConfig', () => {
+  it('rejects null values', () => {
+    expect(isArcadeConfig(null)).toBe(false);
+  });
+});
