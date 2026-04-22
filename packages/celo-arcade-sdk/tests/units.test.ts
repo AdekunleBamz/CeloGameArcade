@@ -200,4 +200,8 @@ describe('units parseIntegerUnits', () => {
   it('parses integer bigints', () => {
     expect(parseIntegerUnits(789n)).toBe(789n);
   });
+
+  it('rejects decimal integer unit strings', () => {
+    expect(() => parseIntegerUnits('1.5')).toThrow('Invalid integer token amount: 1.5');
+  });
 });
