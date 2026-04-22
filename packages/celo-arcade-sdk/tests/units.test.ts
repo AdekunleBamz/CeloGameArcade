@@ -170,4 +170,8 @@ describe('units clampDecimals', () => {
   it('truncates fractional decimal values', () => {
     expect(clampDecimals(6.9)).toBe(6);
   });
+
+  it('clamps decimals below the minimum', () => {
+    expect(clampDecimals(-2)).toBe(0);
+  });
 });
