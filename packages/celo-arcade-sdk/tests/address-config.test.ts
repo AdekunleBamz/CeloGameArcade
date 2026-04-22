@@ -87,6 +87,10 @@ describe('addresses isHexString', () => {
   it('accepts prefixed hexadecimal strings', () => {
     expect(isHexString('0xabc123')).toBe(true);
   });
+
+  it('rejects empty hex payloads', () => {
+    expect(isHexString('0x')).toBe(false);
+  });
 });
 
 describe('config createArcadeConfig', () => {
