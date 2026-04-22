@@ -148,4 +148,8 @@ describe('units isValidTokenAmountString', () => {
   it('accepts whole-number token amount text', () => {
     expect(isValidTokenAmountString('100')).toBe(true);
   });
+
+  it('accepts leading decimal token amount text', () => {
+    expect(isValidTokenAmountString('.25')).toBe(true);
+  });
 });
