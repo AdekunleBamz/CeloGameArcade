@@ -83,6 +83,12 @@ describe('addresses parseAddress', () => {
   });
 });
 
+describe('addresses isHexString', () => {
+  it('accepts prefixed hexadecimal strings', () => {
+    expect(isHexString('0xabc123')).toBe(true);
+  });
+});
+
 describe('config createArcadeConfig', () => {
   it('uses the default entry fee when none is provided', () => {
     expect(createArcadeConfig().entryFee).toBe(ENTRY_FEE);
