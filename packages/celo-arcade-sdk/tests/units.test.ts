@@ -160,4 +160,8 @@ describe('units isValidTokenAmountString', () => {
   it('rejects negative token amount text', () => {
     expect(isValidTokenAmountString('-1')).toBe(false);
   });
+
+  it('rejects scientific notation amount text', () => {
+    expect(isValidTokenAmountString('1e2')).toBe(false);
+  });
 });
