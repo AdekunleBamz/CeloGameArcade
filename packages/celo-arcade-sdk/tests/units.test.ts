@@ -245,3 +245,9 @@ describe('units isPositiveAmount', () => {
     expect(isPositiveAmount(0n)).toBe(false);
   });
 });
+
+describe('units clampBigInt', () => {
+  it('raises values below the minimum', () => {
+    expect(clampBigInt(-2n, 0n, 10n)).toBe(0n);
+  });
+});
