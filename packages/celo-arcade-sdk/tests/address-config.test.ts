@@ -105,6 +105,12 @@ describe('addresses truncateAddress', () => {
   });
 });
 
+describe('addresses getAddressShort', () => {
+  it('uses the standard short address format', () => {
+    expect(getAddressShort('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0')).toBe('0xD3Cb...DDB0');
+  });
+});
+
 describe('config createArcadeConfig', () => {
   it('uses the default entry fee when none is provided', () => {
     expect(createArcadeConfig().entryFee).toBe(ENTRY_FEE);
