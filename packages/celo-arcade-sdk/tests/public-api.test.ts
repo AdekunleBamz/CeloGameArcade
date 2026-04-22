@@ -88,6 +88,12 @@ describe('constants score bounds', () => {
   });
 });
 
+describe('constants explorer urls', () => {
+  it('builds Alfajores transaction links', () => {
+    expect(getExplorerTxUrl(44787, '0xabc')).toBe('https://alfajores.celoscan.io/tx/0xabc');
+  });
+});
+
 describe('events ContractEvent', () => {
   it('exposes the access granted event name', () => {
     expect(ContractEvent.ACCESS_GRANTED).toBe('AccessGranted');
