@@ -221,3 +221,9 @@ describe('config isArcadeConfig', () => {
     expect(isArcadeConfig(partialConfig)).toBe(false);
   });
 });
+
+describe('config getDefaultEntryFee', () => {
+  it('returns the default six-decimal entry fee', () => {
+    expect(getDefaultEntryFee()).toBe(parseTokenUnits('0.01', 6));
+  });
+});
