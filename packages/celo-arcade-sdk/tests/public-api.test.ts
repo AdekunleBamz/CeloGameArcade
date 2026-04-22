@@ -29,6 +29,10 @@ describe('constants cooldown', () => {
   it('uses a seven-day prize claim cooldown window', () => {
     expect(CLAIM_COOLDOWN_SECONDS).toBe(7 * 24 * 60 * 60);
   });
+
+  it('keeps cooldowns aligned to whole days', () => {
+    expect(CLAIM_COOLDOWN_SECONDS % 86_400).toBe(0);
+  });
 });
 
 describe('constants supported chains', () => {
