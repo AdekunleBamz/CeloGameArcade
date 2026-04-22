@@ -60,6 +60,17 @@ describe('addresses normalizeAddress', () => {
   });
 });
 
+describe('addresses isSameAddress', () => {
+  it('matches addresses ignoring casing', () => {
+    expect(
+      isSameAddress(
+        '0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0',
+        '0xd3cb0357edf92e1056cfbc3dc5cc1da52846ddb0',
+      ),
+    ).toBe(true);
+  });
+});
+
 describe('config createArcadeConfig', () => {
   it('uses the default entry fee when none is provided', () => {
     expect(createArcadeConfig().entryFee).toBe(ENTRY_FEE);
