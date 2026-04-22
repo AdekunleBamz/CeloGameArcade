@@ -235,3 +235,9 @@ describe('units formatTokenDisplay', () => {
     expect(formatTokenDisplay(1_250_000n, 6, 'USDT')).toBe('1.25 USDT');
   });
 });
+
+describe('units isPositiveAmount', () => {
+  it('accepts positive amounts', () => {
+    expect(isPositiveAmount(1n)).toBe(true);
+  });
+});
