@@ -3,9 +3,18 @@ import {
   BASIS_POINTS,
   CLAIM_COOLDOWN_SECONDS,
   CREATOR_SHARE_BPS,
+  DEFAULT_STABLE_TOKEN,
   Difficulty,
+  DIFFICULTY_MULTIPLIERS,
+  DIFFICULTY_NAMES,
+  GAME_TYPE_NAMES,
   GameType,
+  MAX_SCORE,
+  MIN_SCORE,
   PRIZE_SHARE_BPS,
+  SUPPORTED_CHAIN_IDS,
+  getExplorerAddressUrl,
+  getExplorerTxUrl,
 } from '../src/constants';
 import { ContractEvent } from '../src/events';
 import { ReadMethod, WriteMethod } from '../src/methods';
@@ -19,6 +28,12 @@ describe('constants prize shares', () => {
 describe('constants cooldown', () => {
   it('uses a seven-day prize claim cooldown window', () => {
     expect(CLAIM_COOLDOWN_SECONDS).toBe(7 * 24 * 60 * 60);
+  });
+});
+
+describe('constants supported chains', () => {
+  it('includes Celo mainnet and Alfajores', () => {
+    expect(SUPPORTED_CHAIN_IDS).toEqual([42220, 44787]);
   });
 });
 
