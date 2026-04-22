@@ -52,6 +52,14 @@ describe('addresses isZeroAddress', () => {
   });
 });
 
+describe('addresses normalizeAddress', () => {
+  it('trims and lowercases addresses', () => {
+    expect(normalizeAddress('  0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0  ')).toBe(
+      '0xd3cb0357edf92e1056cfbc3dc5cc1da52846ddb0',
+    );
+  });
+});
+
 describe('config createArcadeConfig', () => {
   it('uses the default entry fee when none is provided', () => {
     expect(createArcadeConfig().entryFee).toBe(ENTRY_FEE);
