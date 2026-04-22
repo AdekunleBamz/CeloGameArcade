@@ -211,4 +211,8 @@ describe('config isArcadeConfig', () => {
   it('rejects null values', () => {
     expect(isArcadeConfig(null)).toBe(false);
   });
+
+  it('accepts created arcade configs', () => {
+    expect(isArcadeConfig(createArcadeConfig())).toBe(true);
+  });
 });
