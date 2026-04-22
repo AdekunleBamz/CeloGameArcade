@@ -143,3 +143,9 @@ describe('units toTokenDivisor', () => {
     expect(toTokenDivisor(6)).toBe(1_000_000n);
   });
 });
+
+describe('units isValidTokenAmountString', () => {
+  it('accepts whole-number token amount text', () => {
+    expect(isValidTokenAmountString('100')).toBe(true);
+  });
+});
