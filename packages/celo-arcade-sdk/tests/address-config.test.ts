@@ -226,4 +226,8 @@ describe('config getDefaultEntryFee', () => {
   it('returns the default six-decimal entry fee', () => {
     expect(getDefaultEntryFee()).toBe(parseTokenUnits('0.01', 6));
   });
+
+  it('returns default entry fees for custom decimals', () => {
+    expect(getDefaultEntryFee(18)).toBe(parseTokenUnits('0.01', 18));
+  });
 });
