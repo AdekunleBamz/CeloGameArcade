@@ -125,6 +125,10 @@ describe('units formatTokenUnits', () => {
     expect(formatTokenUnits(1234000n, 6)).toBe('1.234');
   });
 
+  it('formats tiny fractional values without trimming significant zeros', () => {
+    expect(formatTokenUnits(1n, 6)).toBe('0.000001');
+  });
+
   it('preserves negative signs when formatting', () => {
     expect(formatTokenUnits(-250000n, 6)).toBe('-0.25');
   });
