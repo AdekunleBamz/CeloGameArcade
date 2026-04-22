@@ -72,6 +72,10 @@ describe('constants Difficulty', () => {
   it('labels medium difficulty for display', () => {
     expect(DIFFICULTY_NAMES[Difficulty.MEDIUM]).toBe('Medium');
   });
+
+  it('exposes hard difficulty multipliers', () => {
+    expect(DIFFICULTY_MULTIPLIERS[Difficulty.HARD]).toBe(3);
+  });
 });
 
 describe('events ContractEvent', () => {
