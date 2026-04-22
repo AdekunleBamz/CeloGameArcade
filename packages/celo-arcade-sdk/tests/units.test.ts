@@ -109,6 +109,10 @@ describe('units parseTokenUnits', () => {
 });
 
 describe('units formatTokenUnits', () => {
+  it('formats zero values with token decimals', () => {
+    expect(formatTokenUnits(0n, 6)).toBe('0');
+  });
+
   it('formats whole numbers when decimals are zero', () => {
     expect(formatTokenUnits(123n, 0)).toBe('123');
   });
