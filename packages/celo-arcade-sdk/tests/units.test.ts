@@ -265,3 +265,9 @@ describe('units addBigInt', () => {
     expect(addBigInt(2n, 3n)).toBe(5n);
   });
 });
+
+describe('units subBigIntSafe', () => {
+  it('subtracts when the result stays positive', () => {
+    expect(subBigIntSafe(5n, 3n)).toBe(2n);
+  });
+});
