@@ -187,3 +187,9 @@ describe('units clampDecimals', () => {
     expect(clampDecimals(2, 4, 8)).toBe(4);
   });
 });
+
+describe('units parseIntegerUnits', () => {
+  it('parses integer strings', () => {
+    expect(parseIntegerUnits('123')).toBe(123n);
+  });
+});
