@@ -215,4 +215,9 @@ describe('config isArcadeConfig', () => {
   it('accepts created arcade configs', () => {
     expect(isArcadeConfig(createArcadeConfig())).toBe(true);
   });
+
+  it('rejects config-like objects missing entry fees', () => {
+    const { entryFee: _entryFee, ...partialConfig } = createArcadeConfig();
+    expect(isArcadeConfig(partialConfig)).toBe(false);
+  });
 });
