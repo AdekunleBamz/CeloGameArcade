@@ -236,4 +236,8 @@ describe('config resolveStableTokenSymbol', () => {
   it('trims configured symbols', () => {
     expect(resolveStableTokenSymbol(' cUSD ')).toBe('cUSD');
   });
+
+  it('falls back when symbols are blank', () => {
+    expect(resolveStableTokenSymbol('   ')).toBe(DEFAULT_STABLE_TOKEN_SYMBOL);
+  });
 });
