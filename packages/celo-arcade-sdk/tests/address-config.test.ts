@@ -231,3 +231,9 @@ describe('config getDefaultEntryFee', () => {
     expect(getDefaultEntryFee(18)).toBe(parseTokenUnits('0.01', 18));
   });
 });
+
+describe('config resolveStableTokenSymbol', () => {
+  it('trims configured symbols', () => {
+    expect(resolveStableTokenSymbol(' cUSD ')).toBe('cUSD');
+  });
+});
