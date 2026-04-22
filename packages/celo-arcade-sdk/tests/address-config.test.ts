@@ -1,7 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { assertAddress, isAddress } from '../src/addresses';
+import {
+  assertAddress,
+  getAddressShort,
+  isAddress,
+  isHexString,
+  isSameAddress,
+  isZeroAddress,
+  normalizeAddress,
+  parseAddress,
+  truncateAddress,
+} from '../src/addresses';
 import { DEFAULT_STABLE_TOKEN_SYMBOL, ENTRY_FEE } from '../src/constants';
-import { createArcadeConfig } from '../src/config';
+import { createArcadeConfig, getDefaultEntryFee, isArcadeConfig, resolveStableTokenSymbol } from '../src/config';
 import { parseTokenUnits } from '../src/units';
 
 describe('addresses isAddress', () => {
@@ -15,6 +25,10 @@ describe('addresses isAddress', () => {
 
   it('accepts valid addresses with surrounding whitespace', () => {
     expect(isAddress(' 0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0 ')).toBe(true);
+  });
+
+  it('rejects addresses with uppercase prefixes', () => {
+    expect(isAddress('0XD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0')).toBe(false);
   });
 });
 
