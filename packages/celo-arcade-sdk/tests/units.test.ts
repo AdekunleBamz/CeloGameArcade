@@ -281,3 +281,9 @@ describe('units mulBigIntBps', () => {
     expect(mulBigIntBps(1_000n, 2500)).toBe(250n);
   });
 });
+
+describe('units scaleBigInt', () => {
+  it('scales bigint values by a fraction', () => {
+    expect(scaleBigInt(100n, 3, 2)).toBe(150n);
+  });
+});
