@@ -47,6 +47,10 @@ describe('units parseTokenUnits', () => {
     expect(parseTokenUnits('0', 6)).toBe(0n);
   });
 
+  it('parses whole amounts when decimals are zero', () => {
+    expect(parseTokenUnits('12', 0)).toBe(12n);
+  });
+
   it('trims surrounding whitespace before parsing', () => {
     expect(parseTokenUnits(' 1.25 ', 6)).toBe(1250000n);
   });
