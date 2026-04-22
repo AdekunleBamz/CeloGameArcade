@@ -209,3 +209,9 @@ describe('units parseIntegerUnits', () => {
     expect(() => parseIntegerUnits('-1')).toThrow('Invalid integer token amount: -1');
   });
 });
+
+describe('units tryParseTokenUnits', () => {
+  it('returns parsed units for valid token amounts', () => {
+    expect(tryParseTokenUnits('2.5', 6)).toBe(2_500_000n);
+  });
+});
