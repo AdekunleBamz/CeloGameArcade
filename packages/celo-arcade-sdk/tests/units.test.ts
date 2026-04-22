@@ -229,3 +229,9 @@ describe('units isZeroAmount', () => {
     expect(isZeroAmount(1n)).toBe(false);
   });
 });
+
+describe('units formatTokenDisplay', () => {
+  it('appends token symbols to formatted amounts', () => {
+    expect(formatTokenDisplay(1_250_000n, 6, 'USDT')).toBe('1.25 USDT');
+  });
+});
