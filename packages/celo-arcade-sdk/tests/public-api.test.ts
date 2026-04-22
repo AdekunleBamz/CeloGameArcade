@@ -68,6 +68,10 @@ describe('constants Difficulty', () => {
   it('keeps hard mapped to difficulty two', () => {
     expect(Difficulty.HARD).toBe(2);
   });
+
+  it('labels medium difficulty for display', () => {
+    expect(DIFFICULTY_NAMES[Difficulty.MEDIUM]).toBe('Medium');
+  });
 });
 
 describe('events ContractEvent', () => {
