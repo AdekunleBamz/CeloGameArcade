@@ -75,6 +75,14 @@ describe('addresses isSameAddress', () => {
   });
 });
 
+describe('addresses parseAddress', () => {
+  it('trims valid parsed addresses', () => {
+    expect(parseAddress('  0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0  ')).toBe(
+      '0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0',
+    );
+  });
+});
+
 describe('config createArcadeConfig', () => {
   it('uses the default entry fee when none is provided', () => {
     expect(createArcadeConfig().entryFee).toBe(ENTRY_FEE);
