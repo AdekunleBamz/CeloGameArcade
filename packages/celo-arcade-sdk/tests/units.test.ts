@@ -224,4 +224,8 @@ describe('units isZeroAmount', () => {
   it('detects zero amounts', () => {
     expect(isZeroAmount(0n)).toBe(true);
   });
+
+  it('rejects non-zero amounts', () => {
+    expect(isZeroAmount(1n)).toBe(false);
+  });
 });
