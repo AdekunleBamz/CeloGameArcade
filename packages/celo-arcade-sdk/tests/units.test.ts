@@ -297,3 +297,9 @@ describe('units formatPercent', () => {
     expect(formatPercent(250)).toBe('2.50%');
   });
 });
+
+describe('units divBigIntSafe', () => {
+  it('returns zero when dividing by zero', () => {
+    expect(divBigIntSafe(100n, 0n)).toBe(0n);
+  });
+});
