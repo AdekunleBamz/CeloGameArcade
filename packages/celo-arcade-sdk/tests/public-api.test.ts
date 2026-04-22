@@ -78,6 +78,12 @@ describe('constants Difficulty', () => {
   });
 });
 
+describe('constants score bounds', () => {
+  it('keeps the maximum score above the minimum score', () => {
+    expect(MAX_SCORE).toBeGreaterThan(MIN_SCORE);
+  });
+});
+
 describe('events ContractEvent', () => {
   it('exposes the access granted event name', () => {
     expect(ContractEvent.ACCESS_GRANTED).toBe('AccessGranted');
