@@ -138,4 +138,8 @@ describe('units toTokenDivisor', () => {
   it('returns one for zero-decimal tokens', () => {
     expect(toTokenDivisor(0)).toBe(1n);
   });
+
+  it('returns a million for six-decimal tokens', () => {
+    expect(toTokenDivisor(6)).toBe(1_000_000n);
+  });
 });
