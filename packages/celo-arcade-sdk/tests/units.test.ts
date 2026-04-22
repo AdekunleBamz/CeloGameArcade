@@ -165,3 +165,9 @@ describe('units isValidTokenAmountString', () => {
     expect(isValidTokenAmountString('1e2')).toBe(false);
   });
 });
+
+describe('units clampDecimals', () => {
+  it('truncates fractional decimal values', () => {
+    expect(clampDecimals(6.9)).toBe(6);
+  });
+});
