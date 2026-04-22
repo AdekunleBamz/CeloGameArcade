@@ -81,6 +81,10 @@ describe('units parseTokenUnits', () => {
     expect(() => parseTokenUnits('1e2', 6)).toThrow('Invalid token amount: 1e2');
   });
 
+  it('rejects comma-formatted amount strings', () => {
+    expect(() => parseTokenUnits('1,000', 6)).toThrow('Invalid token amount: 1,000');
+  });
+
   it('rejects negative bigint values', () => {
     expect(() => parseTokenUnits(-1n, 6)).toThrow('Invalid token amount: -1');
   });
