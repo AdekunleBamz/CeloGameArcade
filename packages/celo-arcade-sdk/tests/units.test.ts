@@ -77,6 +77,12 @@ describe('units parseTokenUnits', () => {
     );
   });
 
+  it('rejects fractional input for zero-decimal tokens', () => {
+    expect(() => parseTokenUnits('1.1', 0)).toThrow(
+      'Too many decimal places for 0-decimals token amount: 1.1',
+    );
+  });
+
   it('rejects scientific notation values', () => {
     expect(() => parseTokenUnits('1e2', 6)).toThrow('Invalid token amount: 1e2');
   });
