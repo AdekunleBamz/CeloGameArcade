@@ -92,6 +92,10 @@ describe('constants explorer urls', () => {
   it('builds Alfajores transaction links', () => {
     expect(getExplorerTxUrl(44787, '0xabc')).toBe('https://alfajores.celoscan.io/tx/0xabc');
   });
+
+  it('builds Celo mainnet address links', () => {
+    expect(getExplorerAddressUrl(42220, '0x123')).toBe('https://celoscan.io/address/0x123');
+  });
 });
 
 describe('events ContractEvent', () => {
