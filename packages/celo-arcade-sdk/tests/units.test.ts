@@ -174,4 +174,8 @@ describe('units clampDecimals', () => {
   it('clamps decimals below the minimum', () => {
     expect(clampDecimals(-2)).toBe(0);
   });
+
+  it('clamps decimals above the maximum', () => {
+    expect(clampDecimals(30)).toBe(18);
+  });
 });
