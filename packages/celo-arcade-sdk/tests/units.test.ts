@@ -270,4 +270,8 @@ describe('units subBigIntSafe', () => {
   it('subtracts when the result stays positive', () => {
     expect(subBigIntSafe(5n, 3n)).toBe(2n);
   });
+
+  it('floors negative subtraction results at zero', () => {
+    expect(subBigIntSafe(3n, 5n)).toBe(0n);
+  });
 });
