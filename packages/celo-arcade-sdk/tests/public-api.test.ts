@@ -37,6 +37,15 @@ describe('constants supported chains', () => {
   });
 });
 
+describe('constants default stable token', () => {
+  it('exposes the default USDT metadata', () => {
+    expect(DEFAULT_STABLE_TOKEN).toMatchObject({
+      symbol: 'USDT',
+      decimals: 6,
+    });
+  });
+});
+
 describe('constants GameType', () => {
   it('keeps puzzle mapped to game type four', () => {
     expect(GameType.PUZZLE).toBe(4);
