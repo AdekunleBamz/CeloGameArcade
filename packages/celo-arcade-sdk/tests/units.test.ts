@@ -1,7 +1,30 @@
 import { describe, expect, it } from 'vitest';
-import { assertDecimals, formatTokenUnits, parseTokenUnits } from '../src/units';
+import {
+  addBigInt,
+  assertDecimals,
+  clampBigInt,
+  clampDecimals,
+  divBigIntSafe,
+  formatPercent,
+  formatTokenDisplay,
+  formatTokenUnits,
+  isPositiveAmount,
+  isValidTokenAmountString,
+  isZeroAmount,
+  mulBigIntBps,
+  parseIntegerUnits,
+  parseTokenUnits,
+  scaleBigInt,
+  subBigIntSafe,
+  toTokenDivisor,
+  tryParseTokenUnits,
+} from '../src/units';
 
 describe('units assertDecimals', () => {
+  it('accepts zero token decimals', () => {
+    expect(() => assertDecimals(0)).not.toThrow();
+  });
+
   it('rejects negative token decimals', () => {
     expect(() => assertDecimals(-1)).toThrow('Invalid token decimals: -1');
   });
