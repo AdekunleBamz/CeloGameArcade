@@ -219,3 +219,9 @@ describe('units tryParseTokenUnits', () => {
     expect(tryParseTokenUnits('bad', 6)).toBeNull();
   });
 });
+
+describe('units isZeroAmount', () => {
+  it('detects zero amounts', () => {
+    expect(isZeroAmount(0n)).toBe(true);
+  });
+});
