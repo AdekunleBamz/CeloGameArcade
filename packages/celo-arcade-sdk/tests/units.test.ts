@@ -259,3 +259,9 @@ describe('units clampBigInt', () => {
     expect(clampBigInt(5n, 0n, 10n)).toBe(5n);
   });
 });
+
+describe('units addBigInt', () => {
+  it('adds bigint values', () => {
+    expect(addBigInt(2n, 3n)).toBe(5n);
+  });
+});
