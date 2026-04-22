@@ -275,3 +275,9 @@ describe('units subBigIntSafe', () => {
     expect(subBigIntSafe(3n, 5n)).toBe(0n);
   });
 });
+
+describe('units mulBigIntBps', () => {
+  it('applies basis-point multipliers', () => {
+    expect(mulBigIntBps(1_000n, 2500)).toBe(250n);
+  });
+});
