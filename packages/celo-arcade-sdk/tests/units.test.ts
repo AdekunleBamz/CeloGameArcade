@@ -286,4 +286,8 @@ describe('units scaleBigInt', () => {
   it('scales bigint values by a fraction', () => {
     expect(scaleBigInt(100n, 3, 2)).toBe(150n);
   });
+
+  it('rejects zero denominators', () => {
+    expect(() => scaleBigInt(100n, 1, 0)).toThrow('scaleBigInt: denominator cannot be zero');
+  });
 });
