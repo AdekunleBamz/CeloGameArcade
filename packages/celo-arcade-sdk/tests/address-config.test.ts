@@ -93,6 +93,12 @@ describe('addresses isHexString', () => {
   });
 });
 
+describe('addresses truncateAddress', () => {
+  it('leaves short values unchanged', () => {
+    expect(truncateAddress('0x1234', 4, 4)).toBe('0x1234');
+  });
+});
+
 describe('config createArcadeConfig', () => {
   it('uses the default entry fee when none is provided', () => {
     expect(createArcadeConfig().entryFee).toBe(ENTRY_FEE);
