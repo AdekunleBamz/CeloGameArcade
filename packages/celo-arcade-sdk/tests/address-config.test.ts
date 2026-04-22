@@ -69,6 +69,10 @@ describe('addresses isSameAddress', () => {
       ),
     ).toBe(true);
   });
+
+  it('rejects blank address comparisons', () => {
+    expect(isSameAddress('', '0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0')).toBe(false);
+  });
 });
 
 describe('config createArcadeConfig', () => {
