@@ -152,4 +152,8 @@ describe('units isValidTokenAmountString', () => {
   it('accepts leading decimal token amount text', () => {
     expect(isValidTokenAmountString('.25')).toBe(true);
   });
+
+  it('trims token amount text before validating', () => {
+    expect(isValidTokenAmountString(' 1.25 ')).toBe(true);
+  });
 });
