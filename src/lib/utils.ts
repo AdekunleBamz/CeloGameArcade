@@ -848,3 +848,15 @@ export function getGreeting(): string {
 export function randomBool(probability = 0.5): boolean {
   return Math.random() < probability
 }
+
+/**
+ * Shuffles an array in place using Fisher-Yates.
+ * @param arr - Array to shuffle.
+ */
+export function shuffle<T>(arr: T[]): T[] {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
