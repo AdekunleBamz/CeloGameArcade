@@ -541,3 +541,14 @@ export function stringToStream(text: string): ReadableStream<Uint8Array> {
 export function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '')
 }
+
+/**
+ * Truncates a string to a word boundary.
+ * @param str - String to truncate.
+ * @param maxLen - Max length.
+ */
+export function truncateWords(str: string, maxLen: number): string {
+  if (str.length <= maxLen) return str
+  const truncated = str.slice(0, maxLen)
+  return truncated.slice(0, truncated.lastIndexOf(' ')) + '...'
+}
