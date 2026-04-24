@@ -311,3 +311,15 @@ export function inRange(value: number, min: number, max: number): boolean {
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
+
+/**
+ * Returns a shallow compare result for objects.
+ * @param a - First object.
+ * @param b - Second object.
+ */
+export function shallowEqual(a: Record<string, unknown>, b: Record<string, unknown>): boolean {
+  const keysA = Object.keys(a)
+  const keysB = Object.keys(b)
+  if (keysA.length !== keysB.length) return false
+  return keysA.every((k) => a[k] === b[k])
+}
