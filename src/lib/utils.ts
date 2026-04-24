@@ -676,3 +676,10 @@ export function hasOverflow(el: HTMLElement): boolean {
 export function scrollToElement(el: HTMLElement): void {
   el.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
 }
+
+/**
+ * Returns the scroll position of the window.
+ */
+export function getScrollPosition(): { x: number; y: number } {
+  return { x: window.scrollX, y: window.scrollY }
+}
