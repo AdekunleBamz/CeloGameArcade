@@ -744,3 +744,12 @@ export function endsWith(str: string, suffix: string): boolean {
 export function startsWith(str: string, prefix: string): boolean {
   return str.slice(0, prefix.length) === prefix
 }
+
+/**
+ * Repeats a string n times.
+ * @param str - String to repeat.
+ * @param n - Number of repetitions.
+ */
+export function repeat(str: string, n: number): string {
+  return Array.from({ length: n }).fill(str).join('')
+}
