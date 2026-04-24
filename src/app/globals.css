@@ -11,3 +11,6 @@ html { scroll-behavior: smooth; }
 
 /* Prevent horizontal overscroll on mobile */
 body { overscroll-behavior-x: none; }
+
+/* Subpixel antialiasing for sharper text */
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
