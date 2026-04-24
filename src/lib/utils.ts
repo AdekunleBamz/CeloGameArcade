@@ -508,3 +508,11 @@ export function getCookie(name: string): string | null {
   const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'))
   return match ? decodeURIComponent(match[2]) : null
 }
+
+/**
+ * Copies text to clipboard with fallback.
+ * @param text - Text to copy.
+ */
+export async function copyToClipboard(text: string): Promise<boolean> {
+  try { await navigator.clipboard.writeText(text); return true } catch { return false }
+}
