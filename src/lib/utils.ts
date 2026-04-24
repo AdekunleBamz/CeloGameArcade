@@ -338,3 +338,13 @@ export function isServer(): boolean {
 export function compactNumber(n: number): string {
   return Intl.NumberFormat('en', { notation: 'compact' }).format(n)
 }
+
+/**
+ * Returns the difference between two dates in days.
+ * @param a - First date.
+ * @param b - Second date.
+ */
+export function daysBetween(a: Date, b: Date): number {
+  const msPerDay = 1000 * 60 * 60 * 24
+  return Math.floor(Math.abs(a.getTime() - b.getTime()) / msPerDay)
+}
