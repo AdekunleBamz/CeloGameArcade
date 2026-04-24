@@ -85,3 +85,6 @@ button { -webkit-touch-callout: none; }
 
 /* Shimmer for loading skeletons */
 @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+/* Glow pulse for highlighted elements */
+@keyframes glow { 0%, 100% { box-shadow: 0 0 8px rgba(0,255,136,0.3); } 50% { box-shadow: 0 0 16px rgba(0,255,136,0.6); } }
