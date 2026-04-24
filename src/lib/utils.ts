@@ -207,3 +207,14 @@ export function timeAgo(timestamp: number): string {
   const days = Math.floor(hours / 24)
   return `${days}d ago`
 }
+
+/**
+ * Returns a truncated string with ellipsis in the middle.
+ * @param str - String to truncate.
+ * @param maxLen - Maximum total length.
+ */
+export function truncateMiddle(str: string, maxLen = 20): string {
+  if (str.length <= maxLen) return str
+  const half = Math.floor((maxLen - 3) / 2)
+  return `${str.slice(0, half)}...${str.slice(-half)}`
+}
