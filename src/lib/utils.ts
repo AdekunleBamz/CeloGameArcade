@@ -622,3 +622,15 @@ export function omit<T extends object, K extends keyof T>(obj: T, keys: K[]): Om
 export function isValidIPv4(ip: string): boolean {
   return /^(?:(?:25[0-5]|2[0-4]\d|1?\d{1,2})\.){3}(?:25[0-5]|2[0-4]\d|1?\d{1,2})$/.test(ip.trim())
 }
+
+/**
+ * Returns a SHA-256 hash of a string (hex).
+ * @param message - String to hash.
+ */
+export async function sha256(message: string): Promise<string> {
+  const encoder = new TextEncoder()
+  const data = encoder.encode(message)
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data)
+  const hashArray = Array.from(new Uint8Array(hashBuffer))
+  return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('')
+}
