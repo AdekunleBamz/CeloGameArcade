@@ -348,3 +348,11 @@ export function daysBetween(a: Date, b: Date): number {
   const msPerDay = 1000 * 60 * 60 * 24
   return Math.floor(Math.abs(a.getTime() - b.getTime()) / msPerDay)
 }
+
+/**
+ * Returns a slug from a display name.
+ * @param str - String to slugify.
+ */
+export function slugify(str: string): string {
+  return str.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-')
+}
