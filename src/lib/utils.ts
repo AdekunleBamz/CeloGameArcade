@@ -660,3 +660,11 @@ export function formatCurrency(value: number, currency = 'USD'): string {
 export function formatDateTime(date: Date, options?: Intl.DateTimeFormatOptions): string {
   return new Intl.DateTimeFormat('en', options).format(date)
 }
+
+/**
+ * Returns true if the element has overflow content.
+ * @param el - HTMLElement to check.
+ */
+export function hasOverflow(el: HTMLElement): boolean {
+  return el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth
+}
