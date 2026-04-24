@@ -794,3 +794,10 @@ export async function requestNotificationPermission(): Promise<NotificationPermi
   if (!('Notification' in window)) return 'denied'
   return Notification.requestPermission()
 }
+
+/**
+ * Returns true if the tab is currently visible.
+ */
+export function isTabVisible(): boolean {
+  return document.visibilityState === 'visible'
+}
