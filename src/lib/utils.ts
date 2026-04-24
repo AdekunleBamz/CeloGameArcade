@@ -642,3 +642,12 @@ export async function sha256(message: string): Promise<string> {
 export function isBase64(str: string): boolean {
   return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(str.trim())
 }
+
+/**
+ * Returns a formatted currency string.
+ * @param value - Numeric value.
+ * @param currency - ISO currency code.
+ */
+export function formatCurrency(value: number, currency = 'USD'): string {
+  return new Intl.NumberFormat('en', { style: 'currency', currency }).format(value)
+}
