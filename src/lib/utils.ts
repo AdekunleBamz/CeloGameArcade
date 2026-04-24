@@ -735,3 +735,12 @@ export function downloadTextFile(filename: string, text: string): void {
 export function endsWith(str: string, suffix: string): boolean {
   return str.slice(-suffix.length) === suffix
 }
+
+/**
+ * Returns true if the string starts with a given prefix.
+ * @param str - String to test.
+ * @param prefix - Prefix to check.
+ */
+export function startsWith(str: string, prefix: string): boolean {
+  return str.slice(0, prefix.length) === prefix
+}
