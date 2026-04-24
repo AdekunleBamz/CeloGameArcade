@@ -192,3 +192,18 @@ export function roundToDecimals(value: number, decimals: number): number {
   const factor = 10 ** decimals
   return Math.round(value * factor) / factor
 }
+
+/**
+ * Formats a relative time string (e.g. "2h ago").
+ * @param timestamp - Unix timestamp in seconds.
+ */
+export function timeAgo(timestamp: number): string {
+  const seconds = Math.floor(Date.now() / 1000 - timestamp)
+  if (seconds < 60) return 'just now'
+  const mins = Math.floor(seconds / 60)
+  if (mins < 60) return `${mins}m ago`
+  const hours = Math.floor(mins / 60)
+  if (hours < 24) return `${hours}h ago`
+  const days = Math.floor(hours / 24)
+  return `${days}d ago`
+}
