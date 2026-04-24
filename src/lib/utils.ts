@@ -840,3 +840,11 @@ export function getGreeting(): string {
   if (hour < 18) return 'Good afternoon'
   return 'Good evening'
 }
+
+/**
+ * Returns a random boolean with given probability.
+ * @param probability - Chance of true, 0-1.
+ */
+export function randomBool(probability = 0.5): boolean {
+  return Math.random() < probability
+}
