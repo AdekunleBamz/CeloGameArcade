@@ -697,3 +697,10 @@ export function getViewportSize(): { width: number; height: number } {
 export function isLandscape(): boolean {
   return window.innerWidth > window.innerHeight
 }
+
+/**
+ * Returns true if the device is in portrait mode.
+ */
+export function isPortrait(): boolean {
+  return window.innerWidth <= window.innerHeight
+}
