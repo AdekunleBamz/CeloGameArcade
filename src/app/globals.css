@@ -32,3 +32,6 @@ html { color-scheme: dark; }
 
 /* Better touch response on game overlays */
 [role="dialog"] { overscroll-behavior: contain; }
+
+/* Prevent pull-to-refresh during gameplay */
+.game-view { overscroll-behavior-y: none; touch-action: none; }
