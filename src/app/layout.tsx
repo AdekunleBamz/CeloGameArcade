@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 
-const DEFAULT_APP_URL = "https://celogamearcade.vercel.app";
+const DEFAULT_APP_URL = "https://celogamearcade.vercel.app" as const;
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL?.trim() || DEFAULT_APP_URL;
 const METADATA_BASE = (() => {
   try {
