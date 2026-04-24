@@ -46,3 +46,6 @@ html { color-scheme: dark; }
 
 /* Tap highlight removal extended to anchors */
 a { -webkit-tap-highlight-color: transparent; }
+
+/* Ensure inputs inherit dark theme */
+input, textarea { color-scheme: dark; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
