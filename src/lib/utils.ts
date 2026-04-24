@@ -235,3 +235,10 @@ export function isValidEmail(email: string): boolean {
 export function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+/**
+ * Returns true if the device is likely a touch device.
+ */
+export function isTouchDevice(): boolean {
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0
+}
