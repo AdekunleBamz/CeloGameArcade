@@ -424,3 +424,13 @@ export function easeOutCubic(t: number): number {
 export function easeInOutQuad(t: number): number {
   return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
 }
+
+/**
+ * Clamps a value and returns progress ratio 0-1.
+ * @param value - Current value.
+ * @param min - Start of range.
+ * @param max - End of range.
+ */
+export function normalize(value: number, min: number, max: number): number {
+  return Math.min(1, Math.max(0, (value - min) / (max - min)))
+}
