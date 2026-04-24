@@ -769,3 +769,13 @@ export function byteSize(str: string): number {
 export function getQueryParam(key: string): string | null {
   return new URLSearchParams(window.location.search).get(key)
 }
+
+/**
+ * Sets query parameters on the current URL without reloading.
+ * @param params - Object of key-value pairs.
+ */
+export function setQueryParams(params: Record<string, string>): void {
+  const url = new URL(window.location.href)
+  Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v))
+  window.history.replaceState({}, '', url)
+}
