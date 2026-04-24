@@ -881,3 +881,12 @@ export function factorial(n: number): number {
   if (n <= 1) return 1
   return n * factorial(n - 1)
 }
+
+/**
+ * Returns the greatest common divisor of two numbers.
+ * @param a - First number.
+ * @param b - Second number.
+ */
+export function gcd(a: number, b: number): number {
+  return b === 0 ? a : gcd(b, a % b)
+}
