@@ -54,6 +54,7 @@ export const metadata: Metadata = {
       }
     ],
     locale: "en_US",
+  themeColor: "#0f0c29",
     type: "website",
   },
   twitter: {
