@@ -1,0 +1,19 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+
+/**
+ * Executes a callback on an interval.
+ * @param callback - Function to run.
+ * @param delay - Milliseconds between calls.
+ */
+export function useInterval(callback: () => void, delay: number | null) {
+  const savedCallback = useRef(callback)
+  useEffect(() => { savedCallback.current = callback }, [callback])
+
+  useEffect(() => {
+    if (delay === null) return
+    const id = setInterval(() => savedCallback.current(), delay)
+    return () => clearInterval(id)
+  }, [delay])
+}
