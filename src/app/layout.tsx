@@ -83,6 +83,8 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         
         <meta name="format-detection" content="telephone=no" />
+        
+        <link rel="preconnect" href="https://celogamearcade.vercel.app" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
         <meta
           name="talentapp:project_verification"
