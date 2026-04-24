@@ -525,3 +525,11 @@ export function isInViewport(el: HTMLElement): boolean {
   const rect = el.getBoundingClientRect()
   return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth
 }
+
+/**
+ * Returns a readable stream from a string.
+ * @param text - Text to stream.
+ */
+export function stringToStream(text: string): ReadableStream<Uint8Array> {
+  return new ReadableStream({ start(controller) { controller.enqueue(new TextEncoder().encode(text)); controller.close() } })
+}
