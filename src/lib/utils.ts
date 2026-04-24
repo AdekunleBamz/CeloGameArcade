@@ -226,3 +226,12 @@ export function truncateMiddle(str: string, maxLen = 20): string {
 export function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
 }
+
+/**
+ * Returns a random integer between min and max (inclusive).
+ * @param min - Minimum value.
+ * @param max - Maximum value.
+ */
+export function randomInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
