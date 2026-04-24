@@ -801,3 +801,12 @@ export async function requestNotificationPermission(): Promise<NotificationPermi
 export function isTabVisible(): boolean {
   return document.visibilityState === 'visible'
 }
+
+/**
+ * Returns the number of days in a given month.
+ * @param year - Year number.
+ * @param month - Month index 0-11.
+ */
+export function daysInMonth(year: number, month: number): number {
+  return new Date(year, month + 1, 0).getDate()
+}
