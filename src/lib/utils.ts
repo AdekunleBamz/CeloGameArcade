@@ -830,3 +830,13 @@ export function getWeekNumber(date: Date): number {
   const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1))
   return Math.ceil(((+d - +yearStart) / 86400000 + 1) / 7)
 }
+
+/**
+ * Returns a greeting based on the current hour.
+ */
+export function getGreeting(): string {
+  const hour = new Date().getHours()
+  if (hour < 12) return 'Good morning'
+  if (hour < 18) return 'Good afternoon'
+  return 'Good evening'
+}
