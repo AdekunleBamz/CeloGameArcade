@@ -714,3 +714,15 @@ export function domReady(): Promise<void> {
     else document.addEventListener('DOMContentLoaded', () => resolve())
   })
 }
+
+/**
+ * Downloads a text file to the user's device.
+ * @param filename - Name for the downloaded file.
+ * @param text - File content.
+ */
+export function downloadTextFile(filename: string, text: string): void {
+  const blob = new Blob([text], { type: 'text/plain' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url)
+}
