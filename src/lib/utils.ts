@@ -603,3 +603,14 @@ export function pick<T extends object, K extends keyof T>(obj: T, keys: K[]): Pi
   keys.forEach((k) => { result[k] = obj[k] })
   return result
 }
+
+/**
+ * Omits specified keys from an object.
+ * @param obj - Source object.
+ * @param keys - Keys to omit.
+ */
+export function omit<T extends object, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
+  const result = { ...obj }
+  keys.forEach((k) => { delete result[k] })
+  return result
+}
