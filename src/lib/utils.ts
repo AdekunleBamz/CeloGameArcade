@@ -634,3 +634,11 @@ export async function sha256(message: string): Promise<string> {
   const hashArray = Array.from(new Uint8Array(hashBuffer))
   return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('')
 }
+
+/**
+ * Returns true if the string is a valid Base64 string.
+ * @param str - String to validate.
+ */
+export function isBase64(str: string): boolean {
+  return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(str.trim())
+}
