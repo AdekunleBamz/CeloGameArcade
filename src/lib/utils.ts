@@ -218,3 +218,11 @@ export function truncateMiddle(str: string, maxLen = 20): string {
   const half = Math.floor((maxLen - 3) / 2)
   return `${str.slice(0, half)}...${str.slice(-half)}`
 }
+
+/**
+ * Returns true if the string is a valid email address.
+ * @param email - String to validate.
+ */
+export function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+}
