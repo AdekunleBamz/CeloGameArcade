@@ -398,3 +398,13 @@ export function wrap(value: number, min: number, max: number): number {
 export function distance(x1: number, y1: number, x2: number, y2: number): number {
   return Math.hypot(x2 - x1, y2 - y1)
 }
+
+/**
+ * Linearly interpolates between two values.
+ * @param start - Start value.
+ * @param end - End value.
+ * @param t - Interpolation factor 0-1.
+ */
+export function lerp(start: number, end: number, t: number): number {
+  return start + (end - start) * t
+}
