@@ -810,3 +810,11 @@ export function isTabVisible(): boolean {
 export function daysInMonth(year: number, month: number): number {
   return new Date(year, month + 1, 0).getDate()
 }
+
+/**
+ * Returns true if a year is a leap year.
+ * @param year - Year to check.
+ */
+export function isLeapYear(year: number): boolean {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
