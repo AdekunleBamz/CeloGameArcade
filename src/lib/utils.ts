@@ -275,3 +275,11 @@ export function getInitials(name: string): string {
 export function capitalize(str: string): string {
   return str ? str.charAt(0).toUpperCase() + str.slice(1) : ''
 }
+
+/**
+ * Converts a hex string to a number safely.
+ * @param hex - Hex string starting with 0x.
+ */
+export function hexToNumber(hex: string): number | null {
+  try { return Number.parseInt(hex, 16) } catch { return null }
+}
