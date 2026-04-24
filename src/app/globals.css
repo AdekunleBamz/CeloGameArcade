@@ -58,3 +58,6 @@ img { image-rendering: -webkit-optimize-contrast; }
 
 /* Prevent layout shift from scrollbar */
 html { scrollbar-gutter: stable; }
+
+/* Consistent line height for readability */
+body { line-height: 1.5; }
