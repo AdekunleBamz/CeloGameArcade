@@ -443,3 +443,12 @@ export function normalize(value: number, min: number, max: number): number {
 export function timeout(ms: number, message = 'Operation timed out'): Promise<never> {
   return new Promise((_, reject) => setTimeout(() => reject(new Error(message)), ms))
 }
+
+/**
+ * Races a promise against a timeout.
+ * @param promise - Promise to race.
+ * @param ms - Timeout in milliseconds.
+ */
+export function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return Promise.race([promise, timeout(ms)])
+}
