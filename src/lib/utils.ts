@@ -483,3 +483,19 @@ export function sameElements<T>(a: T[], b: T[]): boolean {
 export function randomColor(): string {
   return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`
 }
+
+/**
+ * Converts HSL values to a hex color string.
+ * @param h - Hue 0-360.
+ * @param s - Saturation 0-100.
+ * @param l - Lightness 0-100.
+ */
+export function hslToHex(h: number, s: number, l: number): string {
+  const a = s * Math.min(l, 100 - l) / 100
+  const f = (n: number) => {
+    const k = (n + h / 30) % 12
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1)
+    return Math.round(color * 2.55).toString(16).padStart(2, '0')
+  }
+  return `#${f(0)}${f(8)}${f(4)}`
+}
