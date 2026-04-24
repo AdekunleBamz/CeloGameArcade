@@ -303,3 +303,11 @@ export function formatScoreCompact(score: number): string {
 export function inRange(value: number, min: number, max: number): boolean {
   return value >= min && value <= max
 }
+
+/**
+ * Delays execution by ms milliseconds.
+ * @param ms - Milliseconds to wait.
+ */
+export function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
