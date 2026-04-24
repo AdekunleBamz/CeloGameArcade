@@ -620,7 +620,7 @@ export default function GameArcade() {
         <h2 style={{ color: '#fff', fontSize: '20px', fontWeight: '800', margin: '0 0 8px', textAlign: 'center' }}>🔗 Connect Wallet</h2>
         <p style={{ color: '#888', fontSize: '12px', margin: '0 0 20px', textAlign: 'center' }}>Choose how to connect</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <button type="button" onClick={connectFarcaster} style={{ background: 'linear-gradient(135deg, #8B5CF6, #7C3AED)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button type="button" onClick={connectFarcaster} aria-label="Connect with Farcaster wallet" style={{ background: 'linear-gradient(135deg, #8B5CF6, #7C3AED)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🟣</div>
             <div style={{ textAlign: 'left' }}>
               <p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>Farcaster Wallet</p>
