@@ -52,3 +52,6 @@ input, textarea { color-scheme: dark; background: rgba(0,0,0,0.3); color: #fff; 
 
 /* Disabled state cursor */
 button:disabled, [aria-disabled="true"] { cursor: not-allowed; opacity: 0.6; }
+
+/* Improve image rendering on high-DPI screens */
+img { image-rendering: -webkit-optimize-contrast; }
