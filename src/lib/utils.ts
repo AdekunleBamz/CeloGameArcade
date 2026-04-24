@@ -761,3 +761,11 @@ export function repeat(str: string, n: number): string {
 export function byteSize(str: string): number {
   return new TextEncoder().encode(str).length
 }
+
+/**
+ * Returns a query parameter value from the current URL.
+ * @param key - Query parameter key.
+ */
+export function getQueryParam(key: string): string | null {
+  return new URLSearchParams(window.location.search).get(key)
+}
