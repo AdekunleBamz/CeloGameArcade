@@ -67,3 +67,6 @@ svg { shape-rendering: geometricPrecision; }
 
 /* Prevent callout menu on long-press for iOS */
 button { -webkit-touch-callout: none; }
+
+/* Loading spinner keyframes */
+@keyframes spin { to { transform: rotate(360deg); } }
