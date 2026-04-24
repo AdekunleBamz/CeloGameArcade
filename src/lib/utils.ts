@@ -753,3 +753,11 @@ export function startsWith(str: string, prefix: string): boolean {
 export function repeat(str: string, n: number): string {
   return Array.from({ length: n }).fill(str).join('')
 }
+
+/**
+ * Returns the byte size of a UTF-8 string.
+ * @param str - String to measure.
+ */
+export function byteSize(str: string): number {
+  return new TextEncoder().encode(str).length
+}
