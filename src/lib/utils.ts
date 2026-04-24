@@ -434,3 +434,12 @@ export function easeInOutQuad(t: number): number {
 export function normalize(value: number, min: number, max: number): number {
   return Math.min(1, Math.max(0, (value - min) / (max - min)))
 }
+
+/**
+ * Returns a promise that rejects after ms milliseconds.
+ * @param ms - Timeout in milliseconds.
+ * @param message - Rejection message.
+ */
+export function timeout(ms: number, message = 'Operation timed out'): Promise<never> {
+  return new Promise((_, reject) => setTimeout(() => reject(new Error(message)), ms))
+}
