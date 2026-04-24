@@ -576,3 +576,11 @@ export function isPlainObject(value: unknown): value is Record<string, unknown> 
 export function last<T>(arr: T[]): T | undefined {
   return arr[arr.length - 1]
 }
+
+/**
+ * Returns the first element of an array.
+ * @param arr - Array.
+ */
+export function first<T>(arr: T[]): T | undefined {
+  return arr[0]
+}
