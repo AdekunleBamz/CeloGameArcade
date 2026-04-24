@@ -499,3 +499,12 @@ export function hslToHex(h: number, s: number, l: number): string {
   }
   return `#${f(0)}${f(8)}${f(4)}`
 }
+
+/**
+ * Returns a cookie value by name.
+ * @param name - Cookie name.
+ */
+export function getCookie(name: string): string | null {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'))
+  return match ? decodeURIComponent(match[2]) : null
+}
