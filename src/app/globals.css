@@ -40,3 +40,6 @@ html { color-scheme: dark; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Selection color matching brand */
+::selection { background: rgba(0, 255, 136, 0.3); color: #fff; }
