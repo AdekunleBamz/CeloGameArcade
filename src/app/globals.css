@@ -8,3 +8,6 @@ button:active { transform: scale(0.95); transition: transform 0.05s ease-out; }
 
 /* Smooth scrolling for anchor links */
 html { scroll-behavior: smooth; }
+
+/* Prevent horizontal overscroll on mobile */
+body { overscroll-behavior-x: none; }
