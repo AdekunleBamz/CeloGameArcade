@@ -464,3 +464,15 @@ export function memoize<T extends (arg: string) => unknown>(fn: T): T {
     return cache.get(arg)!
   }) as T
 }
+
+/**
+ * Returns true if the arrays have the same elements in any order.
+ * @param a - First array.
+ * @param b - Second array.
+ */
+export function sameElements<T>(a: T[], b: T[]): boolean {
+  if (a.length !== b.length) return false
+  const sortedA = [...a].sort()
+  const sortedB = [...b].sort()
+  return sortedA.every((v, i) => v === sortedB[i])
+}
