@@ -584,3 +584,11 @@ export function last<T>(arr: T[]): T | undefined {
 export function first<T>(arr: T[]): T | undefined {
   return arr[0]
 }
+
+/**
+ * Flattens a nested array one level deep.
+ * @param arr - Nested array.
+ */
+export function flatten<T>(arr: T[][]): T[] {
+  return arr.reduce((a, b) => a.concat(b), [])
+}
