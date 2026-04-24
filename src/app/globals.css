@@ -43,3 +43,6 @@ html { color-scheme: dark; }
 
 /* Selection color matching brand */
 ::selection { background: rgba(0, 255, 136, 0.3); color: #fff; }
+
+/* Tap highlight removal extended to anchors */
+a { -webkit-tap-highlight-color: transparent; }
