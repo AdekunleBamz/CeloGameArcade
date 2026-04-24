@@ -91,7 +91,7 @@ export default function RootLayout({
           content="586e76a697fafb4d5a18950b62f6e4a785769582b0d692f9ba2b85e89bbde4369b84bf85df70990ae9f13c1f64fba1c361a6a9903cf3376e45627236802cc9e4"
         />
       </head>
-      <body>
+      <body className="antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>
