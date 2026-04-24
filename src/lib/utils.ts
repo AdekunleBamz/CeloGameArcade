@@ -267,3 +267,11 @@ export function setLocalStorageItem(key: string, value: string): boolean {
 export function getInitials(name: string): string {
   return name.trim().split(/\s+/).map((w) => w[0]).join('').toUpperCase().slice(0, 2)
 }
+
+/**
+ * Capitalizes the first letter of a string.
+ * @param str - String to capitalize.
+ */
+export function capitalize(str: string): string {
+  return str ? str.charAt(0).toUpperCase() + str.slice(1) : ''
+}
