@@ -786,3 +786,11 @@ export function setQueryParams(params: Record<string, string>): void {
 export function hasNotificationPermission(): boolean {
   return 'Notification' in window && Notification.permission === 'granted'
 }
+
+/**
+ * Requests notification permission from the user.
+ */
+export async function requestNotificationPermission(): Promise<NotificationPermission> {
+  if (!('Notification' in window)) return 'denied'
+  return Notification.requestPermission()
+}
