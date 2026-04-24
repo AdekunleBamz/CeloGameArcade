@@ -726,3 +726,12 @@ export function downloadTextFile(filename: string, text: string): void {
   const a = document.createElement('a')
   a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url)
 }
+
+/**
+ * Returns true if the string ends with a given suffix.
+ * @param str - String to test.
+ * @param suffix - Suffix to check.
+ */
+export function endsWith(str: string, suffix: string): boolean {
+  return str.slice(-suffix.length) === suffix
+}
