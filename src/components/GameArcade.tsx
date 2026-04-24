@@ -627,7 +627,7 @@ export default function GameArcade() {
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', margin: '2px 0 0' }}>Connect via Warpcast</p>
             </div>
           </button>
-          <button type="button" onClick={connectInjected} style={{ background: 'linear-gradient(135deg, #F6851B, #E2761B)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button type="button" onClick={connectInjected} aria-label="Connect with browser wallet" style={{ background: 'linear-gradient(135deg, #F6851B, #E2761B)', border: 'none', borderRadius: '14px', padding: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🦊</div>
             <div style={{ textAlign: 'left' }}>
               <p style={{ color: '#fff', fontSize: '14px', fontWeight: '700', margin: 0 }}>Browser Wallet</p>
