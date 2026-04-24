@@ -250,3 +250,12 @@ export function isTouchDevice(): boolean {
 export function getLocalStorageItem(key: string): string | null {
   try { return localStorage.getItem(key) } catch { return null }
 }
+
+/**
+ * Safely sets localStorage with try/catch.
+ * @param key - Storage key.
+ * @param value - Value to store.
+ */
+export function setLocalStorageItem(key: string, value: string): boolean {
+  try { localStorage.setItem(key, value); return true } catch { return false }
+}
