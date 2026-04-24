@@ -476,3 +476,10 @@ export function sameElements<T>(a: T[], b: T[]): boolean {
   const sortedB = [...b].sort()
   return sortedA.every((v, i) => v === sortedB[i])
 }
+
+/**
+ * Returns a random hex color string.
+ */
+export function randomColor(): string {
+  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`
+}
