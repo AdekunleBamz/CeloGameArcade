@@ -540,7 +540,7 @@ export default function GameArcade() {
             MiniPay wallet detected
           </div>
         ) : (
-          <button type="button" onClick={handleConnectClick} style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>
+          <button type="button" onClick={handleConnectClick} aria-label="Connect wallet to play" style={{ background: 'linear-gradient(135deg,#0f8,#0a6)', border: 'none', borderRadius: '16px', padding: '10px 16px', color: '#fff', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>Connect Wallet</button>
         )}
       </div>
       <div style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,136,0,0.2))', borderRadius: '16px', padding: '16px', marginBottom: '16px', border: '2px solid rgba(255,215,0,0.3)', position: 'relative', overflow: 'hidden' }}>
