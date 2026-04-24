@@ -592,3 +592,14 @@ export function first<T>(arr: T[]): T | undefined {
 export function flatten<T>(arr: T[][]): T[] {
   return arr.reduce((a, b) => a.concat(b), [])
 }
+
+/**
+ * Picks specified keys from an object.
+ * @param obj - Source object.
+ * @param keys - Keys to pick.
+ */
+export function pick<T extends object, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
+  const result = {} as Pick<T, K>
+  keys.forEach((k) => { result[k] = obj[k] })
+  return result
+}
