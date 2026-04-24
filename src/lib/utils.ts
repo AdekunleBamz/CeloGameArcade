@@ -568,3 +568,11 @@ export function bytesToHex(bytes: number[]): string {
 export function isPlainObject(value: unknown): value is Record<string, unknown> {
   return Object.prototype.toString.call(value) === '[object Object]'
 }
+
+/**
+ * Returns the last element of an array.
+ * @param arr - Array.
+ */
+export function last<T>(arr: T[]): T | undefined {
+  return arr[arr.length - 1]
+}
