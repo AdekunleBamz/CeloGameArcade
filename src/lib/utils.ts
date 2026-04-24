@@ -614,3 +614,11 @@ export function omit<T extends object, K extends keyof T>(obj: T, keys: K[]): Om
   keys.forEach((k) => { delete result[k] })
   return result
 }
+
+/**
+ * Returns true if the string is a valid IPv4 address.
+ * @param ip - String to validate.
+ */
+export function isValidIPv4(ip: string): boolean {
+  return /^(?:(?:25[0-5]|2[0-4]\d|1?\d{1,2})\.){3}(?:25[0-5]|2[0-4]\d|1?\d{1,2})$/.test(ip.trim())
+}
