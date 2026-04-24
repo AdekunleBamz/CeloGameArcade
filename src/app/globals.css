@@ -73,3 +73,6 @@ button { -webkit-touch-callout: none; }
 
 /* Pulse animation for live indicators */
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+/* Fade in for page transitions */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
