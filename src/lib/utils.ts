@@ -552,3 +552,11 @@ export function truncateWords(str: string, maxLen: number): string {
   const truncated = str.slice(0, maxLen)
   return truncated.slice(0, truncated.lastIndexOf(' ')) + '...'
 }
+
+/**
+ * Converts bytes to a hex string.
+ * @param bytes - Byte array.
+ */
+export function bytesToHex(bytes: number[]): string {
+  return bytes.map((b) => b.toString(16).padStart(2, '0')).join('')
+}
