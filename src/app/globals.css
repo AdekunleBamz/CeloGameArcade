@@ -61,3 +61,6 @@ html { scrollbar-gutter: stable; }
 
 /* Consistent line height for readability */
 body { line-height: 1.5; }
+
+/* SVG crisp edges for pixel-art style icons */
+svg { shape-rendering: geometricPrecision; }
