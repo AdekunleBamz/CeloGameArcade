@@ -516,3 +516,12 @@ export function getCookie(name: string): string | null {
 export async function copyToClipboard(text: string): Promise<boolean> {
   try { await navigator.clipboard.writeText(text); return true } catch { return false }
 }
+
+/**
+ * Returns true if the element is in viewport.
+ * @param el - DOM element.
+ */
+export function isInViewport(el: HTMLElement): boolean {
+  const rect = el.getBoundingClientRect()
+  return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth
+}
