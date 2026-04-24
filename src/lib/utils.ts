@@ -242,3 +242,11 @@ export function randomInt(min: number, max: number): number {
 export function isTouchDevice(): boolean {
   return 'ontouchstart' in window || navigator.maxTouchPoints > 0
 }
+
+/**
+ * Safely accesses localStorage with try/catch.
+ * @param key - Storage key.
+ */
+export function getLocalStorageItem(key: string): string | null {
+  try { return localStorage.getItem(key) } catch { return null }
+}
