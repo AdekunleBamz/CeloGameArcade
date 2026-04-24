@@ -651,3 +651,12 @@ export function isBase64(str: string): boolean {
 export function formatCurrency(value: number, currency = 'USD'): string {
   return new Intl.NumberFormat('en', { style: 'currency', currency }).format(value)
 }
+
+/**
+ * Returns a formatted date string.
+ * @param date - Date to format.
+ * @param options - Intl.DateTimeFormat options.
+ */
+export function formatDateTime(date: Date, options?: Intl.DateTimeFormatOptions): string {
+  return new Intl.DateTimeFormat('en', options).format(date)
+}
