@@ -182,3 +182,13 @@ export function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: n
     timer = setTimeout(() => fn(...args), delay)
   }
 }
+
+/**
+ * Rounds a number to a given precision.
+ * @param value - Number to round.
+ * @param decimals - Decimal places to keep.
+ */
+export function roundToDecimals(value: number, decimals: number): number {
+  const factor = 10 ** decimals
+  return Math.round(value * factor) / factor
+}
