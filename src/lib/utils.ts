@@ -330,3 +330,11 @@ export function shallowEqual(a: Record<string, unknown>, b: Record<string, unkno
 export function isServer(): boolean {
   return typeof window === 'undefined'
 }
+
+/**
+ * Converts a number to a compact locale string.
+ * @param n - Number to format.
+ */
+export function compactNumber(n: number): string {
+  return Intl.NumberFormat('en', { notation: 'compact' }).format(n)
+}
