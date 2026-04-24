@@ -668,3 +668,11 @@ export function formatDateTime(date: Date, options?: Intl.DateTimeFormatOptions)
 export function hasOverflow(el: HTMLElement): boolean {
   return el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth
 }
+
+/**
+ * Scrolls an element into view smoothly.
+ * @param el - Element to scroll to.
+ */
+export function scrollToElement(el: HTMLElement): void {
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+}
