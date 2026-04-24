@@ -5,3 +5,6 @@
 html, body { font-family: system-ui, sans-serif; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); min-height: 100vh; }
 button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 button:active { transform: scale(0.95); transition: transform 0.05s ease-out; }
+
+/* Smooth scrolling for anchor links */
+html { scroll-behavior: smooth; }
