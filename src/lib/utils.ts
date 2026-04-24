@@ -356,3 +356,15 @@ export function daysBetween(a: Date, b: Date): number {
 export function slugify(str: string): string {
   return str.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-')
 }
+
+/**
+ * Limits how often a function can fire.
+ * @param fn - Function to throttle.
+ * @param limit - Minimum ms between calls.
+ */
+export function throttle<T extends (...args: unknown[]) => void>(fn: T, limit: number): (...args: Parameters<T>) => void {
+  let inThrottle = false
+  return (...args: Parameters<T>) => {
+    if (!inThrottle) { fn(...args); inThrottle = true; setTimeout(() => inThrottle = false, limit) }
+  }
+}
