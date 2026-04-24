@@ -259,3 +259,11 @@ export function getLocalStorageItem(key: string): string | null {
 export function setLocalStorageItem(key: string, value: string): boolean {
   try { localStorage.setItem(key, value); return true } catch { return false }
 }
+
+/**
+ * Returns initials from a display name or address.
+ * @param name - String to extract initials from.
+ */
+export function getInitials(name: string): string {
+  return name.trim().split(/\s+/).map((w) => w[0]).join('').toUpperCase().slice(0, 2)
+}
