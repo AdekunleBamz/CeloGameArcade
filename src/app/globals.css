@@ -14,3 +14,6 @@ body { overscroll-behavior-x: none; }
 
 /* Subpixel antialiasing for sharper text */
 body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Consistent focus ring across browsers */
+:focus-visible { outline: 2px solid rgba(0, 255, 136, 0.6); outline-offset: 2px; border-radius: 4px; }
