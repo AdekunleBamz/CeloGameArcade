@@ -704,3 +704,13 @@ export function isLandscape(): boolean {
 export function isPortrait(): boolean {
   return window.innerWidth <= window.innerHeight
 }
+
+/**
+ * Returns a promise that resolves when the DOM is ready.
+ */
+export function domReady(): Promise<void> {
+  return new Promise((resolve) => {
+    if (document.readyState === 'complete' || document.readyState === 'interactive') resolve()
+    else document.addEventListener('DOMContentLoaded', () => resolve())
+  })
+}
