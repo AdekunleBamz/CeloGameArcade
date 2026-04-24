@@ -29,3 +29,6 @@ button, [role="button"] { user-select: none; }
 
 /* Color scheme hint for native UI */
 html { color-scheme: dark; }
+
+/* Better touch response on game overlays */
+[role="dialog"] { overscroll-behavior: contain; }
