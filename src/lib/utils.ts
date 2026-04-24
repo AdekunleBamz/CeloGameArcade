@@ -872,3 +872,12 @@ export function seededRandom(seed: number): () => number {
     return (s - 1) / 2147483646
   }
 }
+
+/**
+ * Returns the factorial of a number.
+ * @param n - Non-negative integer.
+ */
+export function factorial(n: number): number {
+  if (n <= 1) return 1
+  return n * factorial(n - 1)
+}
