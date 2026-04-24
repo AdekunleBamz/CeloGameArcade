@@ -293,3 +293,13 @@ export function formatScoreCompact(score: number): string {
   if (score >= 1_000) return `${(score / 1_000).toFixed(1)}K`
   return score.toString()
 }
+
+/**
+ * Returns true if value is within inclusive range.
+ * @param value - Number to check.
+ * @param min - Minimum bound.
+ * @param max - Maximum bound.
+ */
+export function inRange(value: number, min: number, max: number): boolean {
+  return value >= min && value <= max
+}
