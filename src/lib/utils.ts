@@ -452,3 +452,15 @@ export function timeout(ms: number, message = 'Operation timed out'): Promise<ne
 export function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
   return Promise.race([promise, timeout(ms)])
 }
+
+/**
+ * Returns a memoized version of a function.
+ * @param fn - Function to memoize.
+ */
+export function memoize<T extends (arg: string) => unknown>(fn: T): T {
+  const cache = new Map<string, ReturnType<T>>()
+  return ((arg: string) => {
+    if (!cache.has(arg)) cache.set(arg, fn(arg) as ReturnType<T>)
+    return cache.get(arg)!
+  }) as T
+}
