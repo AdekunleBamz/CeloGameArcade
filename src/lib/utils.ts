@@ -283,3 +283,13 @@ export function capitalize(str: string): string {
 export function hexToNumber(hex: string): number | null {
   try { return Number.parseInt(hex, 16) } catch { return null }
 }
+
+/**
+ * Formats a score with appropriate suffix (K, M).
+ * @param score - Raw score number.
+ */
+export function formatScoreCompact(score: number): string {
+  if (score >= 1_000_000) return `${(score / 1_000_000).toFixed(1)}M`
+  if (score >= 1_000) return `${(score / 1_000).toFixed(1)}K`
+  return score.toString()
+}
