@@ -560,3 +560,11 @@ export function truncateWords(str: string, maxLen: number): string {
 export function bytesToHex(bytes: number[]): string {
   return bytes.map((b) => b.toString(16).padStart(2, '0')).join('')
 }
+
+/**
+ * Returns true if the value is a plain object.
+ * @param value - Value to test.
+ */
+export function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return Object.prototype.toString.call(value) === '[object Object]'
+}
