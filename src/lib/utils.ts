@@ -683,3 +683,10 @@ export function scrollToElement(el: HTMLElement): void {
 export function getScrollPosition(): { x: number; y: number } {
   return { x: window.scrollX, y: window.scrollY }
 }
+
+/**
+ * Returns the viewport dimensions.
+ */
+export function getViewportSize(): { width: number; height: number } {
+  return { width: window.innerWidth, height: window.innerHeight }
+}
