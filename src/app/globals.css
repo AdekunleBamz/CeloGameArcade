@@ -70,3 +70,6 @@ button { -webkit-touch-callout: none; }
 
 /* Loading spinner keyframes */
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* Pulse animation for live indicators */
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
