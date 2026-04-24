@@ -323,3 +323,10 @@ export function shallowEqual(a: Record<string, unknown>, b: Record<string, unkno
   if (keysA.length !== keysB.length) return false
   return keysA.every((k) => a[k] === b[k])
 }
+
+/**
+ * Returns true if the code is running on the server.
+ */
+export function isServer(): boolean {
+  return typeof window === 'undefined'
+}
