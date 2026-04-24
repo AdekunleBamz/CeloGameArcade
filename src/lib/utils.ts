@@ -387,3 +387,14 @@ export function wrap(value: number, min: number, max: number): number {
   const range = max - min + 1
   return ((((value - min) % range) + range) % range) + min
 }
+
+/**
+ * Returns the distance between two points.
+ * @param x1 - First x coordinate.
+ * @param y1 - First y coordinate.
+ * @param x2 - Second x coordinate.
+ * @param y2 - Second y coordinate.
+ */
+export function distance(x1: number, y1: number, x2: number, y2: number): number {
+  return Math.hypot(x2 - x1, y2 - y1)
+}
