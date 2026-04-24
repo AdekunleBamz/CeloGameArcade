@@ -376,3 +376,14 @@ export function throttle<T extends (...args: unknown[]) => void>(fn: T, limit: n
 export function isValidUrl(url: string): boolean {
   try { new URL(url); return true } catch { return false }
 }
+
+/**
+ * Wraps a value between min and max (inclusive loop).
+ * @param value - Current value.
+ * @param min - Minimum bound.
+ * @param max - Maximum bound.
+ */
+export function wrap(value: number, min: number, max: number): number {
+  const range = max - min + 1
+  return ((((value - min) % range) + range) % range) + min
+}
