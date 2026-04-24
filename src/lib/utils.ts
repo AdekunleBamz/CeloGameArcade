@@ -779,3 +779,10 @@ export function setQueryParams(params: Record<string, string>): void {
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v))
   window.history.replaceState({}, '', url)
 }
+
+/**
+ * Returns true if the user has granted notification permission.
+ */
+export function hasNotificationPermission(): boolean {
+  return 'Notification' in window && Notification.permission === 'granted'
+}
