@@ -533,3 +533,11 @@ export function isInViewport(el: HTMLElement): boolean {
 export function stringToStream(text: string): ReadableStream<Uint8Array> {
   return new ReadableStream({ start(controller) { controller.enqueue(new TextEncoder().encode(text)); controller.close() } })
 }
+
+/**
+ * Strips HTML tags from a string.
+ * @param html - HTML string.
+ */
+export function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '')
+}
