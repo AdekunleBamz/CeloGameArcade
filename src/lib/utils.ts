@@ -368,3 +368,11 @@ export function throttle<T extends (...args: unknown[]) => void>(fn: T, limit: n
     if (!inThrottle) { fn(...args); inThrottle = true; setTimeout(() => inThrottle = false, limit) }
   }
 }
+
+/**
+ * Returns true if the string is a valid URL.
+ * @param url - String to test.
+ */
+export function isValidUrl(url: string): boolean {
+  try { new URL(url); return true } catch { return false }
+}
