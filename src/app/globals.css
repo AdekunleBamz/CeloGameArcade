@@ -91,3 +91,6 @@ button { -webkit-touch-callout: none; }
 
 /* Prevent margin collapse on game container */
 #root, #__next { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Better default for horizontal rules */
+hr { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1rem 0; }
