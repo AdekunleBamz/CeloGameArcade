@@ -35,3 +35,8 @@ html { color-scheme: dark; }
 
 /* Prevent pull-to-refresh during gameplay */
 .game-view { overscroll-behavior-y: none; touch-action: none; }
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
