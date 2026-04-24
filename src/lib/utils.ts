@@ -690,3 +690,10 @@ export function getScrollPosition(): { x: number; y: number } {
 export function getViewportSize(): { width: number; height: number } {
   return { width: window.innerWidth, height: window.innerHeight }
 }
+
+/**
+ * Returns true if the device is in landscape mode.
+ */
+export function isLandscape(): boolean {
+  return window.innerWidth > window.innerHeight
+}
