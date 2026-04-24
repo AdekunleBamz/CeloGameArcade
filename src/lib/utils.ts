@@ -890,3 +890,12 @@ export function factorial(n: number): number {
 export function gcd(a: number, b: number): number {
   return b === 0 ? a : gcd(b, a % b)
 }
+
+/**
+ * Returns the least common multiple of two numbers.
+ * @param a - First number.
+ * @param b - Second number.
+ */
+export function lcm(a: number, b: number): number {
+  return Math.abs(a * b) / gcd(a, b)
+}
