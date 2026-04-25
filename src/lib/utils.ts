@@ -1,4 +1,5 @@
 import { STABLE_TOKEN_DECIMALS, STABLE_TOKEN_SYMBOL } from './contract'
+import { MIN_DIFFICULTY_MULTIPLIER, MAX_DIFFICULTY_MULTIPLIER } from './constants'
 
 /**
  * Converts a value in USDT micro-units to a display string.
@@ -236,6 +237,15 @@ export function isValidEmail(email: string): boolean {
  */
 export function isValidScore(score: number): boolean {
   return Number.isFinite(score) && score >= 0
+}
+
+/**
+ * Validates that a difficulty multiplier is within the allowed range.
+ * @param multiplier - The difficulty multiplier to validate.
+ * @returns True if multiplier is between 1.0 and 2.0 (inclusive).
+ */
+export function isValidDifficultyMultiplier(multiplier: number): boolean {
+  return Number.isFinite(multiplier) && multiplier >= MIN_DIFFICULTY_MULTIPLIER && multiplier <= MAX_DIFFICULTY_MULTIPLIER
 }
 
 /**
