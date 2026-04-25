@@ -40,7 +40,9 @@ export function isPositiveAmount(amount: bigint): boolean {
  * @param max - Maximum allowed value.
  */
 export function clamp(value: number, min: number, max: number): number {
-  return Math.min(max, Math.max(min, value))
+  const lower = Math.min(min, max)
+  const upper = Math.max(min, max)
+  return Math.min(upper, Math.max(lower, value))
 }
 
 /**
@@ -225,6 +227,15 @@ export function truncateMiddle(str: string, maxLen = 20): string {
  */
 export function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+}
+
+/**
+ * Validates that a game score is within expected ranges.
+ * @param score - The score value to validate.
+ * @returns True if score is non-negative and finite.
+ */
+export function isValidScore(score: number): boolean {
+  return Number.isFinite(score) && score >= 0
 }
 
 /**
