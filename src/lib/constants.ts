@@ -5,8 +5,17 @@
 /** Maximum number of prize entries visible on the leaderboard. */
 export const MAX_LEADERBOARD_ENTRIES = 50
 
+/** Minimum difficulty multiplier (easy). */
+export const MIN_DIFFICULTY_MULTIPLIER = 1
+
+/** Maximum difficulty multiplier (hard). */
+export const MAX_DIFFICULTY_MULTIPLIER = 2
+
 /** Stable token display symbol used in the UI. */
 export const UI_TOKEN_SYMBOL = 'USDT'
+
+/** Stable token symbol for contracts and internal use. */
+export const STABLE_TOKEN_SYMBOL = 'USDT' as const
 
 /** Default confirmation count to consider a transaction final. */
 export const TX_CONFIRMATIONS = 1
