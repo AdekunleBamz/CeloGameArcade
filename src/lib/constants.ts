@@ -76,3 +76,6 @@ export const DEFAULT_PAGE_SIZE = 10
 
 /** Debounce delay in ms applied to user input handlers. */
 export const INPUT_DEBOUNCE_MS = 300
+
+/** Maximum number of displayed decimal places for wager amounts. */
+export const WAGER_DISPLAY_DECIMALS = 2
