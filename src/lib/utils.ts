@@ -408,6 +408,14 @@ export function sortByDesc<T>(arr: T[], key: (item: T) => number): T[] {
   return [...arr].sort((a, b) => key(b) - key(a))
 }
 
+/** Splits arr into chunks of size; returns [] when size is non-positive. */
+export function chunk<T>(arr: T[], size: number): T[][] {
+  if (size <= 0) return []
+  const out: T[][] = []
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size))
+  return out
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
