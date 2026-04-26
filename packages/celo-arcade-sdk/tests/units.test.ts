@@ -304,6 +304,10 @@ describe('units mulBigIntBps', () => {
   it('applies basis-point multipliers', () => {
     expect(mulBigIntBps(1_000n, 2500)).toBe(250n);
   });
+
+  it('supports custom basis-point totals', () => {
+    expect(mulBigIntBps(1_000n, 25, 100)).toBe(250n);
+  });
 });
 
 describe('units scaleBigInt', () => {
