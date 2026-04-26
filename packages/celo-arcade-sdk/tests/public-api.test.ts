@@ -11,6 +11,7 @@ import {
   GameType,
   MAX_SCORE,
   MIN_SCORE,
+  PRIZE_POOL_SHARE_BPS_DISPLAY,
   PRIZE_SHARE_BPS,
   SUPPORTED_CHAIN_IDS,
   getExplorerAddressUrl,
@@ -22,6 +23,10 @@ import { ReadMethod, WriteMethod } from '../src/methods';
 describe('constants prize shares', () => {
   it('fill the remainder of the basis point budget', () => {
     expect(PRIZE_SHARE_BPS).toBe(BASIS_POINTS - CREATOR_SHARE_BPS);
+  });
+
+  it('exposes an integer percentage label for prize pool shares', () => {
+    expect(PRIZE_POOL_SHARE_BPS_DISPLAY).toBe('80%');
   });
 });
 
