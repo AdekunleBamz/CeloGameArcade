@@ -436,6 +436,11 @@ export function sumBigInt(arr: bigint[]): bigint {
   return arr.reduce((acc, v) => acc + v, 0n)
 }
 
+/** Returns true when a string is non-empty after trimming. */
+export function isNonEmptyString(s: unknown): s is string {
+  return typeof s === 'string' && s.trim().length > 0
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
