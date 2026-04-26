@@ -315,6 +315,10 @@ describe('units formatPercent', () => {
 });
 
 describe('units divBigIntSafe', () => {
+  it('returns integer quotients for non-zero divisors', () => {
+    expect(divBigIntSafe(101n, 10n)).toBe(10n);
+  });
+
   it('returns zero when dividing by zero', () => {
     expect(divBigIntSafe(100n, 0n)).toBe(0n);
   });
