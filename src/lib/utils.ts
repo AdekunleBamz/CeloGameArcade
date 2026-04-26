@@ -375,6 +375,13 @@ export function inRangeBigInt(value: bigint, min: bigint, max: bigint): boolean 
   return value >= min && value <= max
 }
 
+/** Clamps a bigint between lo and hi (inclusive). */
+export function clampBigInt(v: bigint, lo: bigint, hi: bigint): bigint {
+  if (v < lo) return lo
+  if (v > hi) return hi
+  return v
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
