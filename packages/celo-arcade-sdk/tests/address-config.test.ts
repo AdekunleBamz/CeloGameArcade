@@ -98,6 +98,10 @@ describe('addresses truncateAddress', () => {
     expect(truncateAddress('0x1234', 4, 4)).toBe('0x1234');
   });
 
+  it('trims short values before returning them', () => {
+    expect(truncateAddress('  0x1234  ', 4, 4)).toBe('0x1234');
+  });
+
   it('uses custom truncation windows for long values', () => {
     expect(truncateAddress('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0', 8, 6)).toBe(
       '0xD3Cb03...46DDB0',
