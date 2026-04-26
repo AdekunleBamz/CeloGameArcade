@@ -13,3 +13,8 @@ export const PR3_CONST_10 = 10;
 export function pr4Helper1(): string {
   return "pr4-helper-1"
 }
+
+/** PR4 helper 2. */
+export function pr4Helper2(): string {
+  return "pr4-helper-2"
+}
