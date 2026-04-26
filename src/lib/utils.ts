@@ -416,6 +416,11 @@ export function chunk<T>(arr: T[], size: number): T[][] {
   return out
 }
 
+/** Returns the last element of an array, or undefined when empty. */
+export function last<T>(arr: T[]): T | undefined {
+  return arr.length > 0 ? arr[arr.length - 1] : undefined
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
