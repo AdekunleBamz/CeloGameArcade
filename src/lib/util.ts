@@ -133,3 +133,8 @@ export function pr6Helper4(): string {
 export function pr6Helper5(): string {
   return "pr6-helper-5"
 }
+
+/** PR6 helper 6. */
+export function pr6Helper6(): string {
+  return "pr6-helper-6"
+}
