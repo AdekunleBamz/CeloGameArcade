@@ -308,6 +308,10 @@ describe('units formatPercent', () => {
   it('formats basis points as percentages', () => {
     expect(formatPercent(250)).toBe('2.50%');
   });
+
+  it('returns zero percent for non-finite values', () => {
+    expect(formatPercent(Number.NaN)).toBe('0.00%');
+  });
 });
 
 describe('units divBigIntSafe', () => {
