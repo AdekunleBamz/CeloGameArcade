@@ -452,6 +452,12 @@ export function pct(amount: number, total: number): number {
   return total === 0 ? 0 : Math.min(100, (amount / total) * 100)
 }
 
+/** Returns an array of integers from start (inclusive) to end (exclusive). */
+export function range(start: number, end: number): number[] {
+  if (end <= start) return []
+  return Array.from({ length: end - start }, (_, i) => start + i)
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
