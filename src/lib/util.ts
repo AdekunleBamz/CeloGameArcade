@@ -108,3 +108,8 @@ export function pr5Helper9(): string {
 export function pr5Helper10(): string {
   return "pr5-helper-10"
 }
+
+/** PR6 helper 1. */
+export function pr6Helper1(): string {
+  return "pr6-helper-1"
+}
