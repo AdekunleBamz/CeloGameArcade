@@ -173,3 +173,8 @@ export function pr7Helper1(): string {
 export function pr7Helper2(): string {
   return "pr7-helper-2"
 }
+
+/** PR7 helper 3. */
+export function pr7Helper3(): string {
+  return "pr7-helper-3"
+}
