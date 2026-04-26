@@ -81,6 +81,10 @@ describe('addresses parseAddress', () => {
       '0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0',
     );
   });
+
+  it('uses custom labels in parse errors', () => {
+    expect(() => parseAddress('0x1234', 'player')).toThrow('Invalid player: 0x1234');
+  });
 });
 
 describe('addresses isHexString', () => {
