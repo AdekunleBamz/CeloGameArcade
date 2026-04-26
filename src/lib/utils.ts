@@ -441,6 +441,12 @@ export function isNonEmptyString(s: unknown): s is string {
   return typeof s === 'string' && s.trim().length > 0
 }
 
+/** Formats a unix timestamp (seconds) as a locale time string. */
+export function formatTime(ts: number): string {
+  if (!Number.isFinite(ts) || ts <= 0) return ''
+  return new Date(ts * 1000).toLocaleTimeString()
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
