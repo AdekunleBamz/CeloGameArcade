@@ -1027,3 +1027,10 @@ export function lcm(a: number, b: number): number {
 export function minOfArray(arr: number[]): number {
   return Math.min(...arr)
 }
+
+/**
+ * Find maximum value in array
+ */
+export function maxOfArray(arr: number[]): number {
+  return Math.max(...arr)
+}
