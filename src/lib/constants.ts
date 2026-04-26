@@ -97,3 +97,6 @@ export const MAX_DISPLAY_NAME_LENGTH = 32
 
 /** Number of milliseconds to wait before showing a loading skeleton. */
 export const SKELETON_DELAY_MS = 200
+
+/** Maximum score achievable in a single game round. */
+export const MAX_ROUND_SCORE = 100
