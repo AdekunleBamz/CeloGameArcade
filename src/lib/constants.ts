@@ -130,3 +130,8 @@ export const GAME_CONST_5 = 500
  * Constant placeholder 6
  */
 export const GAME_CONST_6 = 600
+
+/**
+ * Constant placeholder 7
+ */
+export const GAME_CONST_7 = 700
