@@ -382,6 +382,11 @@ export function clampBigInt(v: bigint, lo: bigint, hi: bigint): bigint {
   return v
 }
 
+/** Returns true when value is not null and not undefined. */
+export function isDefined<T>(value: T | null | undefined): value is T {
+  return value !== null && value !== undefined
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
