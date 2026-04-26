@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   BASIS_POINTS,
+  CLAIM_COOLDOWN_DAYS,
   CLAIM_COOLDOWN_SECONDS,
   CREATOR_SHARE_BPS,
   DEFAULT_STABLE_TOKEN,
@@ -38,6 +39,10 @@ describe('constants cooldown', () => {
 
   it('keeps cooldowns aligned to whole days', () => {
     expect(CLAIM_COOLDOWN_SECONDS % 86_400).toBe(0);
+  });
+
+  it('exposes cooldown duration in whole days', () => {
+    expect(CLAIM_COOLDOWN_DAYS).toBe(7);
   });
 });
 
