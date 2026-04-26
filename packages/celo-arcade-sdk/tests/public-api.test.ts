@@ -7,6 +7,7 @@ import {
   Difficulty,
   DIFFICULTY_MULTIPLIERS,
   DIFFICULTY_NAMES,
+  DEFAULT_GAME_COUNT,
   GAME_TYPE_NAMES,
   GameType,
   MAX_SCORE,
@@ -66,6 +67,10 @@ describe('constants GameType', () => {
 
   it('labels snake game types for display', () => {
     expect(GAME_TYPE_NAMES[GameType.SNAKE]).toBe('Snake');
+  });
+
+  it('exposes a default game count matching supported game types', () => {
+    expect(DEFAULT_GAME_COUNT).toBe(5);
   });
 });
 
