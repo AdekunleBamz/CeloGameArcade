@@ -363,3 +363,5 @@ export function pr10Helper9(): string {
 export function pr10Helper10(): string {
   return "pr10-helper-10"
 }
+
+export const PR10_CONST_1 = 1;
