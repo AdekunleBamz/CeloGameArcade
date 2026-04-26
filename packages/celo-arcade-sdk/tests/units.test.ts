@@ -315,6 +315,10 @@ describe('units scaleBigInt', () => {
     expect(scaleBigInt(100n, 3, 2)).toBe(150n);
   });
 
+  it('floors fractional scale results', () => {
+    expect(scaleBigInt(5n, 1, 2)).toBe(2n);
+  });
+
   it('rejects zero denominators', () => {
     expect(() => scaleBigInt(100n, 1, 0)).toThrow('scaleBigInt: denominator cannot be zero');
   });
