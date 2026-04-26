@@ -106,6 +106,10 @@ describe('constants explorer urls', () => {
   it('builds Celo mainnet address links', () => {
     expect(getExplorerAddressUrl(42220, '0x123')).toBe('https://celoscan.io/address/0x123');
   });
+
+  it('falls back to Celo mainnet explorer links for unknown chains', () => {
+    expect(getExplorerTxUrl(999, '0xabc')).toBe('https://celoscan.io/tx/0xabc');
+  });
 });
 
 describe('events ContractEvent', () => {
