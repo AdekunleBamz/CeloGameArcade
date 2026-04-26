@@ -283,3 +283,8 @@ export function pr9Helper3(): string {
 export function pr9Helper4(): string {
   return "pr9-helper-4"
 }
+
+/** PR9 helper 5. */
+export function pr9Helper5(): string {
+  return "pr9-helper-5"
+}
