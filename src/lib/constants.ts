@@ -88,3 +88,6 @@ export const DEFAULT_PAGE = 1
 
 /** Minimum wallet balance (micro USDT) required to place a wager. */
 export const MIN_BALANCE_TO_PLAY_MICRO = 10_000n
+
+/** Number of milliseconds in one hour. */
+export const ONE_HOUR_MS = 3_600_000
