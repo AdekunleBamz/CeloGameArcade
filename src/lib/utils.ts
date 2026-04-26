@@ -1014,3 +1014,82 @@ export function gcd(a: number, b: number): number {
 export function lcm(a: number, b: number): number {
   return Math.abs(a * b) / gcd(a, b)
 }
+
+/**
+ * Find minimum value in array
+ */
+export function minOfArray(arr: number[]): number {
+  return Math.min(...arr)
+}
+
+/**
+ * Find maximum value in array
+ */
+export function maxOfArray(arr: number[]): number {
+  return Math.max(...arr)
+}
+
+/**
+ * Calculate average value in array
+ */
+export function avgOfArray(arr: number[]): number {
+  return arr.reduce((a, b) => a + b, 0) / arr.length
+}
+
+/**
+ * Filter finite numbers from array
+ */
+export function filterFinite(arr: number[]): number[] {
+  return arr.filter(n => Number.isFinite(n))
+}
+
+/**
+ * Count elements matching predicate
+ */
+export function countWhere(arr: any[], pred: (x: any) => boolean): number {
+  return arr.filter(pred).length
+}
+
+/**
+ * Sum all values in array
+ */
+export function sumArray(arr: number[]): number {
+  return arr.reduce((a, b) => a + b, 0)
+}
+
+/**
+ * Round value to decimal places
+ */
+export function roundToDecimalPlaces(val: number, places: number): number {
+  return Math.round(val * Math.pow(10, places)) / Math.pow(10, places)
+}
+
+/**
+ * Find product of array elements
+ */
+export function productOfArray(arr: number[]): number {
+  return arr.reduce((a, b) => a * b, 1)
+}
+
+/**
+ * Get median value from array
+ */
+export function medianOfArray(arr: number[]): number {
+  const sorted = [...arr].sort((a, b) => a - b)
+  const mid = Math.floor(sorted.length / 2)
+  return sorted.length 
+/**
+ * Get median value from array
+ */
+export function medianOfArray(arr: number[]): number {
+  const sorted = [...arr].sort((a, b) => a - b)
+  const mid = Math.floor(sorted.length / 2)
+  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2
+}
+
+/**
+ * Check if value exists in array
+ */
+export function includesValue(arr: any[], val: any): boolean {
+  return arr.includes(val)
+}
