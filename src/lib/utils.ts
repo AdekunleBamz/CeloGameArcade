@@ -1062,3 +1062,10 @@ export function countWhere(arr: any[], pred: (x: any) => boolean): number {
 export function sumArray(arr: number[]): number {
   return arr.reduce((a, b) => a + b, 0)
 }
+
+/**
+ * Round value to decimal places
+ */
+export function roundToDecimalPlaces(val: number, places: number): number {
+  return Math.round(val * Math.pow(10, places)) / Math.pow(10, places)
+}
