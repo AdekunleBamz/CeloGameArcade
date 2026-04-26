@@ -256,4 +256,8 @@ describe('config resolveStableTokenSymbol', () => {
   it('falls back when symbols are blank', () => {
     expect(resolveStableTokenSymbol('   ')).toBe(DEFAULT_STABLE_TOKEN_SYMBOL);
   });
+
+  it('falls back when symbols are undefined', () => {
+    expect(resolveStableTokenSymbol(undefined)).toBe(DEFAULT_STABLE_TOKEN_SYMBOL);
+  });
 });
