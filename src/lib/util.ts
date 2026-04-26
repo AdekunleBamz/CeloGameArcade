@@ -163,3 +163,53 @@ export function pr6Helper9(): string {
 export function pr6Helper10(): string {
   return "pr6-helper-10"
 }
+
+/** PR7 helper 1. */
+export function pr7Helper1(): string {
+  return "pr7-helper-1"
+}
+
+/** PR7 helper 2. */
+export function pr7Helper2(): string {
+  return "pr7-helper-2"
+}
+
+/** PR7 helper 3. */
+export function pr7Helper3(): string {
+  return "pr7-helper-3"
+}
+
+/** PR7 helper 4. */
+export function pr7Helper4(): string {
+  return "pr7-helper-4"
+}
+
+/** PR7 helper 5. */
+export function pr7Helper5(): string {
+  return "pr7-helper-5"
+}
+
+/** PR7 helper 6. */
+export function pr7Helper6(): string {
+  return "pr7-helper-6"
+}
+
+/** PR7 helper 7. */
+export function pr7Helper7(): string {
+  return "pr7-helper-7"
+}
+
+/** PR7 helper 8. */
+export function pr7Helper8(): string {
+  return "pr7-helper-8"
+}
+
+/** PR7 helper 9. */
+export function pr7Helper9(): string {
+  return "pr7-helper-9"
+}
+
+/** PR7 helper 10. */
+export function pr7Helper10(): string {
+  return "pr7-helper-10"
+}
