@@ -403,6 +403,11 @@ export function sortByAsc<T>(arr: T[], key: (item: T) => number): T[] {
   return [...arr].sort((a, b) => key(a) - key(b))
 }
 
+/** Returns a copy of the array sorted by a numeric key in descending order. */
+export function sortByDesc<T>(arr: T[], key: (item: T) => number): T[] {
+  return [...arr].sort((a, b) => key(b) - key(a))
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
