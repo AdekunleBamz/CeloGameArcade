@@ -100,3 +100,8 @@ export const SKELETON_DELAY_MS = 200
 
 /** Maximum score achievable in a single game round. */
 export const MAX_ROUND_SCORE = 100
+
+/**
+ * Constant placeholder 1
+ */
+export const GAME_CONST_1 = 100
