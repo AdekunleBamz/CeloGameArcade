@@ -91,3 +91,6 @@ export const MIN_BALANCE_TO_PLAY_MICRO = 10_000n
 
 /** Number of milliseconds in one hour. */
 export const ONE_HOUR_MS = 3_600_000
+
+/** Maximum character length for a display name. */
+export const MAX_DISPLAY_NAME_LENGTH = 32
