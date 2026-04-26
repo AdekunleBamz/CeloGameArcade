@@ -48,3 +48,8 @@ export function pr4Helper7(): string {
 export function pr4Helper8(): string {
   return "pr4-helper-8"
 }
+
+/** PR4 helper 9. */
+export function pr4Helper9(): string {
+  return "pr4-helper-9"
+}
