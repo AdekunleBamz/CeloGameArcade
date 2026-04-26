@@ -387,6 +387,11 @@ export function isDefined<T>(value: T | null | undefined): value is T {
   return value !== null && value !== undefined
 }
 
+/** Returns a deduplicated copy of the array preserving insertion order. */
+export function unique<T>(arr: T[]): T[] {
+  return [...new Set(arr)]
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
