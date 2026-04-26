@@ -85,3 +85,6 @@ export const ONE_SECOND_MS = 1_000
 
 /** Default page to start pagination on. */
 export const DEFAULT_PAGE = 1
+
+/** Minimum wallet balance (micro USDT) required to place a wager. */
+export const MIN_BALANCE_TO_PLAY_MICRO = 10_000n
