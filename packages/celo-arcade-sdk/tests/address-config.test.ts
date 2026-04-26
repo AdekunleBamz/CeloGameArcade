@@ -50,6 +50,10 @@ describe('addresses isZeroAddress', () => {
   it('detects zero addresses with whitespace and casing', () => {
     expect(isZeroAddress('  0X0000000000000000000000000000000000000000  ')).toBe(true);
   });
+
+  it('rejects blank values', () => {
+    expect(isZeroAddress('   ')).toBe(false);
+  });
 });
 
 describe('addresses normalizeAddress', () => {
