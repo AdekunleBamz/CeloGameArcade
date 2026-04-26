@@ -421,6 +421,16 @@ export function last<T>(arr: T[]): T | undefined {
   return arr.length > 0 ? arr[arr.length - 1] : undefined
 }
 
+/** Groups an array of items by a derived key. */
+export function groupBy<T>(arr: T[], key: (item: T) => string): Record<string, T[]> {
+  return arr.reduce<Record<string, T[]>>((acc, item) => {
+    const k = key(item)
+    if (!acc[k]) acc[k] = []
+    acc[k].push(item)
+    return acc
+  }, {})
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
