@@ -4,6 +4,7 @@ import {
   CLAIM_COOLDOWN_DAYS,
   CLAIM_COOLDOWN_SECONDS,
   CREATOR_SHARE_BPS,
+  DEFAULT_ENTRY_FEE_STRING,
   DEFAULT_STABLE_TOKEN,
   Difficulty,
   DIFFICULTY_MULTIPLIERS,
@@ -63,6 +64,10 @@ describe('constants default stable token', () => {
       symbol: 'USDT',
       decimals: 6,
     });
+  });
+
+  it('keeps the default entry fee string at one cent', () => {
+    expect(DEFAULT_ENTRY_FEE_STRING).toBe('0.01');
   });
 });
 
