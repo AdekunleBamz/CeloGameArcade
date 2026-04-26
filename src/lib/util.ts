@@ -23,3 +23,8 @@ export function pr4Helper2(): string {
 export function pr4Helper3(): string {
   return "pr4-helper-3"
 }
+
+/** PR4 helper 4. */
+export function pr4Helper4(): string {
+  return "pr4-helper-4"
+}
