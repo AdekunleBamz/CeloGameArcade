@@ -1020,3 +1020,10 @@ export function gcd(a: number, b: number): number {
 export function lcm(a: number, b: number): number {
   return Math.abs(a * b) / gcd(a, b)
 }
+
+/**
+ * Find minimum value in array
+ */
+export function minOfArray(arr: number[]): number {
+  return Math.min(...arr)
+}
