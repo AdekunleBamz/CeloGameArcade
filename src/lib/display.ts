@@ -33,3 +33,8 @@ export function displayHelper6(): string { return "helper6" }
  * Display helper 7
  */
 export function displayHelper7(): string { return "helper7" }
+
+/**
+ * Display helper 8
+ */
+export function displayHelper8(): string { return "helper8" }
