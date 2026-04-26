@@ -1041,3 +1041,10 @@ export function maxOfArray(arr: number[]): number {
 export function avgOfArray(arr: number[]): number {
   return arr.reduce((a, b) => a + b, 0) / arr.length
 }
+
+/**
+ * Filter finite numbers from array
+ */
+export function filterFinite(arr: number[]): number[] {
+  return arr.filter(n => Number.isFinite(n))
+}
