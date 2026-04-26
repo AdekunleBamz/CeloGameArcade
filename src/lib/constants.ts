@@ -140,3 +140,8 @@ export const GAME_CONST_7 = 700
  * Constant placeholder 8
  */
 export const GAME_CONST_8 = 800
+
+/**
+ * Constant placeholder 9
+ */
+export const GAME_CONST_9 = 900
