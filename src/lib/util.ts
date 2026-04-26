@@ -369,3 +369,4 @@ export const PR10_CONST_2 = 2;
 export const PR10_CONST_3 = 3;
 export const PR10_CONST_4 = 4;
 export const PR10_CONST_5 = 5;
+export const PR10_CONST_6 = 6;
