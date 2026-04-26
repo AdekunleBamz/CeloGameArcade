@@ -447,6 +447,11 @@ export function formatTime(ts: number): string {
   return new Date(ts * 1000).toLocaleTimeString()
 }
 
+/** Returns the percentage of amount relative to total; 0 when total is 0. */
+export function pct(amount: number, total: number): number {
+  return total === 0 ? 0 : Math.min(100, (amount / total) * 100)
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
