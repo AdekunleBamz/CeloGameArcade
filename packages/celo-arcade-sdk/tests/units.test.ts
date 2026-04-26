@@ -142,6 +142,10 @@ describe('units toTokenDivisor', () => {
   it('returns a million for six-decimal tokens', () => {
     expect(toTokenDivisor(6)).toBe(1_000_000n);
   });
+
+  it('returns the expected divisor for eighteen-decimal tokens', () => {
+    expect(toTokenDivisor(18)).toBe(1_000_000_000_000_000_000n);
+  });
 });
 
 describe('units isValidTokenAmountString', () => {
