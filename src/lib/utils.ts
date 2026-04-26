@@ -370,6 +370,11 @@ export function daysBetween(a: Date, b: Date): number {
   return Math.floor(Math.abs(a.getTime() - b.getTime()) / msPerDay)
 }
 
+/** Returns true when a bigint value is within the given inclusive range. */
+export function inRangeBigInt(value: bigint, min: bigint, max: bigint): boolean {
+  return value >= min && value <= max
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
