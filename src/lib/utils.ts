@@ -1048,3 +1048,10 @@ export function avgOfArray(arr: number[]): number {
 export function filterFinite(arr: number[]): number[] {
   return arr.filter(n => Number.isFinite(n))
 }
+
+/**
+ * Count elements matching predicate
+ */
+export function countWhere(arr: any[], pred: (x: any) => boolean): number {
+  return arr.filter(pred).length
+}
