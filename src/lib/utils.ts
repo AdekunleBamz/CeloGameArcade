@@ -431,6 +431,11 @@ export function groupBy<T>(arr: T[], key: (item: T) => string): Record<string, T
   }, {})
 }
 
+/** Sums an array of bigints; returns 0n when the array is empty. */
+export function sumBigInt(arr: bigint[]): bigint {
+  return arr.reduce((acc, v) => acc + v, 0n)
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
