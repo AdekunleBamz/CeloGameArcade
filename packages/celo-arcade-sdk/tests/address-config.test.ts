@@ -242,6 +242,10 @@ describe('config getDefaultEntryFee', () => {
   it('returns default entry fees for custom decimals', () => {
     expect(getDefaultEntryFee(18)).toBe(parseTokenUnits('0.01', 18));
   });
+
+  it('rejects invalid decimal precision values', () => {
+    expect(() => getDefaultEntryFee(19)).toThrow('Invalid token decimals: 19');
+  });
 });
 
 describe('config resolveStableTokenSymbol', () => {
