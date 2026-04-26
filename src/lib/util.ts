@@ -8,3 +8,8 @@ export const PR3_CONST_7 = 7;
 export const PR3_CONST_8 = 8;
 export const PR3_CONST_9 = 9;
 export const PR3_CONST_10 = 10;
+
+/** PR4 helper 1. */
+export function pr4Helper1(): string {
+  return "pr4-helper-1"
+}
