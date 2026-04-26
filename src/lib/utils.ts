@@ -398,6 +398,11 @@ export function safeParseFloat(value: string, fallback = 0): number {
   return Number.isFinite(n) ? n : fallback
 }
 
+/** Returns a copy of the array sorted by a numeric key in ascending order. */
+export function sortByAsc<T>(arr: T[], key: (item: T) => number): T[] {
+  return [...arr].sort((a, b) => key(a) - key(b))
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
