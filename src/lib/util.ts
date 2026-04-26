@@ -298,3 +298,8 @@ export function pr9Helper6(): string {
 export function pr9Helper7(): string {
   return "pr9-helper-7"
 }
+
+/** PR9 helper 8. */
+export function pr9Helper8(): string {
+  return "pr9-helper-8"
+}
