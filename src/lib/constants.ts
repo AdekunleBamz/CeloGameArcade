@@ -82,3 +82,6 @@ export const WAGER_DISPLAY_DECIMALS = 2
 
 /** Number of milliseconds in one second. */
 export const ONE_SECOND_MS = 1_000
+
+/** Default page to start pagination on. */
+export const DEFAULT_PAGE = 1
