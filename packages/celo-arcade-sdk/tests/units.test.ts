@@ -186,6 +186,10 @@ describe('units clampDecimals', () => {
   it('honors custom decimal bounds', () => {
     expect(clampDecimals(2, 4, 8)).toBe(4);
   });
+
+  it('uses the upper bound when bounds are reversed', () => {
+    expect(clampDecimals(6, 8, 4)).toBe(4);
+  });
 });
 
 describe('units parseIntegerUnits', () => {
