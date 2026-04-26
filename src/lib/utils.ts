@@ -1034,3 +1034,10 @@ export function minOfArray(arr: number[]): number {
 export function maxOfArray(arr: number[]): number {
   return Math.max(...arr)
 }
+
+/**
+ * Calculate average value in array
+ */
+export function avgOfArray(arr: number[]): number {
+  return arr.reduce((a, b) => a + b, 0) / arr.length
+}
