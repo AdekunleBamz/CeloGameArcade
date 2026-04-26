@@ -1076,3 +1076,19 @@ export function roundToDecimalPlaces(val: number, places: number): number {
 export function productOfArray(arr: number[]): number {
   return arr.reduce((a, b) => a * b, 1)
 }
+
+/**
+ * Get median value from array
+ */
+export function medianOfArray(arr: number[]): number {
+  const sorted = [...arr].sort((a, b) => a - b)
+  const mid = Math.floor(sorted.length / 2)
+  return sorted.length 
+/**
+ * Get median value from array
+ */
+export function medianOfArray(arr: number[]): number {
+  const sorted = [...arr].sort((a, b) => a - b)
+  const mid = Math.floor(sorted.length / 2)
+  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2
+}
