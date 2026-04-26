@@ -91,6 +91,10 @@ describe('units parseTokenUnits', () => {
     expect(() => parseTokenUnits('1,000', 6)).toThrow('Invalid token amount: 1,000');
   });
 
+  it('rejects plus-prefixed amount strings', () => {
+    expect(() => parseTokenUnits('+1', 6)).toThrow('Invalid token amount: +1');
+  });
+
   it('rejects blank amount strings', () => {
     expect(() => parseTokenUnits('   ', 6)).toThrow('Invalid token amount:');
   });
