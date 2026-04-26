@@ -1092,3 +1092,10 @@ export function medianOfArray(arr: number[]): number {
   const mid = Math.floor(sorted.length / 2)
   return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2
 }
+
+/**
+ * Check if value exists in array
+ */
+export function includesValue(arr: any[], val: any): boolean {
+  return arr.includes(val)
+}
