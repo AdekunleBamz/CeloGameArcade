@@ -197,6 +197,10 @@ describe('units parseIntegerUnits', () => {
     expect(parseIntegerUnits('123')).toBe(123n);
   });
 
+  it('trims integer strings before parsing', () => {
+    expect(parseIntegerUnits('  123  ')).toBe(123n);
+  });
+
   it('parses integer numbers', () => {
     expect(parseIntegerUnits(456)).toBe(456n);
   });
