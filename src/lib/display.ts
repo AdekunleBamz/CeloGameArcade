@@ -18,3 +18,8 @@ export function displayHelper3(): string { return "helper3" }
  * Display helper 4
  */
 export function displayHelper4(): string { return "helper4" }
+
+/**
+ * Display helper 5
+ */
+export function displayHelper5(): string { return "helper5" }
