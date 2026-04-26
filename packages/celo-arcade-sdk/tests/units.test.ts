@@ -234,6 +234,10 @@ describe('units tryParseTokenUnits', () => {
   it('returns null for invalid token amounts', () => {
     expect(tryParseTokenUnits('bad', 6)).toBeNull();
   });
+
+  it('returns null when token decimals are invalid', () => {
+    expect(tryParseTokenUnits('1', 19)).toBeNull();
+  });
 });
 
 describe('units isZeroAmount', () => {
