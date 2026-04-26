@@ -50,6 +50,7 @@ export function isArcadeConfig(value: unknown): value is ArcadeSdkConfig {
     && typeof config.stableTokenAddress === 'string'
     && typeof config.stableTokenSymbol === 'string'
     && typeof config.stableTokenDecimals === 'number'
+    && Number.isFinite(config.stableTokenDecimals)
     && typeof config.miniPayFeeCurrency === 'string'
     && typeof config.entryFee === 'bigint'
   );

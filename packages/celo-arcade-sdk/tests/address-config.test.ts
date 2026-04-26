@@ -236,6 +236,14 @@ describe('config isArcadeConfig', () => {
     expect(isArcadeConfig(createArcadeConfig())).toBe(true);
   });
 
+  it('rejects configs with non-finite token decimals', () => {
+    const invalidConfig = {
+      ...createArcadeConfig(),
+      stableTokenDecimals: Number.NaN,
+    };
+    expect(isArcadeConfig(invalidConfig)).toBe(false);
+  });
+
   it('rejects config-like objects missing entry fees', () => {
     const { entryFee: _entryFee, ...partialConfig } = createArcadeConfig();
     expect(isArcadeConfig(partialConfig)).toBe(false);
