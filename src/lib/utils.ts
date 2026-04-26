@@ -458,6 +458,11 @@ export function range(start: number, end: number): number[] {
   return Array.from({ length: end - start }, (_, i) => start + i)
 }
 
+/** Subtracts b from a, returning 0n when the result would be negative. */
+export function subSafe(a: bigint, b: bigint): bigint {
+  return a > b ? a - b : 0n
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
