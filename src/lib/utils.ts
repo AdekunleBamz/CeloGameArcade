@@ -1069,3 +1069,10 @@ export function sumArray(arr: number[]): number {
 export function roundToDecimalPlaces(val: number, places: number): number {
   return Math.round(val * Math.pow(10, places)) / Math.pow(10, places)
 }
+
+/**
+ * Find product of array elements
+ */
+export function productOfArray(arr: number[]): number {
+  return arr.reduce((a, b) => a * b, 1)
+}
