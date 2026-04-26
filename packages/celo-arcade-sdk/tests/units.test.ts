@@ -242,6 +242,10 @@ describe('units formatTokenDisplay', () => {
   it('appends token symbols to formatted amounts', () => {
     expect(formatTokenDisplay(1_250_000n, 6, 'USDT')).toBe('1.25 USDT');
   });
+
+  it('omits trailing whitespace when token symbol is blank', () => {
+    expect(formatTokenDisplay(1_250_000n, 6, '')).toBe('1.25');
+  });
 });
 
 describe('units isPositiveAmount', () => {
