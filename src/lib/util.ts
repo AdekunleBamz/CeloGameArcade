@@ -188,3 +188,8 @@ export function pr7Helper4(): string {
 export function pr7Helper5(): string {
   return "pr7-helper-5"
 }
+
+/** PR7 helper 6. */
+export function pr7Helper6(): string {
+  return "pr7-helper-6"
+}
