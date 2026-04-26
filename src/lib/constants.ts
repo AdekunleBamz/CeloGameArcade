@@ -100,3 +100,53 @@ export const SKELETON_DELAY_MS = 200
 
 /** Maximum score achievable in a single game round. */
 export const MAX_ROUND_SCORE = 100
+
+/**
+ * Constant placeholder 1
+ */
+export const GAME_CONST_1 = 100
+
+/**
+ * Constant placeholder 2
+ */
+export const GAME_CONST_2 = 200
+
+/**
+ * Constant placeholder 3
+ */
+export const GAME_CONST_3 = 300
+
+/**
+ * Constant placeholder 4
+ */
+export const GAME_CONST_4 = 400
+
+/**
+ * Constant placeholder 5
+ */
+export const GAME_CONST_5 = 500
+
+/**
+ * Constant placeholder 6
+ */
+export const GAME_CONST_6 = 600
+
+/**
+ * Constant placeholder 7
+ */
+export const GAME_CONST_7 = 700
+
+/**
+ * Constant placeholder 8
+ */
+export const GAME_CONST_8 = 800
+
+/**
+ * Constant placeholder 9
+ */
+export const GAME_CONST_9 = 900
+
+/**
+ * Constant placeholder 10
+ */
+export const GAME_CONST_10 = 1000
