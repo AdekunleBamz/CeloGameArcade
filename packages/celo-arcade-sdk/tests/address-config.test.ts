@@ -121,6 +121,10 @@ describe('addresses getAddressShort', () => {
   it('uses the standard short address format', () => {
     expect(getAddressShort('0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0')).toBe('0xD3Cb...DDB0');
   });
+
+  it('trims addresses before shortening', () => {
+    expect(getAddressShort('  0xD3Cb0357edF92E1056cfBC3dC5cC1DA52846DDB0  ')).toBe('0xD3Cb...DDB0');
+  });
 });
 
 describe('config createArcadeConfig', () => {
