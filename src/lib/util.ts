@@ -333,3 +333,8 @@ export function pr10Helper3(): string {
 export function pr10Helper4(): string {
   return "pr10-helper-4"
 }
+
+/** PR10 helper 5. */
+export function pr10Helper5(): string {
+  return "pr10-helper-5"
+}
