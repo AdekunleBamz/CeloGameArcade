@@ -105,3 +105,8 @@ export const MAX_ROUND_SCORE = 100
  * Constant placeholder 1
  */
 export const GAME_CONST_1 = 100
+
+/**
+ * Constant placeholder 2
+ */
+export const GAME_CONST_2 = 200
