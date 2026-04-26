@@ -79,3 +79,6 @@ export const INPUT_DEBOUNCE_MS = 300
 
 /** Maximum number of displayed decimal places for wager amounts. */
 export const WAGER_DISPLAY_DECIMALS = 2
+
+/** Number of milliseconds in one second. */
+export const ONE_SECOND_MS = 1_000
