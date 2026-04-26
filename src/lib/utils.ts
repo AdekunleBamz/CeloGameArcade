@@ -463,6 +463,13 @@ export function subSafe(a: bigint, b: bigint): bigint {
   return a > b ? a - b : 0n
 }
 
+/** Returns a formatted win multiplier string, e.g. "1.95x". */
+export function formatMultiplier(bps: bigint): string {
+  const whole = bps / 100n
+  const frac = (bps % 100n).toString().padStart(2, '0')
+  return `${whole}.${frac}x`
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
