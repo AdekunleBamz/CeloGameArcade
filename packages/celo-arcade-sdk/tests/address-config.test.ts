@@ -92,6 +92,10 @@ describe('addresses isHexString', () => {
     expect(isHexString('0xabc123')).toBe(true);
   });
 
+  it('accepts whitespace-padded hex strings after trimming', () => {
+    expect(isHexString('  0xabc123  ')).toBe(true);
+  });
+
   it('rejects empty hex payloads', () => {
     expect(isHexString('0x')).toBe(false);
   });
