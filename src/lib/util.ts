@@ -5,3 +5,4 @@ export const PR8_CONST_4 = 4;
 export const PR8_CONST_5 = 5;
 export const PR8_CONST_6 = 6;
 export const PR8_CONST_7 = 7;
+export const PR8_CONST_8 = 8;
