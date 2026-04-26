@@ -45,6 +45,10 @@ describe('constants supported chains', () => {
   it('includes Celo mainnet and Alfajores', () => {
     expect(SUPPORTED_CHAIN_IDS).toEqual([42220, 44787]);
   });
+
+  it('exports exactly two supported chain IDs', () => {
+    expect(SUPPORTED_CHAIN_IDS).toHaveLength(2);
+  });
 });
 
 describe('constants default stable token', () => {
