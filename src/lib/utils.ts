@@ -1055,3 +1055,10 @@ export function filterFinite(arr: number[]): number[] {
 export function countWhere(arr: any[], pred: (x: any) => boolean): number {
   return arr.filter(pred).length
 }
+
+/**
+ * Sum all values in array
+ */
+export function sumArray(arr: number[]): number {
+  return arr.reduce((a, b) => a + b, 0)
+}
