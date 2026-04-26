@@ -248,3 +248,8 @@ export function pr8Helper6(): string {
 export function pr8Helper7(): string {
   return "pr8-helper-7"
 }
+
+/** PR8 helper 8. */
+export function pr8Helper8(): string {
+  return "pr8-helper-8"
+}
