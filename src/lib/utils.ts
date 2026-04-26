@@ -392,6 +392,12 @@ export function unique<T>(arr: T[]): T[] {
   return [...new Set(arr)]
 }
 
+/** Safely parses a decimal string; returns fallback if invalid. */
+export function safeParseFloat(value: string, fallback = 0): number {
+  const n = parseFloat(value.trim())
+  return Number.isFinite(n) ? n : fallback
+}
+
 /**
  * Returns a slug from a display name.
  * @param str - String to slugify.
