@@ -11,6 +11,7 @@ import {
   DEFAULT_GAME_COUNT,
   GAME_TYPE_NAMES,
   GameType,
+  MAX_LEADERBOARD_SIZE,
   MAX_SCORE,
   MIN_SCORE,
   PRIZE_POOL_SHARE_BPS_DISPLAY,
@@ -104,6 +105,12 @@ describe('constants Difficulty', () => {
 describe('constants score bounds', () => {
   it('keeps the maximum score above the minimum score', () => {
     expect(MAX_SCORE).toBeGreaterThan(MIN_SCORE);
+  });
+});
+
+describe('constants leaderboard size', () => {
+  it('exposes a max leaderboard size of ten entries', () => {
+    expect(MAX_LEADERBOARD_SIZE).toBe(10);
   });
 });
 
