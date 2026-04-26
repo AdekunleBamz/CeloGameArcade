@@ -94,3 +94,6 @@ export const ONE_HOUR_MS = 3_600_000
 
 /** Maximum character length for a display name. */
 export const MAX_DISPLAY_NAME_LENGTH = 32
+
+/** Number of milliseconds to wait before showing a loading skeleton. */
+export const SKELETON_DELAY_MS = 200
