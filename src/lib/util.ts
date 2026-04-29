@@ -149,11 +149,6 @@ export function pr6Helper8(): string {
   return "pr6-helper-8"
 }
 
-/** PR6 helper 8. */
-export function pr6Helper8(): string {
-  return "pr6-helper-8"
-}
-
 /** PR6 helper 9. */
 export function pr6Helper9(): string {
   return "pr6-helper-9"

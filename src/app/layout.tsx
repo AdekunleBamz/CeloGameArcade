@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 
@@ -54,7 +54,6 @@ export const metadata: Metadata = {
       }
     ],
     locale: "en_US",
-  themeColor: "#0f0c29",
     type: "website",
   },
   twitter: {
@@ -66,6 +65,10 @@ export const metadata: Metadata = {
   other: {
     "fc:frame": JSON.stringify(frame),
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0f0c29",
 };
 
 export default function RootLayout({

@@ -685,14 +685,6 @@ export function isPlainObject(value: unknown): value is Record<string, unknown> 
 }
 
 /**
- * Returns the last element of an array.
- * @param arr - Array.
- */
-export function last<T>(arr: T[]): T | undefined {
-  return arr[arr.length - 1]
-}
-
-/**
  * Returns the first element of an array.
  * @param arr - Array.
  */
@@ -1071,13 +1063,6 @@ export function productOfArray(arr: number[]): number {
   return arr.reduce((a, b) => a * b, 1)
 }
 
-/**
- * Get median value from array
- */
-export function medianOfArray(arr: number[]): number {
-  const sorted = [...arr].sort((a, b) => a - b)
-  const mid = Math.floor(sorted.length / 2)
-  return sorted.length 
 /**
  * Get median value from array
  */
