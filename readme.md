@@ -62,6 +62,12 @@ npx vercel --prod
 
 - Keep `.env.local` out of commits and avoid sharing WalletConnect keys in logs.
 
+## 🧭 Operational Notes
+
+- [Release checklist](docs/release-checklist.md)
+- [Stable token checks](docs/stable-token-checks.md)
+- [SDK validation notes](docs/sdk-validation.md)
+
 ## 📄 License
 
 MIT
