@@ -14,4 +14,5 @@ Use this checklist before promoting a Vercel deployment.
 
 - Confirm the app reads the current contract address on Celo mainnet.
 - Confirm the entry fee shown in the UI matches the contract value.
+- Confirm at least one game can complete locally before signing a score transaction.
 - Open the production URL inside a Farcaster client and verify the mini app shell loads.
