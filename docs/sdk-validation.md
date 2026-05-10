@@ -7,6 +7,7 @@ The SDK exposes contract defaults, addresses, ABI exports, and token unit helper
 - Run `npm run sdk:test`.
 - Run `npm run sdk:build`.
 - Check that `packages/celo-arcade-sdk/README.md` examples still import exported names that exist.
+- Confirm `DEFAULT_ARCADE_CONFIG` still resolves without overrides.
 
 ## Integration Checks
 
