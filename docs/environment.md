@@ -10,3 +10,7 @@ Celo Arcade reads public settings from `NEXT_PUBLIC_*` variables.
 | `NEXT_PUBLIC_STABLE_TOKEN_DECIMALS` | Decimal count used for stable token amount parsing. |
 | `NEXT_PUBLIC_MINIPAY_FEE_CURRENCY` | MiniPay fee currency address used by the mini app shell. |
 | `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` | Optional WalletConnect project id for external wallet sessions. |
+
+## Unit Notes
+
+Entry fees and balances are sent onchain in token base units. Display amounts should always use the configured token decimals.
