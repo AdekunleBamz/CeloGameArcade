@@ -5,6 +5,7 @@ Celo Arcade currently uses a stablecoin entry flow on Celo mainnet.
 ## Review Points
 
 - Confirm the displayed token symbol matches the configured stable token.
+- Confirm the configured stable token address is the intended Celo mainnet asset.
 - Confirm wager amounts are parsed with the token decimal count, not hardcoded display decimals.
 - Confirm balances and entry fees are shown in human-readable units before transaction signing.
 - Confirm token approval uses the arcade contract address as spender.
