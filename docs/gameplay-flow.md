@@ -7,3 +7,5 @@
 5. The local game round produces a raw score.
 6. The app submits the score with the selected difficulty multiplier.
 7. Leaderboard and prize pool views refresh from contract reads.
+
+Difficulty selection should happen before gameplay begins so the submitted score matches the round the player saw.
