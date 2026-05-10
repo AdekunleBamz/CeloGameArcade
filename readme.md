@@ -65,6 +65,7 @@ npx vercel --prod
 ## 🧭 Operational Notes
 
 - [Release checklist](docs/release-checklist.md)
+- [Environment reference](docs/environment.md)
 - [Stable token checks](docs/stable-token-checks.md)
 - [SDK validation notes](docs/sdk-validation.md)
 
