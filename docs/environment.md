@@ -14,3 +14,7 @@ Celo Arcade reads public settings from `NEXT_PUBLIC_*` variables.
 ## Unit Notes
 
 Entry fees and balances are sent onchain in token base units. Display amounts should always use the configured token decimals.
+
+## Vercel Notes
+
+Update public variables in Vercel before promoting a build that changes the contract or stable token. The browser bundle reads the values from the deployment that built it.
