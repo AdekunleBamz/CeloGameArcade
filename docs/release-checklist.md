@@ -5,6 +5,7 @@ Use this checklist before promoting a Vercel deployment.
 ## Local Checks
 
 - Run `npm run sdk:test` after SDK-facing changes.
+- Run `npm run sdk:build` when SDK exports or package metadata changes.
 - Run `npm run check:fast` for the app-level fast checks.
 - Run `npm run build` before production deployment.
 
