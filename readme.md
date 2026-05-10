@@ -69,6 +69,7 @@ npx vercel --prod
 - [Stable token checks](docs/stable-token-checks.md)
 - [SDK validation notes](docs/sdk-validation.md)
 - [QA notes](docs/qa-notes.md)
+- [Security notes](docs/security-notes.md)
 
 ## 📄 License
 
