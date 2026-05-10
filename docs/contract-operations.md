@@ -7,3 +7,4 @@ Use this note for read-only and owner-facing contract review.
 - Read `getLeaderboard` after a score submission.
 - Confirm owner-only actions are performed from the intended owner wallet.
 - Record transaction hashes for entry, score submission, and prize claim smoke tests.
+- Compare token balances before and after a deposit when validating prize pool routing.
