@@ -35,6 +35,8 @@ npm run build
 npm run test
 ```
 
+Run these checks from `packages/celo-arcade-sdk` when working on the package directly.
+
 ## Validation Notes
 
 - `parseTokenUnits` accepts values like `1`, `1.`, and `.5` when precision is valid.
