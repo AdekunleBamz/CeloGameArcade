@@ -66,6 +66,7 @@ npx vercel --prod
 
 - [Release checklist](docs/release-checklist.md)
 - [Environment reference](docs/environment.md)
+- [Gameplay flow](docs/gameplay-flow.md)
 - [Stable token checks](docs/stable-token-checks.md)
 - [SDK validation notes](docs/sdk-validation.md)
 - [QA notes](docs/qa-notes.md)
