@@ -13,3 +13,4 @@
 - Complete one round without submitting an onchain score.
 - Submit a score only after the local round has completed.
 - Confirm the leaderboard refreshes after score submission.
+- Confirm reduced-motion users can still complete the core game flow.
