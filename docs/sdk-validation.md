@@ -13,3 +13,4 @@ The SDK exposes contract defaults, addresses, ABI exports, and token unit helper
 - Use strict decimal strings for parsed token amounts.
 - Pass zero-decimal token fees as base-unit `bigint` values.
 - Keep app defaults and SDK defaults aligned when contract addresses or token symbols change.
+- Confirm SDK README examples still match the package name used by integrators.
