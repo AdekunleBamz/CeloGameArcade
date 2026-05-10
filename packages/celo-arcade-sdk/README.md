@@ -43,3 +43,4 @@ Run these checks from `packages/celo-arcade-sdk` when working on the package dir
 - `parseTokenUnits` rejects unsupported notation such as `1e2` to avoid ambiguous parsing.
 - `createArcadeConfig` expects `entryFee` overrides as `bigint` values in base units.
 - For zero-decimal tokens, provide `entryFee` explicitly in base units when overriding config.
+- Address overrides are trimmed and validated before a config is returned.
