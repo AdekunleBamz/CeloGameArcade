@@ -65,6 +65,7 @@ npx vercel --prod
 ## 🧭 Operational Notes
 
 - [Release checklist](docs/release-checklist.md)
+- [Contract operations](docs/contract-operations.md)
 - [Environment reference](docs/environment.md)
 - [Gameplay flow](docs/gameplay-flow.md)
 - [Stable token checks](docs/stable-token-checks.md)
