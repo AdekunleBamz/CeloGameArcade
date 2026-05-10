@@ -5,3 +5,4 @@
 - Confirm the app opens inside a Farcaster client before promoting the URL.
 - Confirm wallet prompts stay inside the embedded session.
 - Confirm support, privacy, and terms pages are reachable.
+- Confirm manifest domain values match the production deployment domain.
