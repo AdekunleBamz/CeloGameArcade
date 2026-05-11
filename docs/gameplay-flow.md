@@ -9,3 +9,5 @@
 7. Leaderboard and prize pool views refresh from contract reads.
 
 Difficulty selection should happen before gameplay begins so the submitted score matches the round the player saw.
+
+Keep the selected game, difficulty, and final score together in release evidence.
