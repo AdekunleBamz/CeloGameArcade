@@ -6,3 +6,4 @@
 - Treat leaderboard claims as production-sensitive transactions.
 - Recheck Farcaster manifest values before each public release.
 - Keep WalletConnect project ids in project settings instead of screenshots or public issue threads.
+- Confirm prize-pool and owner wallet settings before each production release.
