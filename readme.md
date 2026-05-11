@@ -77,3 +77,5 @@ npx vercel --prod
 ## 📄 License
 
 MIT
+
+Keep release evidence tied to the score submission hash so support can match screenshots, wallet prompts, and explorer links quickly.
