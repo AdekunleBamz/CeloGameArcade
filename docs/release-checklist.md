@@ -17,3 +17,4 @@ Use this checklist before promoting a Vercel deployment.
 - Confirm at least one game can complete locally before signing a score transaction.
 - Confirm one support link opens without leaving the mini app in an unusable state.
 - Open the production URL inside a Farcaster client and verify the mini app shell loads.
+- Attach one score submission hash and preview URL to the release notes.
