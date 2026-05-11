@@ -9,25 +9,27 @@ import { useState, useEffect, type ReactNode } from 'react';
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID?.trim() || '';
 const hasWalletConnectProjectId = projectId.length > 0;
 
-const config = createConfig({
-  chains: [celo],
-  transports: {
-    [celo.id]: http('https://forno.celo.org'),
-  },
-  connectors: [
-    farcasterMiniApp(),
-    injected(),
-    walletConnect({ 
-      projectId: hasWalletConnectProjectId ? projectId : '',
-      metadata: {
-        name: 'Celo Game Arcade',
-        description: 'Play games and win USDm!',
-        url: typeof window !== 'undefined' ? window.location.origin : '',
-        icons: ['https://celo.org/favicon.ico'],
-      },
-    }),
-  ],
-});
+function createArcadeConfig() {
+  return createConfig({
+    chains: [celo],
+    transports: {
+      [celo.id]: http('https://forno.celo.org'),
+    },
+    connectors: [
+      farcasterMiniApp(),
+      injected(),
+      walletConnect({
+        projectId: hasWalletConnectProjectId ? projectId : '',
+        metadata: {
+          name: 'Celo Game Arcade',
+          description: 'Play games and win USDm!',
+          url: window.location.origin,
+          icons: ['https://celo.org/favicon.ico'],
+        },
+      }),
+    ],
+  });
+}
 
 const CELO_MAINNET_ID = 42220;
 const CELO_MAINNET_HEX = '0xA4EC';
@@ -106,10 +108,12 @@ function NetworkGuard({ children }: { children: ReactNode }) {
 
 export function Providers({ children }: { children: ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
+  const [config, setConfig] = useState<ReturnType<typeof createArcadeConfig> | null>(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const init = async () => {
+      setConfig(createArcadeConfig());
       try {
         const { sdk } = await import('@farcaster/miniapp-sdk');
         await sdk.actions.ready();
@@ -121,7 +125,7 @@ export function Providers({ children }: { children: ReactNode }) {
     init();
   }, []);
 
-  if (!isReady) {
+  if (!isReady || !config) {
     return (
       <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div role="status" style={{ textAlign: 'center' }}>
