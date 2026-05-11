@@ -14,3 +14,4 @@
 - Submit a score only after the local round has completed.
 - Confirm the leaderboard refreshes after score submission.
 - Confirm reduced-motion users can still complete the core game flow.
+- Save the game title and difficulty used for each smoke test.
