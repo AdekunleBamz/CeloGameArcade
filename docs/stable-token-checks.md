@@ -15,3 +15,4 @@ Celo Arcade currently uses a stablecoin entry flow on Celo mainnet.
 - Keep wallet prompts inside the Farcaster or injected-wallet session.
 - Avoid chain-switch prompts in embedded mini app sessions.
 - Record one successful entry transaction hash during release smoke testing.
+- Compare the stable token symbol in the app, wallet, and explorer event.
