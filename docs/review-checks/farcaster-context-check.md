@@ -1,0 +1,5 @@
+# Farcaster Context Check
+
+- Open the arcade inside and outside the Farcaster context when available.
+- Confirm wallet and game state labels remain clear in both contexts.
+- Record context-specific issues in the Farcaster review notes.
