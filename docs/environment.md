@@ -18,3 +18,5 @@ Entry fees and balances are sent onchain in token base units. Display amounts sh
 ## Vercel Notes
 
 Update public variables in Vercel before promoting a build that changes the contract or stable token. The browser bundle reads the values from the deployment that built it.
+
+Record the Vercel environment and reviewer whenever contract or stable token variables change.
