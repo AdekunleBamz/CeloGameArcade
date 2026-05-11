@@ -44,3 +44,4 @@ Run these checks from `packages/celo-arcade-sdk` when working on the package dir
 - `createArcadeConfig` expects `entryFee` overrides as `bigint` values in base units.
 - For zero-decimal tokens, provide `entryFee` explicitly in base units when overriding config.
 - Address overrides are trimmed and validated before a config is returned.
+- Record the package version beside SDK validation evidence.
