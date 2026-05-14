@@ -10,6 +10,7 @@ Celo Arcade reads public settings from `NEXT_PUBLIC_*` variables.
 | `NEXT_PUBLIC_STABLE_TOKEN_DECIMALS` | Decimal count used for stable token amount parsing. |
 | `NEXT_PUBLIC_MINIPAY_FEE_CURRENCY` | MiniPay fee currency address used by the mini app shell. |
 | `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` | Optional WalletConnect project id for external wallet sessions. |
+| `NEXT_PUBLIC_APP_URL` | Production domain used in Farcaster frame metadata and share links. Defaults to the hardcoded fallback when not set. |
 
 ## Unit Notes
 
