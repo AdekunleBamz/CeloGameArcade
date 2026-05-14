@@ -5,7 +5,8 @@ import { useEffect, useRef } from 'react'
 /**
  * Executes a callback on an interval.
  * @param callback - Function to run.
- * @param delay - Milliseconds between calls.
+ * @param delay - Milliseconds between calls. Pass `null` to pause the interval.
+ * @returns void
  */
 export function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback)
