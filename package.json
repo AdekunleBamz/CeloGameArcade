@@ -13,6 +13,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "typecheck": "tsc --noEmit",
     "check:fast": "npm run sdk:test && npm run lint",
     "validate": "npm run typecheck && npm run check:fast"
   },
