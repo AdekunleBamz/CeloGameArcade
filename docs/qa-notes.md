@@ -1,5 +1,10 @@
 # QA Notes
 
+## Pre-Smoke-Test
+
+- Run `npm run typecheck` and `npm run check:fast` before sharing a preview link.
+- Confirm `NEXT_PUBLIC_ARCADE_CONTRACT_ADDRESS` is set and matches the deployed contract.
+
 ## Wallet Flow
 
 - Connect through a Farcaster mini app session.
