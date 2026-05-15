@@ -68,6 +68,13 @@ export const HOUSE_FEE_BPS = 500n
 /** Maximum number of active games displayed on the board. */
 export const MAX_ACTIVE_GAMES_DISPLAY = 20
 
+/** Score multipliers by difficulty level used for on-chain score calculation. */
+export const SCORE_MULTIPLIERS = Object.freeze({
+  easy: 1,
+  medium: 1.5,
+  hard: 2,
+} as const)
+
 /** Maximum number of games a wallet can have in pending state simultaneously. */
 export const MAX_PENDING_GAMES = 3
 
