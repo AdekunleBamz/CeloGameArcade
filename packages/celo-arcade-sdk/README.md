@@ -45,3 +45,4 @@ Run these checks from `packages/celo-arcade-sdk` when working on the package dir
 - For zero-decimal tokens, provide `entryFee` explicitly in base units when overriding config.
 - Address overrides are trimmed and validated before a config is returned.
 - Record the package version beside SDK validation evidence.
+- Compare README examples with generated `dist` exports before publishing.
