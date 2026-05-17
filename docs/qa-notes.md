@@ -8,6 +8,7 @@
 ## Wallet Flow
 
 - Connect through a Farcaster mini app session.
+- Refresh once after connecting and confirm the wallet label remains understandable.
 - Connect through a normal injected wallet session.
 - Confirm the connected wallet remains on Celo mainnet.
 - Confirm the entry fee shown in the app matches the contract value.
