@@ -4,3 +4,4 @@
 - Confirm zero and large balances remain readable.
 - Check mobile width for overflow before release.
 - Compare the displayed balance with the wallet balance.
+- Confirm balance display updates after entry payment confirmation.
