@@ -16,3 +16,4 @@ The SDK exposes contract defaults, addresses, ABI exports, and token unit helper
 - Keep app defaults and SDK defaults aligned when contract addresses or token symbols change.
 - Confirm SDK README examples still match the package name used by integrators.
 - Record the SDK package version used for release validation.
+- Compare SDK defaults with the deployed app environment before publishing.
