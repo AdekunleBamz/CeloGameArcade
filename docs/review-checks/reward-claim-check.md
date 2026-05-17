@@ -4,3 +4,4 @@
 - Confirm claimed amount matches the wallet prompt and success state.
 - Note any claim that remains pending after refresh.
 - Capture the prize pool amount shown before claiming.
+- Confirm reward claim evidence includes the winner wallet label.
