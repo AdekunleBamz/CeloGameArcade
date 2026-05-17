@@ -4,3 +4,4 @@
 - Confirm essential feedback remains visible without animation.
 - Note any motion-only signal before release.
 - Confirm each core game action remains visible without animation.
+- Confirm reduced motion review covers wallet-backed states as well.
