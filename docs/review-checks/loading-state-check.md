@@ -4,3 +4,4 @@
 - Confirm loading labels clear after data arrives.
 - Note any loading state that blocks normal gameplay.
 - Record the action that produced the loading state.
+- Confirm loading copy recovers after wallet rejection.
