@@ -4,3 +4,4 @@
 - Confirm examples name the correct network.
 - Record any stale address before publishing SDK notes.
 - Compare SDK defaults with the app environment values.
+- Confirm generated SDK artifacts match the source address config.
