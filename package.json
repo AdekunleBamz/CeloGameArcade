@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Farcaster mini app arcade on Celo with on-chain scoring and prize pool",
   "private": true,
-  "repository": {"type": "git", "url": "https://github.com/AdekunleBamz/CeloGameArcade.git"},
   "scripts": {
     "dev": "next dev",
     "build": "next build",
