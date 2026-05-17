@@ -4,3 +4,4 @@
 - Share explorer links instead of wallet screenshots when possible.
 - Keep player contact details out of engineering notes.
 - Include the public explorer link before escalating a score issue.
+- Include game title and difficulty in support handoff notes.
