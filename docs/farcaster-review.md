@@ -7,3 +7,4 @@
 - Confirm support, privacy, and terms pages are reachable.
 - Confirm manifest domain values match the production deployment domain.
 - Capture the Farcaster client and preview URL used for shell review.
+- Record the app version or build identifier shown during client review.
