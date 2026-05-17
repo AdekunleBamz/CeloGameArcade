@@ -48,6 +48,7 @@ npm run sdk:build
 
 # Run fast local checks
 npm run check:fast
+npm run typecheck
 ```
 
 ## 📦 Deploy
