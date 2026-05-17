@@ -9,6 +9,7 @@ Use this checklist before promoting a Vercel deployment.
 - Run `npm run check:fast` for the app-level fast checks.
 - Run `npm run typecheck` to confirm TypeScript compiles cleanly.
 - Run `npm run build` before production deployment.
+- Confirm SDK package artifacts match the source exports before deployment.
 - Confirm Vercel public variables match the intended contract and stable token.
 
 ## Runtime Checks
