@@ -11,3 +11,5 @@
 Difficulty selection should happen before gameplay begins so the submitted score matches the round the player saw.
 
 Keep the selected game, difficulty, and final score together in release evidence.
+
+Record whether the score was submitted onchain or kept as a local gameplay check.
